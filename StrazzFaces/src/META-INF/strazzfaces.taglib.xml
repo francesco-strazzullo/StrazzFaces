@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<facelet-taglib version="2.0"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd">
+	<description>Libreria di componenti didattici</description>
+	<namespace>http://it.strazz.faces/ui</namespace>
+	<tag>
+		<tag-name>clock</tag-name>
+		<component>
+			<component-type>it.strazz.faces.Clock</component-type>
+			<renderer-type>it.strazz.faces.ClockRenderer</renderer-type>
+		</component>
+		<attribute>
+			<description><![CDATA[true per orologio digitale, false per quello analogico]]></description>
+			<name>digital</name>
+			<required>false</required>
+			<type>java.lang.Boolean</type>
+		</attribute>
+	</tag>
+</facelet-taglib>
