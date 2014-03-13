@@ -7,14 +7,24 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:s="http://it.strazz.faces/ui">
-
 <h:head>
 </h:head>
 <h:body>
-	<h1>Hello World PrimeFaces</h1>
-
+	<h1>Clock</h1>
 	<h:form>
-		<s:clock digital="false"/>
+		<p:commandButton 
+			action="#{clockBean.swap}"
+			icon="ui-icon-refresh"
+			update="@form"/>
+		<h1>Rome</h1>
+		<s:clock 
+			startTime="#{clockBean.romeTime}"
+			digital="#{clockBean.digital}"/>
+		<hr></hr>
+		<h1>London</h1>
+		<s:clock 
+			startTime="#{clockBean.londonTime}"
+			digital="#{clockBean.digital}"/>
 	</h:form>
 
 </h:body>
