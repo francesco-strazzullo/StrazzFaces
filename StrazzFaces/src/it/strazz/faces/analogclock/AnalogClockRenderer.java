@@ -1,4 +1,4 @@
-package it.strazz.faces.clock;
+package it.strazz.faces.analogclock;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -12,16 +12,16 @@ import javax.faces.render.FacesRenderer;
 
 import org.primefaces.renderkit.CoreRenderer;
 
-@FacesRenderer(componentFamily=Clock.COMPONENT_FAMILY,rendererType=ClockRenderer.RENDERER_TYPE)
-public class ClockRenderer extends CoreRenderer {
+@FacesRenderer(componentFamily=AnalogClock.COMPONENT_FAMILY,rendererType=AnalogClockRenderer.RENDERER_TYPE)
+public class AnalogClockRenderer extends CoreRenderer {
 	
-	public static final String RENDERER_TYPE = "it.strazz.faces.ClockRenderer";
+	public static final String RENDERER_TYPE = "it.strazz.faces.AnalogClockRenderer";
 
 	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
 		
-		Clock clock = (Clock) component;
+		AnalogClock analogClock = (AnalogClock) component;
 		
-		String widgetVar = clock.resolveWidgetVar();
+		String widgetVar = analogClock.resolveWidgetVar();
 		
 		ResponseWriter writer = context.getResponseWriter();
 		
@@ -30,21 +30,20 @@ public class ClockRenderer extends CoreRenderer {
 		startScript(writer, component.getClientId());
 		
 		writer.write("if(!" + widgetVar + "){");
-		writer.write("var " + widgetVar + " = new window.Clock(" + this.writeCfgObject(createCfgMap(clock)) + ");");
-		writer.write("}else{" + widgetVar + ".digital = " + clock.isDigital() + ";}");
+		writer.write("var " + widgetVar + " = new window.AnalogClock(" + this.writeCfgObject(createCfgMap(analogClock)) + ");");
+		writer.write("}");
 		writer.write(widgetVar+".draw();");
 		
 		endScript(writer);	
 		
 	}
 	
-	private Map<String,Object> createCfgMap(Clock clock){
+	private Map<String,Object> createCfgMap(AnalogClock clock){
 		Map<String,Object> map = new HashMap<String,Object>();
 		
 		map.put("id", clock.getClientId());
-		map.put("pattern", clock.getPattern());
-		map.put("digital", clock.isDigital());
 		map.put("time", clock.getStartTime() != null ? clock.getStartTime().getTime() : null);
+		map.put("mode", clock.getMode());
 		
 		return map;
 	}

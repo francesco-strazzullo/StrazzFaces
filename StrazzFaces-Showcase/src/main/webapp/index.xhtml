@@ -10,22 +10,28 @@
 <h:head>
 </h:head>
 <h:body>
-	<h1>Clock</h1>
+	<h1>StrazzFaces Clock</h1>
 	<h:form>
-		<p:commandButton 
-			action="#{clockBean.swap}"
-			icon="ui-icon-refresh"
-			update="@form"/>
-		<h1>Rome</h1>
-		<s:clock 
-			startTime="#{clockBean.romeTime}"
-			digital="#{clockBean.digital}"/>
-		<hr></hr>
-		<h1>London</h1>
-		<s:clock 
-			startTime="#{clockBean.londonTime}"
-			digital="#{clockBean.digital}"/>
+		<p:panelGrid columns="3">
+			<h:panelGroup>
+				<h1>Rome</h1>
+				<s:analogClock
+					startTime="#{clockBean.romeTime}"
+					mode="server"/>
+			</h:panelGroup>
+			<h:panelGroup>
+				<h1>London</h1>
+				<s:analogClock
+					startTime="#{clockBean.londonTime}"
+					mode="server"/>
+			</h:panelGroup>
+			<h:panelGroup>
+				<h1>New York</h1>
+				<s:analogClock
+					startTime="#{clockBean.newYorkTime}"
+					mode="server"/>
+			</h:panelGroup>
+		</p:panelGrid>
 	</h:form>
-
 </h:body>
 </html>

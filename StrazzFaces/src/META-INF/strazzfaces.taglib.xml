@@ -5,10 +5,10 @@
 	<description>Libreria di componenti didattici</description>
 	<namespace>http://it.strazz.faces/ui</namespace>
 	<tag>
-		<tag-name>clock</tag-name>
+		<tag-name>analogClock</tag-name>
 		<component>
-			<component-type>it.strazz.faces.Clock</component-type>
-			<renderer-type>it.strazz.faces.ClockRenderer</renderer-type>
+			<component-type>it.strazz.faces.AnalogClock</component-type>
+			<renderer-type>it.strazz.faces.AnalogClockRenderer</renderer-type>
 		</component>
 		<attribute>
 			<description><![CDATA[true per orologio digitale, false per quello analogico]]></description>

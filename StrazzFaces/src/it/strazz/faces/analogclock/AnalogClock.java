@@ -1,4 +1,4 @@
-package it.strazz.faces.clock;
+package it.strazz.faces.analogclock;
 
 import java.util.Date;
 
@@ -10,36 +10,22 @@ import javax.faces.component.UINamingContainer;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.component.api.Widget;
+import org.primefaces.component.clock.Clock;
 
-@FacesComponent(value=Clock.COMPONENT_TYPE)
+@FacesComponent(value=AnalogClock.COMPONENT_TYPE)
 @ResourceDependencies({
-	@ResourceDependency(library="coolclock",name="coolclock.js"),
 	@ResourceDependency(library="moment",name="moment.min.js"),
-	@ResourceDependency(library="underscore",name="underscore-min.js"),
 	@ResourceDependency(library="primefaces", name="jquery/jquery.js"),	
 	@ResourceDependency(library="raphael", name="raphael-min.js"),
-	@ResourceDependency(library="strazzfaces",name="clock.js")
+	@ResourceDependency(library="strazzfaces",name="analog-clock.js")
 })
+public class AnalogClock extends UIComponentBase implements Widget {
 
-public class Clock extends UIComponentBase implements Widget {
-
-	public static final String COMPONENT_TYPE = "it.strazz.faces.Clock";
+	public static final String COMPONENT_TYPE = "it.strazz.faces.AnalogClock";
 	public static final String COMPONENT_FAMILY = "it.strazz.faces.components";
-	
+
 	public String getFamily() {
 		return COMPONENT_FAMILY;
-	}
-	
-	public boolean isDigital(){
-		return Boolean.TRUE.equals(this.getStateHelper().eval(PropertyKeys.digital, true));
-	}
-	
-	public void setDigital(boolean digital){
-		this.getStateHelper().put(PropertyKeys.digital, digital);
-	}
-	
-	public String getPattern() {
-		return (String) getStateHelper().eval(PropertyKeys.pattern, "HH:mm:ss");
 	}
 	
 	public void setStartTime(Date _pattern) {
@@ -47,17 +33,19 @@ public class Clock extends UIComponentBase implements Widget {
 	}
 	
 	public Date getStartTime() {
-		return (Date) getStateHelper().eval(PropertyKeys.startTime);
+		return (Date) getStateHelper().eval(PropertyKeys.startTime,new Date());
 	}
 	
-	public void setPattern(String _pattern) {
-		getStateHelper().put(PropertyKeys.pattern, _pattern);
+	public java.lang.String getMode() {
+		return (java.lang.String) getStateHelper().eval(PropertyKeys.mode, "client");
+	}
+	
+	public void setMode(java.lang.String _mode) {
+		getStateHelper().put(PropertyKeys.mode, _mode);
 	}
 	
 	protected static enum PropertyKeys{
-		startTime,
-		digital,
-		pattern;
+		startTime, mode;
 	}
 
 	public String resolveWidgetVar() {
