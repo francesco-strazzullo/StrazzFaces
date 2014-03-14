@@ -9,6 +9,7 @@ import javax.faces.component.UIComponentBase;
 import javax.faces.component.UINamingContainer;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.component.accordionpanel.AccordionPanel;
 import org.primefaces.component.api.Widget;
 import org.primefaces.component.clock.Clock;
 
@@ -17,10 +18,11 @@ import org.primefaces.component.clock.Clock;
 	@ResourceDependency(library="moment",name="moment.min.js"),
 	@ResourceDependency(library="primefaces", name="jquery/jquery.js"),	
 	@ResourceDependency(library="raphael", name="raphael-min.js"),
+	@ResourceDependency(library="primefaces", name="primefaces.js"),
 	@ResourceDependency(library="strazzfaces",name="analog-clock.js")
 })
 public class AnalogClock extends UIComponentBase implements Widget {
-
+	
 	public static final String COMPONENT_TYPE = "it.strazz.faces.AnalogClock";
 	public static final String COMPONENT_FAMILY = "it.strazz.faces.components";
 

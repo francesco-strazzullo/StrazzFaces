@@ -12,7 +12,7 @@
 <h:body>
 	<h1>StrazzFaces Clock</h1>
 	<h:form>
-		<p:panelGrid columns="3">
+		<p:panelGrid columns="4">
 			<h:panelGroup>
 				<h1>Rome</h1>
 				<s:analogClock
@@ -30,6 +30,10 @@
 				<s:analogClock
 					startTime="#{clockBean.newYorkTime}"
 					mode="server"/>
+			</h:panelGroup>
+			<h:panelGroup>
+				<h1>You</h1>
+				<s:analogClock />
 			</h:panelGroup>
 		</p:panelGrid>
 	</h:form>

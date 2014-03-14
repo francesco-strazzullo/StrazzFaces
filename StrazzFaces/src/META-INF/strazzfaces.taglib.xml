@@ -2,7 +2,6 @@
 <facelet-taglib version="2.0"
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd">
-	<description>Libreria di componenti didattici</description>
 	<namespace>http://it.strazz.faces/ui</namespace>
 	<tag>
 		<tag-name>analogClock</tag-name>
@@ -11,10 +10,16 @@
 			<renderer-type>it.strazz.faces.AnalogClockRenderer</renderer-type>
 		</component>
 		<attribute>
-			<description><![CDATA[true per orologio digitale, false per quello analogico]]></description>
-			<name>digital</name>
+			<description><![CDATA['server' for using server time, use the client time otherwise]]></description>
+			<name>mode</name>
 			<required>false</required>
-			<type>java.lang.Boolean</type>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[time to display, the default value is current time]]></description>
+			<name>startTime</name>
+			<required>false</required>
+			<type>java.util.Date</type>
 		</attribute>
 	</tag>
 </facelet-taglib>

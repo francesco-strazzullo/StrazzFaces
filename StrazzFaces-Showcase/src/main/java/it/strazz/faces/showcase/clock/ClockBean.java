@@ -1,34 +1,46 @@
 package it.strazz.faces.showcase.clock;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 
 @ManagedBean
-@SessionScoped
-public class ClockBean {
+@RequestScoped
+public class ClockBean implements Serializable {
 
-	private Date romeTime = new Date();
-
+	private static final long serialVersionUID = 1L;
+	
+	private Date romeTime;
+	private Date londonTime;
+	private Date newYorkTime;
+	
+	public ClockBean() {
+		romeTime = new Date();
+		
+		Calendar c = Calendar.getInstance();
+		
+		c.setTime(romeTime);
+		c.add(Calendar.HOUR, -1);
+		londonTime = c.getTime();
+		
+		c.setTime(romeTime);
+		c.add(Calendar.HOUR, -5);
+		newYorkTime = c.getTime();
+	}
 	
 	public Date getRomeTime() {
 		return romeTime;
 	}
 
 	public Date getLondonTime(){
-		Calendar c = Calendar.getInstance();
-		c.setTime(romeTime);
-		c.add(Calendar.HOUR, -1);
-		return c.getTime();
+		return londonTime;
 	}
 	
 	public Date getNewYorkTime(){
-		Calendar c = Calendar.getInstance();
-		c.setTime(romeTime);
-		c.add(Calendar.HOUR, -5);
-		return c.getTime();
+		return newYorkTime;
 	}
 	
 }
