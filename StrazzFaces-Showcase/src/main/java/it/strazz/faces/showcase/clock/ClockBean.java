@@ -10,7 +10,6 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class ClockBean {
 
-	private boolean digital = false;
 	private Date romeTime = new Date();
 
 	
@@ -30,18 +29,6 @@ public class ClockBean {
 		c.setTime(romeTime);
 		c.add(Calendar.HOUR, -5);
 		return c.getTime();
-	}
-	
-	public void swap(){
-		this.digital = !this.digital;
-	}
-	
-	public boolean isDigital() {
-		return digital;
-	}
-
-	public void setDigital(boolean digital) {
-		this.digital = digital;
 	}
 	
 }
