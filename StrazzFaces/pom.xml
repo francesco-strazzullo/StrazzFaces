@@ -4,7 +4,7 @@
 	<groupId>it.strazz.faces</groupId>
 	<artifactId>StrazzFaces</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	
+
 	<repositories>
 		<repository>
 			<id>prime-repo</id>
@@ -12,7 +12,7 @@
 			<url>http://repository.primefaces.org</url>
 		</repository>
 	</repositories>
-	
+
 	<dependencies>
 		<!-- JSF -->
 		<dependency>
