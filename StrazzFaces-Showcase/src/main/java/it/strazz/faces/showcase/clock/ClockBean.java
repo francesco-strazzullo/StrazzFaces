@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -17,7 +18,8 @@ public class ClockBean implements Serializable {
 	private Date londonTime;
 	private Date newYorkTime;
 	
-	public ClockBean() {
+	@PostConstruct
+	public void loadTimes(){
 		romeTime = new Date();
 		
 		Calendar c = Calendar.getInstance();

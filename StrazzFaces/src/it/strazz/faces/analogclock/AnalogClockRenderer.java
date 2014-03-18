@@ -41,6 +41,7 @@ public class AnalogClockRenderer extends CoreRenderer {
 		wb.init("AnalogClock", widgetVar, clientId);
 		wb.attr("mode", analogClock.getMode());
 		wb.attr("time",	analogClock.getStartTime() != null ? analogClock.getStartTime().getTime() : null);
+		
 		if(analogClock.getWidth() != null){
 			wb.attr("width", analogClock.getWidth());
 		}

@@ -19,7 +19,9 @@ PrimeFaces.widget.AnalogClock = PrimeFaces.widget.BaseWidget.extend({
 			},
 
 			draw : function() {
+				
 				this.canvas = Raphael(this.id, this.dimensions.size, this.dimensions.size);
+				
 				this.clock = this.canvas.circle(this.dimensions.half, this.dimensions.half, this.dimensions.clock_width);
 				this.clock.attr({
 					"fill" : PrimeFaces.widget.AnalogClock.colorSchemes[this.colorScheme].face,
@@ -27,6 +29,17 @@ PrimeFaces.widget.AnalogClock = PrimeFaces.widget.BaseWidget.extend({
 					"stroke-width" : "5"
 				})
 				
+				this.draw_hour_signs();
+				
+				this.draw_hands();
+				
+				var pin = this.canvas.circle(this.dimensions.half, this.dimensions.half, this.dimensions.pin_width);
+				pin.attr("fill", PrimeFaces.widget.AnalogClock.colorSchemes[this.colorScheme].pin);
+
+				this.update();
+			},
+			
+			draw_hour_signs: function(){
 				var hour_sign;
 				
 				for (i = 0; i < 12; i++) {
@@ -42,6 +55,9 @@ PrimeFaces.widget.AnalogClock = PrimeFaces.widget.BaseWidget.extend({
 						"stroke-width" : this.dimensions.hour_sign_stroke_width
 					});
 				}
+			},
+			
+			draw_hands: function(){
 				
 				this.hour_hand = this.canvas.path("M" + this.dimensions.half + " " + this.dimensions.half	+ "L" + this.dimensions.half + " " + this.dimensions.hour_hand_start_position);
 				this.hour_hand.attr({
@@ -60,11 +76,6 @@ PrimeFaces.widget.AnalogClock = PrimeFaces.widget.BaseWidget.extend({
 					stroke : PrimeFaces.widget.AnalogClock.colorSchemes[this.colorScheme].second_hand,
 					"stroke-width" : this.dimensions.second_hand_stroke_width
 				});
-				
-				var pin = this.canvas.circle(this.dimensions.half, this.dimensions.half, this.dimensions.pin_width);
-				pin.attr("fill", PrimeFaces.widget.AnalogClock.colorSchemes[this.colorScheme].pin);
-
-				this.update();
 			},
 
 			update : function() {
