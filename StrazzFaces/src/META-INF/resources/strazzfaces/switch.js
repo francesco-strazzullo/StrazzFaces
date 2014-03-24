@@ -12,7 +12,7 @@ PrimeFaces.widget.Switch = PrimeFaces.widget.BaseWidget.extend({
 			if(!that.switchComponent){
 				that.switchComponent = Drinks.createElement('switch', {"id":that.id+'_switch'});
 				that.switchComponent.setAttribute("value",that.input.val() === 'true' ? 1 : 0);
-				that.switchComponent.setAttribute("onchange","document.getElementById('" + that.id + "_hidden').value = (this.value === 1);");
+				that.switchComponent.setAttribute("type","side");
 				that.switchComponent.setAttribute("onchange","eval('" + that.name + ".onchange(this.value);');");
 			}
 			
