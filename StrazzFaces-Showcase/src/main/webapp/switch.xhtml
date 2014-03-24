@@ -10,7 +10,17 @@
 <h:head>
 </h:head>
 <h:body>
-	<a href="clock.jsf">Clock</a>
-	<a href="switch.jsf">Switch</a>
+	<h1>StrazzFaces Switch</h1>
+	<h:form id="test">
+		<s:switch id="switch" binding="#{switchBean.switchComponent}">
+			<p:ajax 
+				event="change" 
+				listener="#{switchBean.onChangeSwitch}"
+				process="@this"
+				update="@form"/>
+		</s:switch>
+		<p:selectBooleanCheckbox disabled="true" value="#{switchBean.switchComponent.value}"/>
+		<p:commandButton value="test" process="@form" update="@form"/>
+	</h:form>
 </h:body>
 </html>

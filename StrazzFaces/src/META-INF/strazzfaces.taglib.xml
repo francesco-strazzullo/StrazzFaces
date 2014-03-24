@@ -22,4 +22,11 @@
 			<type>java.util.Date</type>
 		</attribute>
 	</tag>
+	<tag>
+		<tag-name>switch</tag-name>
+		<component>
+			<component-type>it.strazz.faces.Switch</component-type>
+			<renderer-type>it.strazz.faces.SwitchRenderer</renderer-type>
+		</component>
+	</tag>
 </facelet-taglib>
