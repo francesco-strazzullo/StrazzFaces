@@ -5,22 +5,32 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:s="http://it.strazz.faces/ui">
+	xmlns:p="http://primefaces.org/ui" xmlns:s="http://it.strazz.faces/ui">
 <h:head>
 </h:head>
 <h:body>
 	<h1>StrazzFaces Switch</h1>
+
 	<h:form id="test">
-		<s:switch id="switch" binding="#{switchBean.switchComponent}">
-			<p:ajax 
-				event="change" 
-				listener="#{switchBean.onChangeSwitch}"
-				process="@this"
-				update="@form"/>
-		</s:switch>
-		<p:selectBooleanCheckbox disabled="true" value="#{switchBean.switchComponent.value}"/>
-		<p:commandButton value="test" process="@form" update="@form"/>
+		<p:panelGrid columns="6">
+			<h:outputText value="Toggle All" />
+			<h:outputText value="Rocker" />
+			<h:outputText value="Arc" />
+			<h:outputText value="Side" />
+			<h:outputText value="Circle" />
+			<h:outputText value="Rect" />
+
+			<s:switch value="#{switchBean.toogleValue}">
+				<p:ajax event="change" listener="#{switchBean.onToggleAllSwitch}"
+					process="@this" update="@form" />
+			</s:switch>
+
+			<s:switch value="#{switchBean.toogleValue}" type="rocker"/>
+			<s:switch value="#{switchBean.toogleValue}" type="arc"/>
+			<s:switch value="#{switchBean.toogleValue}" type="side"/>
+			<s:switch value="#{switchBean.toogleValue}" type="circle"/>
+			<s:switch value="#{switchBean.toogleValue}" type="rect"/>
+		</p:panelGrid>
 	</h:form>
 </h:body>
 </html>

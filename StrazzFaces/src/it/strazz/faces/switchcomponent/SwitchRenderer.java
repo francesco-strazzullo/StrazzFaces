@@ -46,25 +46,23 @@ public class SwitchRenderer extends CoreRenderer {
 
 		wb.init("Switch", widgetVar, clientId);
 		wb.attr("widgetName", widgetVar);
+		wb.attr("type", getSwitchType(switchComponent));
 		encodeClientBehaviors(context, switchComponent);
 
 		wb.finish();
 
 	}
+	
+	private String getSwitchType(Switch switchComponent){
+		String type = String.valueOf(switchComponent.getType());
+		return Switch.AVAIABLE_TYPES.contains(type) ? type : Switch.DEFAULT_TYPE;
+	}
 
-	private void encodeMarkup(FacesContext context, Switch switchComponent)
-			throws IOException {
+	private void encodeMarkup(FacesContext context, Switch switchComponent) throws IOException {
 		ResponseWriter writer = context.getResponseWriter();
 
 		writer.startElement("div", switchComponent);
 		writer.writeAttribute("id", switchComponent.getClientId(), null);
-		/*
-		 * writer.startElement("switch", switchComponent);
-		 * writer.writeAttribute("id", switchComponent.getClientId()+"_switch",
-		 * null); writer.writeAttribute("onchange",
-		 * switchComponent.resolveWidgetVar() + ".sync(this);", null);
-		 * writer.endElement("switch");
-		 */
 
 		writer.startElement("input", switchComponent);
 		writer.writeAttribute("id", switchComponent.getClientId() + "_hidden",null);
@@ -74,7 +72,6 @@ public class SwitchRenderer extends CoreRenderer {
 		writer.endElement("input");
 
 		writer.endElement("div");
-
 	}
 
 }

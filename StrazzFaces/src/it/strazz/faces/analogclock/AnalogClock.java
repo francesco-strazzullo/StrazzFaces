@@ -61,10 +61,6 @@ public class AnalogClock extends UIComponentBase implements Widget {
 		this.getStateHelper().put(PropertyKeys.width, width);
 	}
 
-	protected static enum PropertyKeys {
-		width, widgetVar, startTime, mode;
-	}
-
 	public String resolveWidgetVar() {
 		FacesContext context = getFacesContext();
 		String userWidgetVar = (String) getAttributes().get("widgetVar");
@@ -78,4 +74,7 @@ public class AnalogClock extends UIComponentBase implements Widget {
 							"_");
 	}
 
+	protected static enum PropertyKeys {
+		width, widgetVar, startTime, mode;
+	}
 }

@@ -25,24 +25,38 @@ public class Switch extends UIInput implements Widget, ClientBehaviorHolder {
 	public static final String COMPONENT_TYPE = "it.strazz.faces.Switch";
 	public static final String COMPONENT_FAMILY = "it.strazz.faces.components";
 
-	private static final Collection<String> EVENT_NAMES = Collections
-			.unmodifiableCollection(Arrays.asList("blur", "change", "click",
-					"valueChange", "dblclick", "focus", "keydown", "keypress",
-					"keyup", "mousedown", "mousemove", "mouseout", "mouseover",
-					"mouseup", "select"));
-
+	private static final Collection<String> EVENT_NAMES = Collections.unmodifiableCollection(Arrays.asList("change"));
+	static final Collection<String> AVAIABLE_TYPES = Collections.unmodifiableCollection(Arrays.asList("rocker","arc","side","circle","rect","toggle"));
+	static final String DEFAULT_TYPE = "toggle";
+	
 	public Collection<String> getEventNames() {
 		return EVENT_NAMES;
 	}
 
 	public String getDefaultEventName() {
-		return "valueChange";
+		return "change";
 	}
 
 	public String getFamily() {
 		return COMPONENT_FAMILY;
 	}
 
+	public String getWidgetVar() {
+		return (String) getStateHelper().eval(PropertyKeys.widgetVar, null);
+	}
+
+	public void setWidgetVar(String _widgetVar) {
+		getStateHelper().put(PropertyKeys.widgetVar, _widgetVar);
+	}
+	
+	public String getType() {
+		return (String) getStateHelper().eval(PropertyKeys.type, DEFAULT_TYPE);
+	}
+
+	public void setType(String _widgetVar) {
+		getStateHelper().put(PropertyKeys.type, _widgetVar);
+	}
+	
 	public String resolveWidgetVar() {
 		FacesContext context = getFacesContext();
 		String userWidgetVar = (String) getAttributes().get("widgetVar");
@@ -54,5 +68,9 @@ public class Switch extends UIInput implements Widget, ClientBehaviorHolder {
 					+ getClientId(context).replaceAll(
 							"-|" + UINamingContainer.getSeparatorChar(context),
 							"_");
+	}
+	
+	protected static enum PropertyKeys {
+		type, widgetVar;
 	}
 }
