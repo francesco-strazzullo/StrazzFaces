@@ -44,14 +44,6 @@ public class AnalogClock extends UIComponentBase implements Widget {
 	public void setMode(String _mode) {
 		getStateHelper().put(PropertyKeys.mode, _mode);
 	}
-
-	public String getWidgetVar() {
-		return (String) getStateHelper().eval(PropertyKeys.widgetVar, null);
-	}
-
-	public void setWidgetVar(String _widgetVar) {
-		getStateHelper().put(PropertyKeys.widgetVar, _widgetVar);
-	}
 	
 	public Integer getWidth(){
 		return (Integer) this.getStateHelper().eval(PropertyKeys.width,null);
@@ -61,6 +53,14 @@ public class AnalogClock extends UIComponentBase implements Widget {
 		this.getStateHelper().put(PropertyKeys.width, width);
 	}
 
+	public String getWidgetVar() {
+		return (String) getStateHelper().eval(PropertyKeys.widgetVar, null);
+	}
+
+	public void setWidgetVar(String _widgetVar) {
+		getStateHelper().put(PropertyKeys.widgetVar, _widgetVar);
+	}
+	
 	public String resolveWidgetVar() {
 		FacesContext context = getFacesContext();
 		String userWidgetVar = (String) getAttributes().get("widgetVar");
