@@ -8,13 +8,18 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:s="http://it.strazz.faces/ui"
 	template="/template.xhtml">
 	<ui:define name="content">
-		<div class="container">
-			<div class="row">
-				<div class="span12">
-					<p:graphicImage name="textLogo.png" styleClass="img-responsive"
-						library="images" />
+		<h1>Clock</h1>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<p>Server</p>
+						<s:analogClock startTime="#{clockBean.time}" mode="server" />
+					</div>
+					<div class="col-md-6">
+						<p>Client</p>
+						<s:analogClock />
+					</div>
 				</div>
 			</div>
-		</div>
 	</ui:define>
 </ui:composition>

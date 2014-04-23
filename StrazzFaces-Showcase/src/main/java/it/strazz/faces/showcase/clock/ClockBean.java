@@ -14,35 +14,19 @@ public class ClockBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Date romeTime;
-	private Date londonTime;
-	private Date newYorkTime;
+	private Date time;
 	
 	@PostConstruct
 	public void loadTimes(){
-		romeTime = new Date();
+		time = new Date();
 		
 		Calendar c = Calendar.getInstance();
 		
-		c.setTime(romeTime);
-		c.add(Calendar.HOUR, -1);
-		londonTime = c.getTime();
-		
-		c.setTime(romeTime);
-		c.add(Calendar.HOUR, -5);
-		newYorkTime = c.getTime();
+		c.setTime(time);
 	}
 	
-	public Date getRomeTime() {
-		return romeTime;
-	}
-
-	public Date getLondonTime(){
-		return londonTime;
-	}
-	
-	public Date getNewYorkTime(){
-		return newYorkTime;
+	public Date getTime() {
+		return time;
 	}
 	
 }
