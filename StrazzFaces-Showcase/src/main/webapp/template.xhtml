@@ -5,13 +5,18 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" xmlns:s="http://it.strazz.faces/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:s="http://it.strazz.faces/ui">
 <h:head>
 	<h:outputStylesheet name="bootstrap.css" library="css" />
 	<h:outputScript name="jquery-1.11.0.min.js" library="js" />
 	<h:outputScript name="bootstrap.js" library="js" />
 </h:head>
 <h:body>
+	
+	<pe:importConstants className="it.strazz.faces.StrazzFaces" var="StrazzFaces" />  
+
 	<h:form>
 		<div class="container">
 
@@ -37,6 +42,10 @@
 								</ul></li>
 							<li><a href="#">Contacts</a></li>
 						</ul>
+						<ul class="nav navbar-nav navbar-right">
+              				<li><a href="#">Version #{StrazzFaces.VERSION}</a></li>
+             
+            			</ul>
 					</div>
 					<!--/.nav-collapse -->
 				</div>

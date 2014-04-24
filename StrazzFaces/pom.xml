@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>it.strazz.faces</groupId>
 	<artifactId>StrazzFaces</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 
 	<repositories>
 		<repository>
@@ -12,6 +12,19 @@
 			<url>http://repository.primefaces.org</url>
 		</repository>
 	</repositories>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>staging.repo.snapshots</id>
+			<name>Staging Repository - Snapshots</name>
+			<url>file:///D:/Documenti/GItHub/strazzfaces-repository/snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>staging.repo.releases</id>
+			<name>Staging Repository - Releases</name>
+			<url>file:///D:/Documenti/GItHub/strazzfaces-repository/releases/</url>
+		</repository>
+	</distributionManagement>
 
 	<dependencies>
 		<!-- JSF -->
@@ -31,6 +44,7 @@
 			<version>2.1.27</version>
 		</dependency>
 	</dependencies>
+
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
