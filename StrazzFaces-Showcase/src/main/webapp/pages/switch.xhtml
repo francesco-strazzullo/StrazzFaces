@@ -9,36 +9,55 @@
 	template="/template.xhtml">
 	<ui:define name="content">
 		<h1>Switch</h1>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-2">
-						<p>Toggle All</p>
-						<s:switch value="#{switchBean.toogleValue}">
-							<p:ajax event="change" listener="#{switchBean.onToggleAllSwitch}"
-								process="@this" update="@form" />
-						</s:switch>
-					</div>
-					<div class="col-md-2">
-						<p>Rocker</p>
-						<s:switch value="#{switchBean.toogleValue}" type="rocker" />
-					</div>
-					<div class="col-md-2">
-						<p>Arc</p>
-						<s:switch value="#{switchBean.toogleValue}" type="arc" />
-					</div>
-					<div class="col-md-2">
-						<p>Side</p>
-						<s:switch value="#{switchBean.toogleValue}" type="side" />
-					</div>
-					<div class="col-md-2">
-						<p>Circle</p>
-						<s:switch value="#{switchBean.toogleValue}" type="circle" />
-					</div>
-					<div class="col-md-2">
-						<p>Rect</p>
-						<s:switch value="#{switchBean.toogleValue}" type="rect" />
-					</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 text-center">
+					<p>Toggle</p>
+				</div>
+				<div class="col-md-8">
+					<s:switch />
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-md-4 text-center">
+					<p>Rocker</p>
+				</div>
+				<div class="col-md-8">
+					<s:switch type="rocker" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 text-center">
+					<p>Side</p>
+				</div>
+				<div class="col-md-8">
+					<s:switch type="side" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 text-center">
+					<p>Arc</p>
+				</div>
+				<div class="col-md-8">
+					<s:switch type="arc" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 text-center">
+					<p>Circle</p>
+				</div>
+				<div class="col-md-8">
+					<s:switch type="circle" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 text-center">
+					<p>Rect</p>
+				</div>
+				<div class="col-md-8">
+					<s:switch type="rect" />
+				</div>
+			</div>
+		</div>
 	</ui:define>
 </ui:composition>

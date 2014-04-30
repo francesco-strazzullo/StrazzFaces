@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>it.strazz.faces</groupId>
 	<artifactId>StrazzFaces</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1-SNAPSHOT</version>
 
 	<repositories>
 		<repository>
@@ -44,4 +44,6 @@
 			</plugin>
 		</plugins>
 	</build>
+	<url>http://www.francescostrazzullo.info</url>
+	<name>StrazzFaces JSF Component Library</name>
 </project>
