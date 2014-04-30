@@ -8,18 +8,55 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:s="http://it.strazz.faces/ui"
 	template="/template.xhtml">
 	<ui:define name="content">
-		<h1>Clock</h1>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<p>Server</p>
-						<s:analogClock startTime="#{clockBean.time}" mode="server" />
-					</div>
-					<div class="col-md-6">
-						<p>Client</p>
-						<s:analogClock />
+		<h1 class="text-center">Clock</h1>
+		<p:tabView>
+			<p:tab title="Result">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<p>Server</p>
+							<s:analogClock startTime="#{clockBean.time}" mode="server" />
+						</div>
+						<div class="col-md-6">
+							<p>Client</p>
+							<s:analogClock />
+						</div>
 					</div>
 				</div>
-			</div>
+			</p:tab>
+			<p:tab title="XHTML Page">
+				<pre><code>
+&lt;div class=&quot;container&quot;&gt;
+	&lt;div class=&quot;row&quot;&gt;
+		&lt;div class=&quot;col-md-6&quot;&gt;
+			&lt;p&gt;Server&lt;/p&gt;
+			&lt;s:analogClock startTime=&quot;#{'#{clockBean.time}'}&quot; mode=&quot;server&quot; /&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-6&quot;&gt;
+			&lt;p&gt;Client&lt;/p&gt;
+			&lt;s:analogClock /&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+				</code></pre>
+			</p:tab>
+			<p:tab title="Bean">
+				<pre><code>
+@ManagedBean
+@RequestScoped
+public class ClockBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	private Date time = new Date();
+		
+	public Date getTime() {
+		return time;
+	}
+	
+}
+				</code></pre>
+			</p:tab>
+		</p:tabView>
 	</ui:define>
 </ui:composition>
