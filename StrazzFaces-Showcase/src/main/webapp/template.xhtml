@@ -10,6 +10,7 @@
 	xmlns:s="http://it.strazz.faces/ui">
 <h:head>
 	<h:outputStylesheet name="bootstrap.css" library="css" />
+	<h:outputStylesheet name="chargen.css" library="css" />
 	<h:outputScript name="jquery-1.11.0.min.js" library="js" />
 	<h:outputScript name="bootstrap.js" library="js" />
 	<link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css"/>
@@ -35,7 +36,7 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<h:commandLink styleClass="navbar-brand" action="/index.jsf?faces-redirect=true">StrazzFaces</h:commandLink>
+						<h:commandLink styleClass="navbar-brand" action="/index.jsf?faces-redirect=true" style="font-family:SixEightZeroNineChargenRg">StrazzFaces</h:commandLink>
 					</div>
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
@@ -43,7 +44,7 @@
 								data-toggle="dropdown">Components<b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<li><h:commandLink action="/pages/clock.jsf?faces-redirect=true">Clock</h:commandLink></li>
-									<li><h:commandLink action="/pages/switch.jsf?faces-redirect=true">Switch</h:commandLink></li>
+									<li><h:commandLink action="/pages/switch/index.jsf?faces-redirect=true">Switch</h:commandLink></li>
 								</ul></li>
 							<li><h:commandLink action="/pages/docs.jsf?faces-redirect=true">Docs</h:commandLink></li>
 							<li><h:commandLink action="/pages/contacts.jsf?faces-redirect=true">Contacts</h:commandLink></li>

@@ -3,25 +3,21 @@ package it.strazz.faces.showcase.switchcomponent;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class SwitchBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private boolean toogleValue;
+	private boolean value;
 
-	public boolean isToogleValue() {
-		return toogleValue;
+	public boolean isValue() {
+		return value;
 	}
 
-	public void setToogleValue(boolean toogleValue) {
-		this.toogleValue = toogleValue;
-	}
-
-	public void onToggleAllSwitch(){
-		System.out.println("toggling all to " + toogleValue);
+	public void setValue(boolean value) {
+		this.value = value;
 	}
 }

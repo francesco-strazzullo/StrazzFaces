@@ -8,14 +8,16 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:s="http://it.strazz.faces/ui"
 	template="/template.xhtml">
 	<ui:define name="content">
+		<h1 class="text-center">Switch</h1>
 		<div class="container">
 			<div class="row">
-				<div class="span12">
-					<h1 class="text-center" style="font-family:SixEightZeroNineChargenRg">StrazzFaces</h1>
-					<p>
-						Hi all,<br/>
-						my name is Francesco Strazzullo
-					</p>
+				<div class="col-md-2">
+					<s:switch value="#{switchBean.value}">
+						<p:ajax update="@form"/>
+					</s:switch>
+				</div>
+				<div class="col-md-10">
+					<p>The Lights are #{switchBean.value ? 'On' : 'Off'}!</p>
 				</div>
 			</div>
 		</div>
