@@ -13,15 +13,23 @@
 	<h:outputStylesheet name="chargen.css" library="css" />
 	<h:outputScript name="jquery-1.11.0.min.js" library="js" />
 	<h:outputScript name="bootstrap.js" library="js" />
-	<link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css"/>
+	<link rel="stylesheet"
+		href="http://yandex.st/highlightjs/8.0/styles/default.min.css" />
 	<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
+	<script>
+		hljs.initHighlightingOnLoad();
+	</script>
 </h:head>
 <h:body>
-	<a href="https://github.com/francesco-strazzullo/StrazzFaces" target="blank_">
-		<img style="z-index:10000;position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"/>
+	<a href="https://github.com/francesco-strazzullo/StrazzFaces"
+		target="blank_"> <img
+		style="z-index: 10000; position: absolute; top: 0; right: 0; border: 0;"
+		src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67"
+		alt="Fork me on GitHub"
+		data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" />
 	</a>
-	<pe:importConstants className="it.strazz.faces.StrazzFaces" var="StrazzFaces" />  
+	<pe:importConstants className="it.strazz.faces.StrazzFaces"
+		var="StrazzFaces" />
 
 	<h:form>
 		<div class="container">
@@ -36,24 +44,31 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<h:commandLink styleClass="navbar-brand" action="/index.jsf?faces-redirect=true" style="font-family:SixEightZeroNineChargenRg">StrazzFaces</h:commandLink>
+						<h:commandLink styleClass="navbar-brand"
+							action="/index.jsf?faces-redirect=true"
+							style="font-family:SixEightZeroNineChargenRg">StrazzFaces</h:commandLink>
 					</div>
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
 							<li class="dropdown"><a href="#" class="dropdown-toggle"
 								data-toggle="dropdown">Components<b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li><h:commandLink action="/pages/clock.jsf?faces-redirect=true">Clock</h:commandLink></li>
-									<li><h:commandLink action="/pages/switch/index.jsf?faces-redirect=true">Switch</h:commandLink></li>
+									<li><h:commandLink
+											action="/pages/clock.jsf?faces-redirect=true">Clock</h:commandLink></li>
+									<li><h:commandLink
+											action="/pages/switch/index.jsf?faces-redirect=true">Switch</h:commandLink></li>
 								</ul></li>
-							<li><h:commandLink action="/pages/docs.jsf?faces-redirect=true">Docs</h:commandLink></li>
-							<li><h:commandLink action="/pages/contacts.jsf?faces-redirect=true">Contacts</h:commandLink></li>
-							<li><a href="http://francescostrazzullo.info" target="_blank">Blog</a></li>
+							<li><h:commandLink
+									action="/pages/docs.jsf?faces-redirect=true">Docs</h:commandLink></li>
+							<li><h:commandLink
+									action="/pages/contacts.jsf?faces-redirect=true">Contacts</h:commandLink></li>
+							<li><a href="http://francescostrazzullo.info"
+								target="_blank">Blog</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-              				<li><a href="#">Version #{StrazzFaces.VERSION}</a></li>
-             
-            			</ul>
+							<li><a href="#">Version #{StrazzFaces.VERSION}</a></li>
+
+						</ul>
 					</div>
 					<!--/.nav-collapse -->
 				</div>
@@ -61,11 +76,21 @@
 			</div>
 
 			<!-- Main component for a primary marketing message or call to action -->
-			<div class="jumbotron" style="padding-top:0px;">
+			<div class="jumbotron" style="padding-top: 0px;">
 				<ui:insert name="content">
 
 				</ui:insert>
 			</div>
+
+			<p:ajaxStatus style="width:64px;height:64px;position:fixed;right:5px;bottom:5px">
+				<f:facet name="start">
+					<p:graphicImage name="loader.gif" library="images" />
+				</f:facet>
+
+				<f:facet name="complete">
+					<h:outputText value="" />
+				</f:facet>
+			</p:ajaxStatus>
 
 		</div>
 	</h:form>

@@ -9,17 +9,61 @@
 	template="/template.xhtml">
 	<ui:define name="content">
 		<h1 class="text-center">Switch</h1>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-2">
-					<s:switch value="#{switchBean.value}">
-						<p:ajax update="@form"/>
-					</s:switch>
-				</div>
-				<div class="col-md-10">
-					<p>The Lights are #{switchBean.value ? 'On' : 'Off'}!</p>
-				</div>
-			</div>
-		</div>
+		<p:tabView>
+			<p:tab title="Result">
+				<p:outputPanel layout="block" styleClass="container" id="container">
+					<div class="row">
+						<div class="col-md-2">
+							<s:switch value="#{switchBean.value}">
+								<p:ajax update="container" />
+							</s:switch>
+						</div>
+						<div class="col-md-10">
+							<p>The Lights are #{switchBean.value ? 'On' : 'Off'}!</p>
+						</div>
+					</div>
+				</p:outputPanel>
+			</p:tab>
+			<p:tab title="XHTML Page">
+				<pre>
+					<code>
+&lt;p:outputPanel layout=&quot;block&quot; styleClass=&quot;container&quot; id=&quot;container&quot;&gt;
+	&lt;div class=&quot;row&quot;&gt;
+		&lt;div class=&quot;col-md-2&quot;&gt;
+			&lt;s:switch value=&quot;#{'#{switchBean.value}'}&quot;&gt;
+				&lt;p:ajax update=&quot;container&quot; /&gt;
+			&lt;/s:switch&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-10&quot;&gt;
+			&lt;p&gt;The Lights are #{'#{switchBean.value ? \'On\' : \'Off\'}'}!&lt;/p&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/p:outputPanel&gt;
+					</code>
+				</pre>
+			</p:tab>
+			<p:tab title="Bean">
+				<pre>
+					<code>
+@ManagedBean
+@ViewScoped
+public class SwitchBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	private boolean value;
+
+	public boolean isValue() {
+		return value;
+	}
+
+	public void setValue(boolean value) {
+		this.value = value;
+	}
+}
+				</code>
+				</pre>
+			</p:tab>
+		</p:tabView>
 	</ui:define>
 </ui:composition>

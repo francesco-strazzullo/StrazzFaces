@@ -9,7 +9,9 @@
 	template="/template.xhtml">
 	<ui:define name="content">
 		<h1 class="text-center">Switch</h1>
-		<div class="container">
+		<p:tabView>
+			<p:tab title="Result">
+				<div class="container">
 			<div class="row">
 				<div class="col-md-4 text-center">
 					<p>Toggle</p>
@@ -59,5 +61,65 @@
 				</div>
 			</div>
 		</div>
+			</p:tab>
+			<p:tab title="XHTML Page">
+				<pre>
+					<code>
+&lt;div class=&quot;container&quot;&gt;
+	&lt;div class=&quot;row&quot;&gt;
+		&lt;div class=&quot;col-md-4 text-center&quot;&gt;
+			&lt;p&gt;Toggle&lt;/p&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-8&quot;&gt;
+			&lt;s:switch /&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;row&quot;&gt;
+		&lt;div class=&quot;col-md-4 text-center&quot;&gt;
+			&lt;p&gt;Rocker&lt;/p&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-8&quot;&gt;
+			&lt;s:switch type=&quot;rocker&quot; /&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;row&quot;&gt;
+		&lt;div class=&quot;col-md-4 text-center&quot;&gt;
+			&lt;p&gt;Side&lt;/p&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-8&quot;&gt;
+			&lt;s:switch type=&quot;side&quot; /&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;row&quot;&gt;
+		&lt;div class=&quot;col-md-4 text-center&quot;&gt;
+			&lt;p&gt;Arc&lt;/p&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-8&quot;&gt;
+			&lt;s:switch type=&quot;arc&quot; /&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;row&quot;&gt;
+		&lt;div class=&quot;col-md-4 text-center&quot;&gt;
+			&lt;p&gt;Circle&lt;/p&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-8&quot;&gt;
+			&lt;s:switch type=&quot;circle&quot; /&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;row&quot;&gt;
+		&lt;div class=&quot;col-md-4 text-center&quot;&gt;
+			&lt;p&gt;Rect&lt;/p&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-8&quot;&gt;
+			&lt;s:switch type=&quot;rect&quot; /&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+					</code>
+				</pre>
+			</p:tab>
+		</p:tabView>
+		
+		
 	</ui:define>
 </ui:composition>
