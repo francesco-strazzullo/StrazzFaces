@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:s="http://it.strazz.faces/ui"
+	template="/template.xhtml">
+	<ui:define name="content">
+		<div>
+			<h1 class="text-center title">Download</h1>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Version</th>
+						<th>Binary</th>
+						<th>Source</th>
+						<th>Bundle</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>0.1</td>
+						<td><a href="../files/StrazzFaces-0.1.jar">Download</a></td>
+						<td><a href="../files/StrazzFaces-0.1-sources.jar">Download</a></td>
+						<td><a href="../files/StrazzFaces-0.1.zip">Download</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<h2>Downloading with Maven</h2>
+		<small>To download StrazzFaces with maven add the following repository and dependency to your pom.xml</small>
+		<pre><code>
+&lt;repositories&gt;
+	&lt;repository&gt;
+		&lt;id&gt;strazzfaces&lt;/id&gt;
+		&lt;name&gt;StrazzFaces&lt;/name&gt;
+		&lt;url&gt;http://www.francescostrazzullo.info/blog/maven/&lt;/url&gt;
+	&lt;/repository&gt;
+&lt;/repositories&gt;
+&lt;dependencies&gt;
+	&lt;dependency&gt;
+		&lt;groupId&gt;it.strazz.faces&lt;/groupId&gt;
+		&lt;artifactId&gt;StrazzFaces&lt;/artifactId&gt;
+		&lt;version&gt;0.1&lt;/version&gt;
+	&lt;/dependency&gt;
+&lt;/dependencies&gt;
+		</code></pre>
+	</ui:define>
+</ui:composition>
