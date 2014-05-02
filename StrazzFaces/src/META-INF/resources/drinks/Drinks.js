@@ -233,16 +233,7 @@ var includeJSNoCache = (function(){
 })();
 
 function loadDrinks(){
-	var sarr = document.getElementsByTagName('script');
-	var path = "";
-	for(var i in sarr){
-		if(sarr[i].src && sarr[i].src.indexOf("Drinks.js")!=-1){
-			var index = sarr[i].src.indexOf("Drinks.js");
-			path = sarr[i].src.substr(0, index);
-		}
-	}
-	includeJS(['Display.js.jsf?ln=drinks', 'Knob.js.jsf?ln=drinks', 'Led.js.jsf?ln=drinks', 'Switch.js.jsf?ln=drinks', 'Slider.js.jsf?ln=drinks'], path, initialize);    //Include JS scripts using Cache
-//	includeJSNoCache(['Display.js', 'Knob.js', 'Led.js', 'Switch.js', 'Slider.js'], path, initialize); //Include JS scripts without Cache
+	initialize();
 }
 
 function debug(id, msg){
