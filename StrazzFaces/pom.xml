@@ -3,21 +3,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>it.strazz.faces</groupId>
 	<artifactId>StrazzFaces</artifactId>
-	<version>0.1</version>
+	<version>0.2-SNAPSHOT</version>
 
-	<repositories>
-		<repository>
-			<id>prime-repo</id>
-			<name>Prime Repo</name>
-			<url>http://repository.primefaces.org</url>
-		</repository>
-	</repositories>
 	<dependencies>
 		<!-- JSF -->
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>4.0</version>
+			<version>5.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.faces</groupId>

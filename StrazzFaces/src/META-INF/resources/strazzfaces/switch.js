@@ -12,7 +12,7 @@ PrimeFaces.widget.Switch = PrimeFaces.widget.BaseWidget.extend({
 		jQuery(document).ready(function(){
 			if(!that.switchComponent){
 				that.switchComponent = Drinks.createElement('switch', {"id":that.id+'_switch'});
-				that.switchComponent.setAttribute("onchange","eval('" + that.name + ".onchange(this.value);');");
+				that.switchComponent.setAttribute("onchange", "eval(\"PF('" + that.name + "').onchange(this.value);\");");
 				that.switchComponent.setAttribute("type",that.type);
 			}
 			
