@@ -11,11 +11,16 @@
 		<h1 class="text-center title">Document Viewer</h1>
 		<p:tabView>
 			<p:tab title="Result">
-			
+				<s:documentViewer 
+					height="500"
+					url="#{request.contextPath}/files/Mela Rossa - Dario Lastella.odt" />
 			</p:tab>
 			<p:tab title="XHTML Page">
 				<pre>
 					<code>
+&lt;s:documentViewer 
+	height=&quot;500&quot;
+	url=&quot;#{'#{request.contextPath}'}/files/Mela Rossa - Dario Lastella.odt&quot; /&gt;
 					</code>
 				</pre>
 			</p:tab>
