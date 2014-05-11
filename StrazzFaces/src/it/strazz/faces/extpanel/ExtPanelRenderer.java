@@ -35,15 +35,13 @@ public class ExtPanelRenderer extends CoreRenderer {
         ExtPanel extpanelComponent = (ExtPanel) component;
         ResponseWriter writer = context.getResponseWriter();
 
-        // ExtPanel
-        writer.startElement("div", extpanelComponent);
-        writer.writeAttribute("id", extpanelComponent.getClientId(), null);
-        writer.writeAttribute("class", "extpanel extpanel-closed ui-widget extpanel-"+ extpanelComponent.getPosition(), null);
+        if(extpanelComponent.getPosition()==null || extpanelComponent.getPosition().isEmpty())
+            extpanelComponent.setPosition(ExtPanel.DEFAULT_POSITION);
 
-        // ExtPanel Content
-        writer.startElement("div", extpanelComponent);
-        writer.writeAttribute("class", "extpanel-content ui-panel ui-widget-content ui-corner-all ui-shadow", null);
-        writer.writeAttribute("style", "display:none", null);
+        if("top".equalsIgnoreCase(extpanelComponent.getPosition()))
+                encodeBeginTop(context, extpanelComponent, writer);
+        else if("bottom".equalsIgnoreCase(extpanelComponent.getPosition()))
+                encodeBeginBottom(context, extpanelComponent, writer);
     }
 
     @Override
@@ -75,6 +73,64 @@ public class ExtPanelRenderer extends CoreRenderer {
     private void encodeMarkup(FacesContext context, ExtPanel extpanelComponent) throws IOException {
         ResponseWriter writer = context.getResponseWriter();
 
+        if(extpanelComponent.getPosition()==null || extpanelComponent.getPosition().isEmpty())
+            extpanelComponent.setPosition(ExtPanel.DEFAULT_POSITION);
+
+        if("top".equalsIgnoreCase(extpanelComponent.getPosition()))
+                encodeMarkupTop(context, extpanelComponent, writer);
+        else if("bottom".equalsIgnoreCase(extpanelComponent.getPosition()))
+                encodeMarkupBottom(context, extpanelComponent, writer);
+    }
+    
+    private void encodeBeginTop(FacesContext context, ExtPanel extpanelComponent, ResponseWriter writer) throws IOException {
+        // ExtPanel
+        writer.startElement("div", extpanelComponent);
+        writer.writeAttribute("id", extpanelComponent.getClientId(), null);
+        writer.writeAttribute("class", "extpanel extpanel-close ui-widget extpanel-"+ extpanelComponent.getPosition(), null);
+
+        // ExtPanel Content
+        writer.startElement("div", extpanelComponent);
+        writer.writeAttribute("class", "extpanel-content ui-panel ui-widget-content ui-corner-all ui-shadow", null);
+        writer.writeAttribute("style", "display:none", null);
+    }
+
+    private void encodeBeginBottom(FacesContext context, ExtPanel extpanelComponent, ResponseWriter writer) throws IOException {
+        // ExtPanel
+        writer.startElement("div", extpanelComponent);
+        writer.writeAttribute("id", extpanelComponent.getClientId(), null);
+        writer.writeAttribute("class", "extpanel extpanel-close ui-widget extpanel-"+ extpanelComponent.getPosition(), null);
+        
+        // ExtPanel Header
+        writer.startElement("div", extpanelComponent);
+        writer.writeAttribute("class", "extpanel-header ui-panel ui-widget-content ui-corner-all ui-shadow", null);
+
+        // ExtPanel Header Content
+        writer.startElement("div", extpanelComponent);
+        writer.writeAttribute("class", "extpanel-header-content ui-widget-header ui-corner-all", null);
+
+        // Icon
+        writer.startElement("span", extpanelComponent);
+        writer.writeAttribute("class", "ui-icon ui-icon-triangle-1-s", null);
+        writer.endElement("span");
+
+        // Title
+        writer.startElement("span", extpanelComponent);
+        writer.writeAttribute("class", "ui-panel-title", null);
+        writer.writeText(extpanelComponent.getTitle(), null);
+        writer.endElement("span");
+
+        writer.endElement("div");
+
+        writer.endElement("div");
+        
+        // ExtPanel Content
+        writer.startElement("div", extpanelComponent);
+        writer.writeAttribute("class", "extpanel-content ui-panel ui-widget-content ui-corner-all ui-shadow", null);
+        writer.writeAttribute("style", "display:none", null);
+    }
+
+    private void encodeMarkupTop(FacesContext context, ExtPanel extpanelComponent, ResponseWriter writer) throws IOException {
+
         writer.endElement("div");
 
         // ExtPanel Header
@@ -102,8 +158,16 @@ public class ExtPanelRenderer extends CoreRenderer {
 
         writer.endElement("div");
     }
-    
-    @Override public boolean getRendersChildren() { 
+
+    private void encodeMarkupBottom(FacesContext context, ExtPanel extpanelComponent, ResponseWriter writer) throws IOException {
+        
+        writer.endElement("div");
+        
+        writer.endElement("div");
+    }
+
+    @Override
+    public boolean getRendersChildren() { 
         return true; 
     }
 }

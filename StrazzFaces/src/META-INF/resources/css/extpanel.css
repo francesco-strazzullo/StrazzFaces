@@ -44,19 +44,30 @@ BODY {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
+.extpanel-top .extpanel-header {
+    position: relative;
+    top: -1px;
+}
 .extpanel-top .extpanel-header-content .ui-icon {
     padding-right: 5px;
 }
 /* ExtPanel Bottom */
+.extpanel-bottom .ui-shadow {
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.8);
+}
 .extpanel-bottom {
     position: absolute;
     left: 50%;
     bottom: 0;
 }
-.extpanel-bottom .extpanel-header {
+.extpanel-bottom .extpanel-content, .extpanel-bottom .extpanel-header {
     border-bottom: 0;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+}
+.extpanel-open.extpanel-bottom .extpanel-header {
+    position: relative;
+    top: 1px;
 }
 .extpanel-bottom .extpanel-header-content .ui-icon {
     padding-right: 5px;

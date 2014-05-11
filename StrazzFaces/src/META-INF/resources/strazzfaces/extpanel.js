@@ -41,6 +41,7 @@ PrimeFaces.widget.ExtPanel = PrimeFaces.widget.BaseWidget.extend({
 
     open: function() {
         if(!this.isOpen) {
+            jQuery(this.jqId).removeClass("extpanel-close").addClass("extpanel-open");
             jQuery(this.jqId).find("SPAN.ui-icon").removeClass("ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-n");
             jQuery(this.jqId).find("DIV.extpanel-content").css("display", "");
             this.refreshTop();
@@ -50,6 +51,7 @@ PrimeFaces.widget.ExtPanel = PrimeFaces.widget.BaseWidget.extend({
             
     close: function() {
         if(this.isOpen) {
+            jQuery(this.jqId).removeClass("extpanel-open").addClass("extpanel-close");
             jQuery(this.jqId).find("SPAN.ui-icon").removeClass("ui-icon-triangle-1-n").addClass("ui-icon-triangle-1-s");
             jQuery(this.jqId).find("DIV.extpanel-content").css( "display","none");
             this.refreshTop();
