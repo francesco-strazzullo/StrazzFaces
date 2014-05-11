@@ -1,10 +1,10 @@
 package it.strazz.faces.documentviewer;
 
 import javax.faces.component.FacesComponent;
-import javax.faces.component.UIComponentBase;
+import javax.faces.component.UIGraphic;
 
 @FacesComponent(value=DocumentViewer.COMPONENT_TYPE)
-public class DocumentViewer extends UIComponentBase {
+public class DocumentViewer extends UIGraphic {
 
 	public static final String COMPONENT_TYPE = "it.strazz.faces.DocumentViewer";
 	public static final String COMPONENT_FAMILY = "it.strazz.faces.components";
@@ -37,19 +37,28 @@ public class DocumentViewer extends UIComponentBase {
 		this.getStateHelper().put(PropertyKeys.style, style);
 	}
 	
-	public String getUrl(){
-		return (String) this.getStateHelper().eval(PropertyKeys.url, null);
+	public String getName() {
+		return (String) getStateHelper().eval(PropertyKeys.name, null);
 	}
 	
-	public void setUrl(String style){
-		this.getStateHelper().put(PropertyKeys.url, style);
+	public void setName(String _name) {
+		getStateHelper().put(PropertyKeys.name, _name);
+	}
+
+	public String getLibrary() {
+		return (String) getStateHelper().eval(PropertyKeys.library, null);
+	}
+	
+	public void setLibrary(String _library) {
+		getStateHelper().put(PropertyKeys.library, _library);
 	}
 	
 	protected static enum PropertyKeys {
 		width, 
 		height, 
 		style, 
-		url;
+		name, 
+		library;
 	}
 
 }

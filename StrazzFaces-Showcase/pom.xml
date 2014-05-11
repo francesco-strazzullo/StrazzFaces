@@ -21,6 +21,16 @@
 			<url>http://www.francescostrazzullo.info/blog/maven/</url>
 		</repository>
 		<repository>
+			<id>sonatype snapshots</id>
+			<name>sonatype snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+		</repository>
+		<repository>
+			<id>sonatype public</id>
+			<name>sonatype public</name>
+			<url>https://oss.sonatype.org/content/groups/public/</url>
+		</repository>
+		<repository>
 			<id>eap</id>
 			<url>http://maven.repository.redhat.com/techpreview/all</url>
 			<releases>
@@ -62,7 +72,11 @@
 			<artifactId>primefaces</artifactId>
 			<version>5.0</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.odftoolkit</groupId>
+			<artifactId>odfdom-java</artifactId>
+			<version>0.8.7</version>
+		</dependency>
 		<dependency>
 			<groupId>org.omnifaces</groupId>
 			<artifactId>vdldoc</artifactId>
@@ -72,7 +86,7 @@
 		<dependency>
 			<groupId>org.omnifaces</groupId>
 			<artifactId>omnifaces</artifactId>
-			<version>1.7</version>
+			<version>1.8-SNAPSHOT</version> <!-- Or -->
 		</dependency>
 
 		<!-- JSF -->
@@ -115,7 +129,11 @@
 			<version>2.2</version>
 			<scope>provided</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>font-awesome</artifactId>
