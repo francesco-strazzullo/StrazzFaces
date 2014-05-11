@@ -29,10 +29,60 @@
 			<p:tab title="XHTML Page">
 				<pre>
 					<code>
+&lt;h4&gt;URL&lt;/h4&gt;
 &lt;s:documentViewer 
 	height=&quot;500&quot;
-	url=&quot;#{'#{request.contextPath}'}/files/Mela_Rossa.pdf&quot; /&gt;
+	url=&quot;/files/Mela_Rossa.odt&quot; /&gt;
+&lt;h4&gt;Resource&lt;/h4&gt;
+&lt;s:documentViewer 
+	height=&quot;500&quot;
+	library=&quot;books&quot;
+	name=&quot;AliceInWonderland.pdf&quot; /&gt;
+&lt;h4&gt;Dynamic&lt;/h4&gt;
+&lt;f:event listener=&quot;#{'#{documentViewerBean.onPrerender}'}&quot; type=&quot;preRenderView&quot; /&gt;
+&lt;s:documentViewer 
+	height=&quot;500&quot;
+	value=&quot;#{'#{documentViewerBean.content}'}&quot; /&gt;
 					</code>
+				</pre>
+			</p:tab>
+			<p:tab title="Bean">
+				<pre>
+					<code>
+@ManagedBean
+@SessionScoped
+public class DocumentViewerBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	private StreamedContent content;
+
+	public void onPrerender(ComponentSystemEvent event) {
+
+		try {
+			ByteArrayOutputStream out = new ByteArrayOutputStream();
+			OdfTextDocument odt = OdfTextDocument.newTextDocument();
+			for (int i = 0; i &lt; 50; i++) {
+				odt.newParagraph(&quot;All work and no play makes Jack a dull boy&quot;);
+			}
+			odt.save(out);
+			content = new DefaultStreamedContent(new ByteArrayInputStream(
+					out.toByteArray()),
+					&quot;application/vnd.oasis.opendocument.text&quot;);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public StreamedContent getContent() {
+		return content;
+	}
+
+	public void setContent(StreamedContent content) {
+		this.content = content;
+	}
+}
+				</code>
 				</pre>
 			</p:tab>
 		</p:tabView>
