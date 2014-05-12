@@ -110,7 +110,7 @@ public class ExtPanelRenderer extends CoreRenderer {
 
         // Icon
         writer.startElement("span", extpanelComponent);
-        writer.writeAttribute("class", "ui-icon ui-icon-triangle-1-s", null);
+        writer.writeAttribute("class", "ui-icon ui-icon-circle-triangle-n", null);
         writer.endElement("span");
 
         // Title
@@ -143,7 +143,7 @@ public class ExtPanelRenderer extends CoreRenderer {
 
         // Icon
         writer.startElement("span", extpanelComponent);
-        writer.writeAttribute("class", "ui-icon ui-icon-triangle-1-s", null);
+        writer.writeAttribute("class", "ui-icon ui-icon-circle-triangle-s", null);
         writer.endElement("span");
 
         // Title
