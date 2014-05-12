@@ -11,29 +11,20 @@
 		<h1 class="text-center title">Document Viewer</h1>
 		<p:tabView>
 			<p:tab title="Result">
-				<dl class="text-center title" style="font-size: x-large;">
-					<dd>
-						<a
-							href="#{request.contextPath}/javax.faces.resource/pdf.js/viewer.html?file=#{request.contextPath}/files/Mela_Rossa.pdf"
-							target="_blank">Click to begin reading "Mela Rossa"</a>
-					</dd>
-				</dl>
+				<div class="text-center title" style="font-size: x-large;">
+					<a
+						href="#{request.contextPath}/javax.faces.resource/pdf.js/viewer.html?file=#{request.contextPath}/files/Mela_Rossa.pdf"
+						target="_blank">Click to begin reading "Mela Rossa"</a>
+				</div>
 			</p:tab>
 			<p:tab title="XHTML Page">
 				<pre>
 					<code>
-&lt;dl class=&quot;text-center&quot; style=&quot;font-size: x-large;&quot;&gt;
-	&lt;dd&gt;
-		&lt;a
-			href=&quot;#{'#{request.contextPath}'}/javax.faces.resource/Viewer.js/index.html##{'#{request.contextPath}'}/files/Alice In Wonderland.pdf&quot;
-			target=&quot;_blank&quot;&gt;Alice in Wonderland - Lewis Carroll&lt;/a&gt;
-	&lt;/dd&gt;
-	&lt;dd&gt;
-		&lt;a
-			href=&quot;#{'#{request.contextPath}'}/javax.faces.resource/Viewer.js/index.html##{'#{request.contextPath}'}/files/Mela_Rossa.pdf&quot;
-			target=&quot;_blank&quot;&gt;Mela_Rossa&lt;/a&gt;
-	&lt;/dd&gt;
-&lt;/dl&gt;
+&lt;div class=&quot;text-center title&quot; style=&quot;font-size: x-large;&quot;&gt;
+	&lt;a
+		href=&quot;#{'#{request.contextPath}'}/javax.faces.resource/pdf.js/viewer.html?file=#{request.contextPath}/files/Mela_Rossa.pdf&quot;
+		target=&quot;_blank&quot;&gt;Click to begin reading &quot;Mela Rossa&quot;&lt;/a&gt;
+&lt;/div&gt;
 					</code>
 				</pre>
 			</p:tab>
