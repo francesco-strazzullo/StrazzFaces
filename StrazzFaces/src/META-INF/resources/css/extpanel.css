@@ -1,0 +1,77 @@
+/* 
+    Document   : extpanel
+    Created on : 11-mag-2014, 9.39.50
+    Author     : f1l0
+    Description: ExtPanel stylesheet.
+*/
+.ui-widget, .ui-widget .ui-widget {
+    font-size: 95% !important;
+}
+BODY {
+    padding: 0px;
+    margin: 0px;
+}
+.extpanel {
+    text-align: center;
+}
+.extpanel .extpanel-content{
+    text-align: left;
+}
+.extpanel-top .extpanel-content {
+    padding: 15px;
+}
+.extpanel .extpanel-header:hover {
+    cursor: pointer;
+}
+.extpanel,.extpanel-header,.extpanel-header-content { 
+    display: inline-block;
+}
+.extpanel-header-content {
+    padding: 0.2em; /*0.3em 0.5em 0.2em;*/
+}
+.extpanel-header-content .ui-icon, .extpanel-header-content .ui-panel-title {
+    display: inline-block;
+    vertical-align: middle;
+}
+/* ExtPanel Top */
+.extpanel-top {
+    position: absolute;
+    left: 50%;
+    top: 0;
+}
+.extpanel-top .extpanel-content, .extpanel-top .extpanel-header {
+    border-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.extpanel-top .extpanel-header {
+    position: relative;
+    top: -1px;
+}
+.extpanel-top .extpanel-header-content .ui-icon {
+    padding-right: 5px;
+}
+/* ExtPanel Bottom */
+.extpanel-bottom .ui-shadow {
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.8);
+}
+.extpanel-bottom {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+}
+.extpanel-bottom .extpanel-content, .extpanel-bottom .extpanel-header {
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.extpanel-open.extpanel-bottom .extpanel-header {
+    position: relative;
+    top: 1px;
+}
+.extpanel-bottom .extpanel-header-content .ui-icon {
+    padding-right: 5px;
+}
+.extpanel .extpanel-header {
+    border-top: 1px solid #FFFFFF;
+}
