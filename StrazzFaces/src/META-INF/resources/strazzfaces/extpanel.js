@@ -50,7 +50,10 @@ PrimeFaces.widget.ExtPanel = PrimeFaces.widget.BaseWidget.extend({
     open: function() {
         if(!this.isOpen) {
             this.extpanelJQ.removeClass("extpanel-close").addClass("extpanel-open");
-            this.extpanelJQ.find("SPAN.ui-icon").removeClass("ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-n");
+            if(this.position === "top")
+                this.extpanelJQ.find("SPAN.ui-icon").removeClass("ui-icon-circle-triangle-s").addClass("ui-icon-circle-triangle-n");
+            else if(this.position === "bottom")
+                this.extpanelJQ.find("SPAN.ui-icon").removeClass("ui-icon-circle-triangle-n").addClass("ui-icon-circle-triangle-s");
             this.extpanelJQ.find("DIV.extpanel-content").css("display", "");
             this.refreshTopBottom();
             this.isOpen = true;
@@ -60,7 +63,10 @@ PrimeFaces.widget.ExtPanel = PrimeFaces.widget.BaseWidget.extend({
     close: function() {
         if(this.isOpen) {
             this.extpanelJQ.removeClass("extpanel-open").addClass("extpanel-close");
-            this.extpanelJQ.find("SPAN.ui-icon").removeClass("ui-icon-triangle-1-n").addClass("ui-icon-triangle-1-s");
+            if(this.position === "top")
+                this.extpanelJQ.find("SPAN.ui-icon").removeClass("ui-icon-circle-triangle-n").addClass("ui-icon-circle-triangle-s");
+            else if(this.position === "bottom")
+                this.extpanelJQ.find("SPAN.ui-icon").removeClass("ui-icon-circle-triangle-s").addClass("ui-icon-circle-triangle-n");
             this.extpanelJQ.find("DIV.extpanel-content").css( "display","none");
             this.refreshTopBottom();
             this.isOpen = false;
