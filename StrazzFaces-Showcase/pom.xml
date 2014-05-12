@@ -73,9 +73,9 @@
 			<version>5.0</version>
 		</dependency>
 		<dependency>
-			<groupId>org.odftoolkit</groupId>
-			<artifactId>odfdom-java</artifactId>
-			<version>0.8.7</version>
+			<groupId>com.itextpdf</groupId>
+			<artifactId>itextpdf</artifactId>
+			<version>5.5.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.omnifaces</groupId>

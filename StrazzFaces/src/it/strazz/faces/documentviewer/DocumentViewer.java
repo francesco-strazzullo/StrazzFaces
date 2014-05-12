@@ -52,13 +52,22 @@ public class DocumentViewer extends UIGraphic {
 	public void setLibrary(String _library) {
 		getStateHelper().put(PropertyKeys.library, _library);
 	}
+
+	public boolean isCache() {
+		return (Boolean) getStateHelper().eval(PropertyKeys.cache, false);
+	}
+	
+	public void setCache(boolean _cache) {
+		getStateHelper().put(PropertyKeys.cache, _cache);
+	}
 	
 	protected static enum PropertyKeys {
 		width, 
 		height, 
 		style, 
 		name, 
-		library;
+		library, 
+		cache;
 	}
 
 }

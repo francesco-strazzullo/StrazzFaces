@@ -2,6 +2,7 @@ package it.strazz.faces.documentviewer;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 import javax.faces.application.Resource;
 import javax.faces.application.ResourceHandler;
@@ -41,7 +42,7 @@ public class DocumentViewerRenderer extends CoreRenderer {
 		writer.writeAttribute("height", documentViewer.getHeight(), null);
 		writer.writeAttribute("allowfullscreen", "", null);
 		writer.writeAttribute("webkitallowfullscreen", "", null);
-		writer.writeAttribute("src", context.getExternalContext().getRequestContextPath() + "/javax.faces.resource/Viewer.js/index.html#" + imageSrc, null);
+		writer.writeAttribute("src", context.getExternalContext().getRequestContextPath() + "/javax.faces.resource/pdf.js/viewer.html?file=" + URLEncoder.encode(imageSrc, "UTF-8") , null);
 		writer.endElement("iframe");
 		
 	}
@@ -64,7 +65,7 @@ public class DocumentViewerRenderer extends CoreRenderer {
             }
         }
         else {
-            return DynamicResourceBuilder.build(context, documentViewer.getValue(), documentViewer, true);
+            return DynamicResourceBuilder.build(context, documentViewer.getValue(), documentViewer, documentViewer.isCache());
         }
 	}
 }
