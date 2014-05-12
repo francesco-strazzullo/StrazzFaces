@@ -18,6 +18,9 @@ BODY {
     text-align: left;
     padding: 15px;
 }
+.extpanel .extpanel-header {
+    padding: 5px;
+}
 .extpanel .extpanel-header:hover {
     cursor: pointer;
 }
@@ -33,6 +36,11 @@ BODY {
 }
 .extpanel .extpanel-header {
     border-top: 1px solid #FFFFFF;
+}
+.extpanel.extpanel-top .extpanel-header-content .ui-icon, .extpanel.extpanel-bottom .extpanel-header-content .ui-icon {
+    padding-right: 5px;
+    margin: 0 5px;
+    width: 12px;
 }
 /* ExtPanel Top */
 .extpanel.extpanel-top .ui-shadow {
@@ -52,9 +60,6 @@ BODY {
     position: relative;
     top: -1px;
 }
-.extpanel.extpanel-top .extpanel-header-content .ui-icon {
-    padding-right: 5px;
-}
 /* ExtPanel Bottom */
 .extpanel.extpanel-bottom .ui-shadow {
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.8);
@@ -72,7 +77,4 @@ BODY {
 .extpanel.extpanel-open.extpanel-bottom .extpanel-header {
     position: relative;
     top: 1px;
-}
-.extpanel.extpanel-bottom .extpanel-header-content .ui-icon {
-    padding-right: 5px;
 }
