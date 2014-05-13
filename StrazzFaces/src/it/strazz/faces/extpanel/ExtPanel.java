@@ -34,14 +34,17 @@ public class ExtPanel extends UIInput implements Widget, ClientBehaviorHolder {
 	static final Collection<String> AVAIABLE_POSITIONS = Collections.unmodifiableCollection(Arrays.asList("top","right","bottom","left"));
 	static final String DEFAULT_POSITION = "top";
 	
+        @Override
 	public Collection<String> getEventNames() {
 		return EVENT_NAMES;
 	}
 
+        @Override
 	public String getDefaultEventName() {
 		return "change";
 	}
 
+        @Override
 	public String getFamily() {
 		return COMPONENT_FAMILY;
 	}
@@ -70,6 +73,7 @@ public class ExtPanel extends UIInput implements Widget, ClientBehaviorHolder {
 		getStateHelper().put(PropertyKeys.title, _widgetVar);
 	}
 
+        @Override
 	public String resolveWidgetVar() {
 		FacesContext context = getFacesContext();
 		String userWidgetVar = (String) getAttributes().get("widgetVar");

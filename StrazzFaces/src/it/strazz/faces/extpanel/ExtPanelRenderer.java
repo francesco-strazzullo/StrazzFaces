@@ -77,9 +77,9 @@ public class ExtPanelRenderer extends CoreRenderer {
             extpanelComponent.setPosition(ExtPanel.DEFAULT_POSITION);
 
         if("top".equalsIgnoreCase(extpanelComponent.getPosition()))
-                encodeMarkupTop(context, extpanelComponent, writer);
+                encodeMarkupTop(extpanelComponent, writer);
         else if("bottom".equalsIgnoreCase(extpanelComponent.getPosition()))
-                encodeMarkupBottom(context, extpanelComponent, writer);
+                encodeMarkupBottom(writer);
     }
     
     private void encodeBeginTop(FacesContext context, ExtPanel extpanelComponent, ResponseWriter writer) throws IOException {
@@ -129,7 +129,7 @@ public class ExtPanelRenderer extends CoreRenderer {
         writer.writeAttribute("style", "display:none", null);
     }
 
-    private void encodeMarkupTop(FacesContext context, ExtPanel extpanelComponent, ResponseWriter writer) throws IOException {
+    private void encodeMarkupTop(ExtPanel extpanelComponent, ResponseWriter writer) throws IOException {
 
         writer.endElement("div");
 
@@ -153,16 +153,12 @@ public class ExtPanelRenderer extends CoreRenderer {
         writer.endElement("span");
 
         writer.endElement("div");
-
         writer.endElement("div");
-
         writer.endElement("div");
     }
 
-    private void encodeMarkupBottom(FacesContext context, ExtPanel extpanelComponent, ResponseWriter writer) throws IOException {
-        
+    private void encodeMarkupBottom(ResponseWriter writer) throws IOException {
         writer.endElement("div");
-        
         writer.endElement("div");
     }
 
