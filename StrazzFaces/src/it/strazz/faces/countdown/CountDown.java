@@ -12,7 +12,6 @@ import javax.faces.component.UIInput;
 import javax.faces.component.UINamingContainer;
 import javax.faces.component.behavior.ClientBehaviorHolder;
 import javax.faces.context.FacesContext;
-import static javax.swing.border.TitledBorder.DEFAULT_POSITION;
 
 import org.primefaces.component.api.Widget;
 
@@ -22,6 +21,8 @@ import org.primefaces.component.api.Widget;
     @ResourceDependency(library = "primefaces", name = "primefaces.css"),
     @ResourceDependency(library = "primefaces", name = "primefaces.js"),
     @ResourceDependency(library = "strazzfaces", name = "countdown.js"),
+    @ResourceDependency(library = "strazzfaces", name = "kkcountdown.min.js"),
+    @ResourceDependency(library = "css", name = "countdown.css"),
 })
 /**
  * @author f1l0
@@ -47,14 +48,6 @@ public class CountDown extends UIInput implements Widget, ClientBehaviorHolder {
             getStateHelper().put(PropertyKeys.widgetVar, _widgetVar);
 	}
 	
-	public String getSize() {
-            return (String) getStateHelper().eval(PropertyKeys.size, DEFAULT_SIZE);
-	}
-
-	public void setSize(String size) {
-            getStateHelper().put(PropertyKeys.size, size);
-	}
-	
         public Date getDate() {
             return (Date) getStateHelper().eval(PropertyKeys.date, null);
 	}
@@ -63,44 +56,105 @@ public class CountDown extends UIInput implements Widget, ClientBehaviorHolder {
             getStateHelper().put(PropertyKeys.date, date);
 	}
 
-        public boolean isAm() {
-            return (boolean) getStateHelper().eval(PropertyKeys.am, null);
+        // Text displayed after certain number of days included in countdown (when number days = 1)
+       	public String getDayText() {
+            return (String) getStateHelper().eval(PropertyKeys.dayText, ":");
 	}
 
-	public void setAm(boolean am) {
-            getStateHelper().put(PropertyKeys.date, am);
+	public void setDayText(String dayText) {
+            getStateHelper().put(PropertyKeys.dayText, dayText);
 	}
 
-        public boolean isShowHour() {
-            return (boolean) getStateHelper().eval(PropertyKeys.showHour, true);
+        // Text displayed after certain number of days included in countdown
+        public String getDaysText() {
+            return (String) getStateHelper().eval(PropertyKeys.daysText, ":");
 	}
 
-	public void setShowHour(boolean showHour) {
-            getStateHelper().put(PropertyKeys.showHour, showHour);
+	public void setDaysText(String daysText) {
+            getStateHelper().put(PropertyKeys.daysText, daysText);
 	}
 
-        public boolean isShowMinute() {
-            return (boolean) getStateHelper().eval(PropertyKeys.showMinute, true);
+        // Text displayed after certain number of hours included in countdown
+        public String getHoursText() {
+            return (String) getStateHelper().eval(PropertyKeys.hoursText, ":");
 	}
 
-	public void setShowMinute(boolean showMinute) {
-            getStateHelper().put(PropertyKeys.showMinute, showMinute);
+	public void setHoursText(String hoursText) {
+            getStateHelper().put(PropertyKeys.hoursText, hoursText);
 	}
 
-        public boolean isShowSecond() {
-            return (boolean) getStateHelper().eval(PropertyKeys.showSecond, true);
+        // Text displayed after certain number of minutes included in countdown
+        public String getMinutesText() {
+            return (String) getStateHelper().eval(PropertyKeys.minutesText, ":");
 	}
 
-	public void setShowSecond(boolean showSecond) {
-            getStateHelper().put(PropertyKeys.showSecond, showSecond);
+	public void setMinutesText(String minutesText) {
+            getStateHelper().put(PropertyKeys.minutesText, minutesText);
 	}
 
-        public int getTzoneOffset() {
-            return (int) getStateHelper().eval(PropertyKeys.showSecond, 0);
+        // Text displayed after certain number of seconds included in countdown
+        public String getSecondsText() {
+            return (String) getStateHelper().eval(PropertyKeys.secondsText, null);
 	}
 
-	public void setTzoneOffset(int offset) {
-            getStateHelper().put(PropertyKeys.tzoneOffset, offset);
+	public void setSecondsText(String secondsText) {
+            getStateHelper().put(PropertyKeys.secondsText, secondsText);
+	}
+
+        // Class will be added if there is less than 24 hours untill the end of countdown
+        public boolean isOneDayClass() {
+            return (boolean) getStateHelper().eval(PropertyKeys.oneDayClass, false);
+	}
+
+	public void setOneDayClass(boolean oneDayClass) {
+            getStateHelper().put(PropertyKeys.oneDayClass, oneDayClass);
+	}
+
+        // Text displayed after certain number of seconds included in countdown
+        public String getTextAfterCount() {
+            return (String) getStateHelper().eval(PropertyKeys.textAfterCount, "Countdown complete!");
+	}
+
+	public void setTextAfterCount(String textAfterCount) {
+            getStateHelper().put(PropertyKeys.textAfterCount, textAfterCount);
+	}
+
+        // Displaying the number of days remaining till the end of countdown: 
+        // true -> the number of days is displayed, 
+        // false -> the number of days is not displayed
+        public boolean isDisplayDays() {
+            return (boolean) getStateHelper().eval(PropertyKeys.displayDays, true);
+	}
+
+	public void setDisplayDays(boolean displayDays) {
+            getStateHelper().put(PropertyKeys.displayDays, displayDays);
+	}
+
+        // Displaying the number of days when number of days is 0.
+        public boolean isDisplayZeroDays() {
+            return (boolean) getStateHelper().eval(PropertyKeys.displayZeroDays, false);
+	}
+
+	public void setDisplayZeroDays(boolean displayZeroDays) {
+            getStateHelper().put(PropertyKeys.displayZeroDays, displayZeroDays);
+	}
+
+        // Adding a class to markers indicating countdown (e.g. indicated the name of call e.g. ‘class-name’)
+        public String getAddClass() {
+            return (String) getStateHelper().eval(PropertyKeys.addClass, null);
+	}
+
+	public void setAddClass(String addClass) {
+            getStateHelper().put(PropertyKeys.addClass, addClass);
+	}
+
+        // Indicate the name of function which should be launched after the end of countdown
+        public String getCallback() {
+            return (String) getStateHelper().eval(PropertyKeys.callback, null);
+	}
+
+	public void setCallback(String callback) {
+            getStateHelper().put(PropertyKeys.callback, callback);
 	}
 
         @Override
@@ -114,6 +168,18 @@ public class CountDown extends UIInput implements Widget, ClientBehaviorHolder {
 	}
 	
 	protected static enum PropertyKeys {
-            date, size, showHour, showMinute, showSecond, am, tzoneOffset, widgetVar;
+            date, 
+            dayText,
+            daysText,
+            hoursText,
+            minutesText,
+            secondsText,
+            oneDayClass,
+            textAfterCount,
+            displayDays,
+            displayZeroDays,
+            addClass,
+            callback,
+            widgetVar;
 	}
 }

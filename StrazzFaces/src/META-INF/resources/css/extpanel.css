@@ -42,7 +42,15 @@ BODY {
     margin: 0 5px;
     width: 12px;
 }
-/* ExtPanel Top */
+
+.extpanel.extpanel-open {     
+    animation: fadein 1s;
+    -moz-animation: fadein 1s; /* Firefox */
+    -webkit-animation: fadein 1s; /* Safari and Chrome */
+    -o-animation: fadein 1s; /* Opera */
+}
+
+/* Position Top */
 .extpanel.extpanel-top .ui-shadow {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
 }
@@ -60,7 +68,7 @@ BODY {
     position: relative;
     top: -1px;
 }
-/* ExtPanel Bottom */
+/* Position Bottom */
 .extpanel.extpanel-bottom .ui-shadow {
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.8);
 }
@@ -77,4 +85,57 @@ BODY {
 .extpanel.extpanel-open.extpanel-bottom .extpanel-header {
     position: relative;
     top: 1px;
+}
+/* Position Left */
+.extpanel.extpanel-left .ui-shadow {
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.8);
+}
+.extpanel.extpanel-left {
+    position: absolute;
+    top: 50%;
+    bottom: 0;
+}
+.extpanel.extpanel-left .extpanel-content, .extpanel.extpanel-left .extpanel-header {
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.extpanel.extpanel-open.extpanel-left .extpanel-header {
+    position: relative;
+    right: 1px;
+}
+.extpanel.extpanel-left .extpanel-header-content SPAN {
+    display: block;
+}
+.extpanel.extpanel-left .extpanel-header-content .ui-panel-title {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+
+    -webkit-transform-origin: 50% 50%;
+    -moz-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    -o-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@-o-keyframes fadein { /* Opera */
+    from { opacity: 0; }
+    to { opacity: 1; }
 }

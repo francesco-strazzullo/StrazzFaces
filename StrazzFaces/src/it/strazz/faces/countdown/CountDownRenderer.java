@@ -1,6 +1,7 @@
 package it.strazz.faces.countdown;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -31,12 +32,6 @@ public class CountDownRenderer extends CoreRenderer {
     }
 
     @Override
-    public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
-        CountDown countdownComponent = (CountDown) component;
-        ResponseWriter writer = context.getResponseWriter();
-    }
-
-    @Override
     public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
         CountDown countdownComponent = (CountDown) component;
         encodeMarkup(context, countdownComponent);
@@ -51,89 +46,31 @@ public class CountDownRenderer extends CoreRenderer {
 
         wb.init("CountDown", widgetVar, clientId);
         wb.attr("widgetName", widgetVar);
-        wb.attr("size", getCountDownSize(countdownComponent));
+        wb.attr("dayText",          countdownComponent.getDayText());
+        wb.attr("daysText",         countdownComponent.getDaysText());
+        wb.attr("hoursText",        countdownComponent.getHoursText());
+        wb.attr("minutesText",      countdownComponent.getMinutesText());
+        wb.attr("secondsText",      countdownComponent.getSecondsText());
+        wb.attr("oneDayClass",      countdownComponent.isOneDayClass());
+        wb.attr("textAfterCount",   countdownComponent.getTextAfterCount());
+        wb.attr("displayDays",      countdownComponent.isDisplayDays());
+        wb.attr("displayZeroDays",  countdownComponent.isDisplayZeroDays());
+        wb.attr("addClass",         countdownComponent.getAddClass());
+        wb.attr("callback",         countdownComponent.getCallback());
         encodeClientBehaviors(context, countdownComponent);
 
         wb.finish();
-    }
-	
-    private String getCountDownSize(CountDown countdownComponent){
-        String size = String.valueOf(countdownComponent.getSize());
-        return CountDown.AVAIABLE_SIZE.contains(size) ? size : CountDown.DEFAULT_SIZE;
     }
 
     private void encodeMarkup(FacesContext context, CountDown countdownComponent) throws IOException {
         ResponseWriter writer = context.getResponseWriter();
 
-//        if(extpanelComponent.getPosition()==null || extpanelComponent.getPosition().isEmpty())
-//            extpanelComponent.setPosition(CountDown.DEFAULT_POSITION);
-//
-//        if("top".equalsIgnoreCase(extpanelComponent.getPosition()))
-//                encodeMarkupTop(extpanelComponent, writer);
-//        else if("bottom".equalsIgnoreCase(extpanelComponent.getPosition()))
-//                encodeMarkupBottom(writer);
-    }
-    
-    private void encodeBeginTop(FacesContext context, CountDown countdownComponent, ResponseWriter writer) throws IOException {
-//        writer.startElement("div", countdownComponent);
-//        writer.writeAttribute("id", countdownComponent.getClientId(), null);
-//        writer.writeAttribute("class", "extpanel extpanel-close ui-widget extpanel-"+ countdownComponent.getPosition(), null);
-//
-//        writer.startElement("div", countdownComponent);
-//        writer.writeAttribute("class", "extpanel-content ui-panel ui-widget-content ui-corner-all ui-shadow", null);
-//        writer.writeAttribute("style", "display:none", null);
-    }
+        SimpleDateFormat sdf = new SimpleDateFormat("");
 
-    private void encodeBeginBottom(FacesContext context, CountDown countdownComponent, ResponseWriter writer) throws IOException {
-//        // ExtPanel
-//        writer.startElement("div", countdownComponent);
-//        writer.writeAttribute("id", countdownComponent.getClientId(), null);
-//        writer.writeAttribute("class", "extpanel extpanel-close ui-widget extpanel-"+ countdownComponent.getPosition(), null);
-//        
-//        // ExtPanel Header
-//        writer.startElement("div", countdownComponent);
-//        writer.writeAttribute("class", "extpanel-header ui-panel ui-widget-content ui-corner-all ui-shadow", null);
-//
-//        // ExtPanel Header Content
-//        writer.startElement("div", countdownComponent);
-//        writer.writeAttribute("class", "extpanel-header-content ui-widget-header ui-corner-all", null);
-//
-//        // Icon
-//        writer.startElement("span", countdownComponent);
-//        writer.writeAttribute("class", "ui-icon ui-icon-circle-triangle-n", null);
-//        writer.endElement("span");
-    }
-
-    private void encodeMarkupTop(CountDown countdownComponent, ResponseWriter writer) throws IOException {
-
-//        writer.endElement("div");
-//
-//        // ExtPanel Header
-//        writer.startElement("div", extpanelComponent);
-//        writer.writeAttribute("class", "extpanel-header ui-panel ui-widget-content ui-corner-all ui-shadow", null);
-//
-//        // ExtPanel Header Content
-//        writer.startElement("div", extpanelComponent);
-//        writer.writeAttribute("class", "extpanel-header-content ui-widget-header ui-corner-all", null);
-//
-//        // Icon
-//        writer.startElement("span", extpanelComponent);
-//        writer.writeAttribute("class", "ui-icon ui-icon-circle-triangle-s", null);
-//        writer.endElement("span");
-//
-//        // Title
-//        writer.startElement("span", extpanelComponent);
-//        writer.writeAttribute("class", "ui-panel-title", null);
-//        writer.writeText(extpanelComponent.getTitle(), null);
-//        writer.endElement("span");
-//
-//        writer.endElement("div");
-//        writer.endElement("div");
-//        writer.endElement("div");
-    }
-
-    @Override
-    public boolean getRendersChildren() { 
-        return true; 
+        writer.startElement("span", countdownComponent);
+        writer.writeAttribute("id", countdownComponent.getClientId(), null);
+        writer.writeAttribute("class", "countdown ui-widget ui-widget-header ui-corner-all", null);
+        writer.writeAttribute("data-time", countdownComponent.getDate().getTime(), null);
+        writer.endElement("span");
     }
 }

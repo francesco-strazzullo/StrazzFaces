@@ -236,4 +236,101 @@
 			<type>java.lang.String</type>
 		</attribute>
 	</tag>
+        <tag>
+		<tag-name>countdown</tag-name>
+		<component>
+			<component-type>it.strazz.faces.CountDown</component-type>
+			<renderer-type>it.strazz.faces.CountDownRenderer</renderer-type>
+		</component>
+		<attribute>
+			<description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
+			<name>id</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
+			<name>rendered</name>
+			<required>false</required>
+			<type>java.lang.Boolean</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Name of the client side widget.]]></description>
+			<name>widgetVar</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Text displayed after certain number of days included in countdown (when number days = 1). Default value is ":"]]></description>
+			<name>dayText</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+                <attribute>
+			<description><![CDATA[Text displayed after certain number of days included in countdown. Default value is ":"]]></description>
+			<name>daysText</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+                <attribute>
+			<description><![CDATA[Text displayed after certain number of hours included in countdown. Default value is ":"]]></description>
+			<name>hoursText</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+                <attribute>
+			<description><![CDATA[Text displayed after certain number of minutes included in countdown. Default value is ":"]]></description>
+			<name>minutesText</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+                <attribute>
+			<description><![CDATA[Text displayed after certain number of seconds included in countdown. Default value is null]]></description>
+			<name>secondsText</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+                <attribute>
+			<description><![CDATA[Class will be added if there is less than 24 hours untill the end of countdown. Default value is false]]></description>
+			<name>oneDayClass</name>
+			<required>false</required>
+			<type>java.lang.Boolean</type>
+		</attribute>
+                <attribute>
+			<description><![CDATA[Text displayed after the countdown is over (quantity is not take into consideration if it is set up as ‘callback’ option). Default value is "Countdown complete!"]]></description>
+			<name>textAfterCount</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+                <attribute>
+			<description><![CDATA[Displaying the number of days remaining till the end of countdown: true -> the number of days is displayed, false -> the number of days is not displayed. Default value is true]]></description>
+			<name>displayDays</name>
+			<required>false</required>
+			<type>java.lang.Boolean</type>
+		</attribute>
+                <attribute>
+			<description><![CDATA[Displaying the number of days when number of days is 0. Default value is false]]></description>
+			<name>displayZeroDays</name>
+			<required>false</required>
+			<type>java.lang.Boolean</type>
+		</attribute>
+                <attribute>
+			<description><![CDATA[Adding a class to markers indicating countdown (e.g. indicated the name of call e.g. ‘class-name’). Default value is null]]></description>
+			<name>addClass</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+                <attribute>
+			<description><![CDATA[Indicate the name of fucntion which should be launched after the end of countdown. Default value is null]]></description>
+			<name>callback</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+                <attribute>
+			<description><![CDATA[Indicate the name of fucntion which should be launched after the end of countdown. Default value is null]]></description>
+			<name>date</name>
+			<required>true</required>
+			<type>java.util.Date</type>
+		</attribute>
+	</tag>
 </facelet-taglib>

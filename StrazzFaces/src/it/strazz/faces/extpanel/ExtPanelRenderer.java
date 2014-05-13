@@ -37,11 +37,11 @@ public class ExtPanelRenderer extends CoreRenderer {
 
         if(extpanelComponent.getPosition()==null || extpanelComponent.getPosition().isEmpty())
             extpanelComponent.setPosition(ExtPanel.DEFAULT_POSITION);
+        else extpanelComponent.setPosition(extpanelComponent.getPosition().toLowerCase());
 
-        if("top".equalsIgnoreCase(extpanelComponent.getPosition()))
-                encodeBeginTop(context, extpanelComponent, writer);
-        else if("bottom".equalsIgnoreCase(extpanelComponent.getPosition()))
-                encodeBeginBottom(context, extpanelComponent, writer);
+        if("bottom".equalsIgnoreCase(extpanelComponent.getPosition()))
+            encodeBeginBottom(context, extpanelComponent, writer);
+        else encodeBeginTop(context, extpanelComponent, writer); // Same for Left, Right, Top
     }
 
     @Override
@@ -73,13 +73,9 @@ public class ExtPanelRenderer extends CoreRenderer {
     private void encodeMarkup(FacesContext context, ExtPanel extpanelComponent) throws IOException {
         ResponseWriter writer = context.getResponseWriter();
 
-        if(extpanelComponent.getPosition()==null || extpanelComponent.getPosition().isEmpty())
-            extpanelComponent.setPosition(ExtPanel.DEFAULT_POSITION);
-
-        if("top".equalsIgnoreCase(extpanelComponent.getPosition()))
-                encodeMarkupTop(extpanelComponent, writer);
-        else if("bottom".equalsIgnoreCase(extpanelComponent.getPosition()))
-                encodeMarkupBottom(writer);
+        if("bottom".equalsIgnoreCase(extpanelComponent.getPosition()))
+            encodeMarkupBottom(writer);
+        else encodeMarkupTop(extpanelComponent, writer); // Same for Left, Right, Top
     }
     
     private void encodeBeginTop(FacesContext context, ExtPanel extpanelComponent, ResponseWriter writer) throws IOException {
@@ -120,7 +116,6 @@ public class ExtPanelRenderer extends CoreRenderer {
         writer.endElement("span");
 
         writer.endElement("div");
-
         writer.endElement("div");
         
         // ExtPanel Content
