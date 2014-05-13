@@ -29,14 +29,17 @@ public class Switch extends UIInput implements Widget, ClientBehaviorHolder {
 	static final Collection<String> AVAIABLE_TYPES = Collections.unmodifiableCollection(Arrays.asList("rocker","arc","side","circle","rect","toggle"));
 	static final String DEFAULT_TYPE = "toggle";
 	
+        @Override
 	public Collection<String> getEventNames() {
 		return EVENT_NAMES;
 	}
 
+        @Override
 	public String getDefaultEventName() {
 		return "change";
 	}
 
+        @Override
 	public String getFamily() {
 		return COMPONENT_FAMILY;
 	}
@@ -57,6 +60,7 @@ public class Switch extends UIInput implements Widget, ClientBehaviorHolder {
 		getStateHelper().put(PropertyKeys.type, _widgetVar);
 	}
 	
+        @Override
 	public String resolveWidgetVar() {
 		FacesContext context = getFacesContext();
 		String userWidgetVar = (String) getAttributes().get("widgetVar");
