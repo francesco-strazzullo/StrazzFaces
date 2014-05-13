@@ -21,13 +21,13 @@ public class ExtPanelRenderer extends CoreRenderer {
     @Override
     public void decode(FacesContext context, UIComponent component) {
 
-        ExtPanel extpanelomponent = (ExtPanel) component;
-        decodeBehaviors(context, extpanelomponent);
+        ExtPanel extpanelcomponent = (ExtPanel) component;
+        decodeBehaviors(context, extpanelcomponent);
         String submittedValue = (String) context.getExternalContext()
                                                 .getRequestParameterMap()
-                                                .get(extpanelomponent.getClientId(context) + "_hidden");
+                                                .get(extpanelcomponent.getClientId(context) + "_hidden");
 
-        extpanelomponent.setSubmittedValue(Boolean.parseBoolean(submittedValue));
+        extpanelcomponent.setSubmittedValue(Boolean.parseBoolean(submittedValue));
     }
 
     @Override
