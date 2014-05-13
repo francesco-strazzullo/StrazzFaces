@@ -14,64 +14,67 @@ BODY {
 .extpanel {
     text-align: center;
 }
-.extpanel .extpanel-content{
+.extpanel .extpanel-content {
     text-align: left;
-}
-.extpanel-top .extpanel-content {
     padding: 15px;
+}
+.extpanel .extpanel-header {
+    padding: 5px;
 }
 .extpanel .extpanel-header:hover {
     cursor: pointer;
 }
-.extpanel,.extpanel-header,.extpanel-header-content { 
+.extpanel,.extpanel .extpanel-header,.extpanel .extpanel-header-content { 
     display: inline-block;
 }
-.extpanel-header-content {
+.extpanel .extpanel-header-content {
     padding: 0.2em; /*0.3em 0.5em 0.2em;*/
 }
-.extpanel-header-content .ui-icon, .extpanel-header-content .ui-panel-title {
+.extpanel .extpanel-header-content .ui-icon, .extpanel .extpanel-header-content .ui-panel-title {
     display: inline-block;
     vertical-align: middle;
 }
+.extpanel .extpanel-header {
+    border-top: 1px solid #FFFFFF;
+}
+.extpanel.extpanel-top .extpanel-header-content .ui-icon, .extpanel.extpanel-bottom .extpanel-header-content .ui-icon {
+    padding-right: 5px;
+    margin: 0 5px;
+    width: 12px;
+}
 /* ExtPanel Top */
-.extpanel-top {
+.extpanel.extpanel-top .ui-shadow {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+}
+.extpanel.extpanel-top {
     position: absolute;
     left: 50%;
     top: 0;
 }
-.extpanel-top .extpanel-content, .extpanel-top .extpanel-header {
+.extpanel.extpanel-top .extpanel-content, .extpanel.extpanel-top .extpanel-header {
     border-top: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
-.extpanel-top .extpanel-header {
+.extpanel.extpanel-top .extpanel-header {
     position: relative;
     top: -1px;
 }
-.extpanel-top .extpanel-header-content .ui-icon {
-    padding-right: 5px;
-}
 /* ExtPanel Bottom */
-.extpanel-bottom .ui-shadow {
-    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.8);
+.extpanel.extpanel-bottom .ui-shadow {
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.8);
 }
-.extpanel-bottom {
+.extpanel.extpanel-bottom {
     position: absolute;
     left: 50%;
     bottom: 0;
 }
-.extpanel-bottom .extpanel-content, .extpanel-bottom .extpanel-header {
+.extpanel.extpanel-bottom .extpanel-content, .extpanel.extpanel-bottom .extpanel-header {
     border-bottom: 0;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
-.extpanel-open.extpanel-bottom .extpanel-header {
+.extpanel.extpanel-open.extpanel-bottom .extpanel-header {
     position: relative;
     top: 1px;
-}
-.extpanel-bottom .extpanel-header-content .ui-icon {
-    padding-right: 5px;
-}
-.extpanel .extpanel-header {
-    border-top: 1px solid #FFFFFF;
 }

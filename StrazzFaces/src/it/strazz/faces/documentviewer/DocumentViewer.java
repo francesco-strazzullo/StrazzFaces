@@ -9,6 +9,7 @@ public class DocumentViewer extends UIGraphic {
 	public static final String COMPONENT_TYPE = "it.strazz.faces.DocumentViewer";
 	public static final String COMPONENT_FAMILY = "it.strazz.faces.components";
 	
+        @Override
 	public String getFamily() {
 		return COMPONENT_FAMILY;
 	}

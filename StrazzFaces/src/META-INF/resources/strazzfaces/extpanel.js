@@ -10,15 +10,19 @@ PrimeFaces.widget.ExtPanel = PrimeFaces.widget.BaseWidget.extend({
         this.position = cfg.position;
         this.title = cfg.title;
         this.isOpen = false;
+        
+        this.extpanelJQ = jQuery(this.jqId);
 
         var that = this;
 
         jQuery(document).ready(function() {
 
             if(that.position === "top" || that.position === "bottom") {
-                that.refreshTop();
+                that.refreshTopBottom();
             }
-
+            else if(that.position === "right" || that.position === "left") {
+                that.refreshRightLeft();
+            }
             that.bindEvent();
         });
 
@@ -26,7 +30,7 @@ PrimeFaces.widget.ExtPanel = PrimeFaces.widget.BaseWidget.extend({
 
     bindEvent: function() {
         var _this = this;
-        jQuery(this.jqId).find("DIV.extpanel-header").click(function() { _this.toggle(); });
+        this.extpanelJQ.find("DIV.extpanel-header").click(function() { _this.toggle(); });
     },
 
     toggle: function() {
@@ -35,26 +39,36 @@ PrimeFaces.widget.ExtPanel = PrimeFaces.widget.BaseWidget.extend({
         else this.open();
     },
 
-    refreshTop: function() {
-        jQuery(this.jqId).css("margin-left", "-"+ parseInt(jQuery(this.jqId).width()/2, 10) +"px");
+    refreshTopBottom: function() {
+        this.extpanelJQ.css("margin-left", "-"+ parseInt(this.extpanelJQ.width()/2, 10) +"px");
+    },
+
+    refreshRightLeft: function() {
+        this.extpanelJQ.css("margin-top", "-"+ parseInt(this.extpanelJQ.height()/2, 10) +"px");
     },
 
     open: function() {
         if(!this.isOpen) {
-            jQuery(this.jqId).removeClass("extpanel-close").addClass("extpanel-open");
-            jQuery(this.jqId).find("SPAN.ui-icon").removeClass("ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-n");
-            jQuery(this.jqId).find("DIV.extpanel-content").css("display", "");
-            this.refreshTop();
+            this.extpanelJQ.removeClass("extpanel-close").addClass("extpanel-open");
+            if(this.position === "top")
+                this.extpanelJQ.find("SPAN.ui-icon").removeClass("ui-icon-circle-triangle-s").addClass("ui-icon-circle-triangle-n");
+            else if(this.position === "bottom")
+                this.extpanelJQ.find("SPAN.ui-icon").removeClass("ui-icon-circle-triangle-n").addClass("ui-icon-circle-triangle-s");
+            this.extpanelJQ.find("DIV.extpanel-content").css("display", "");
+            this.refreshTopBottom();
             this.isOpen = true;
         }
     },
             
     close: function() {
         if(this.isOpen) {
-            jQuery(this.jqId).removeClass("extpanel-open").addClass("extpanel-close");
-            jQuery(this.jqId).find("SPAN.ui-icon").removeClass("ui-icon-triangle-1-n").addClass("ui-icon-triangle-1-s");
-            jQuery(this.jqId).find("DIV.extpanel-content").css( "display","none");
-            this.refreshTop();
+            this.extpanelJQ.removeClass("extpanel-open").addClass("extpanel-close");
+            if(this.position === "top")
+                this.extpanelJQ.find("SPAN.ui-icon").removeClass("ui-icon-circle-triangle-n").addClass("ui-icon-circle-triangle-s");
+            else if(this.position === "bottom")
+                this.extpanelJQ.find("SPAN.ui-icon").removeClass("ui-icon-circle-triangle-s").addClass("ui-icon-circle-triangle-n");
+            this.extpanelJQ.find("DIV.extpanel-content").css( "display","none");
+            this.refreshTopBottom();
             this.isOpen = false;
         }
     }

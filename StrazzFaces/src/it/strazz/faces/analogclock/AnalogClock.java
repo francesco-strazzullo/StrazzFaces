@@ -9,9 +9,7 @@ import javax.faces.component.UIComponentBase;
 import javax.faces.component.UINamingContainer;
 import javax.faces.context.FacesContext;
 
-import org.primefaces.component.accordionpanel.AccordionPanel;
 import org.primefaces.component.api.Widget;
-import org.primefaces.component.clock.Clock;
 
 @FacesComponent(value = AnalogClock.COMPONENT_TYPE)
 @ResourceDependencies({
@@ -25,6 +23,7 @@ public class AnalogClock extends UIComponentBase implements Widget {
 	public static final String COMPONENT_TYPE = "it.strazz.faces.AnalogClock";
 	public static final String COMPONENT_FAMILY = "it.strazz.faces.components";
 
+        @Override
 	public String getFamily() {
 		return COMPONENT_FAMILY;
 	}
@@ -61,6 +60,7 @@ public class AnalogClock extends UIComponentBase implements Widget {
 		getStateHelper().put(PropertyKeys.widgetVar, _widgetVar);
 	}
 	
+        @Override
 	public String resolveWidgetVar() {
 		FacesContext context = getFacesContext();
 		String userWidgetVar = (String) getAttributes().get("widgetVar");

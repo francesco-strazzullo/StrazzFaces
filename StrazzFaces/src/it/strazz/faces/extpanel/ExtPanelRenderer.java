@@ -21,13 +21,13 @@ public class ExtPanelRenderer extends CoreRenderer {
     @Override
     public void decode(FacesContext context, UIComponent component) {
 
-        ExtPanel extpanelomponent = (ExtPanel) component;
-        decodeBehaviors(context, extpanelomponent);
+        ExtPanel extpanelComponent = (ExtPanel) component;
+        decodeBehaviors(context, extpanelComponent);
         String submittedValue = (String) context.getExternalContext()
                                                 .getRequestParameterMap()
-                                                .get(extpanelomponent.getClientId(context) + "_hidden");
+                                                .get(extpanelComponent.getClientId(context) + "_hidden");
 
-        extpanelomponent.setSubmittedValue(Boolean.parseBoolean(submittedValue));
+        extpanelComponent.setSubmittedValue(Boolean.parseBoolean(submittedValue));
     }
 
     @Override
@@ -77,9 +77,9 @@ public class ExtPanelRenderer extends CoreRenderer {
             extpanelComponent.setPosition(ExtPanel.DEFAULT_POSITION);
 
         if("top".equalsIgnoreCase(extpanelComponent.getPosition()))
-                encodeMarkupTop(context, extpanelComponent, writer);
+                encodeMarkupTop(extpanelComponent, writer);
         else if("bottom".equalsIgnoreCase(extpanelComponent.getPosition()))
-                encodeMarkupBottom(context, extpanelComponent, writer);
+                encodeMarkupBottom(writer);
     }
     
     private void encodeBeginTop(FacesContext context, ExtPanel extpanelComponent, ResponseWriter writer) throws IOException {
@@ -110,7 +110,7 @@ public class ExtPanelRenderer extends CoreRenderer {
 
         // Icon
         writer.startElement("span", extpanelComponent);
-        writer.writeAttribute("class", "ui-icon ui-icon-triangle-1-s", null);
+        writer.writeAttribute("class", "ui-icon ui-icon-circle-triangle-n", null);
         writer.endElement("span");
 
         // Title
@@ -129,7 +129,7 @@ public class ExtPanelRenderer extends CoreRenderer {
         writer.writeAttribute("style", "display:none", null);
     }
 
-    private void encodeMarkupTop(FacesContext context, ExtPanel extpanelComponent, ResponseWriter writer) throws IOException {
+    private void encodeMarkupTop(ExtPanel extpanelComponent, ResponseWriter writer) throws IOException {
 
         writer.endElement("div");
 
@@ -143,7 +143,7 @@ public class ExtPanelRenderer extends CoreRenderer {
 
         // Icon
         writer.startElement("span", extpanelComponent);
-        writer.writeAttribute("class", "ui-icon ui-icon-triangle-1-s", null);
+        writer.writeAttribute("class", "ui-icon ui-icon-circle-triangle-s", null);
         writer.endElement("span");
 
         // Title
@@ -153,16 +153,12 @@ public class ExtPanelRenderer extends CoreRenderer {
         writer.endElement("span");
 
         writer.endElement("div");
-
         writer.endElement("div");
-
         writer.endElement("div");
     }
 
-    private void encodeMarkupBottom(FacesContext context, ExtPanel extpanelComponent, ResponseWriter writer) throws IOException {
-        
+    private void encodeMarkupBottom(ResponseWriter writer) throws IOException {
         writer.endElement("div");
-        
         writer.endElement("div");
     }
 
