@@ -33,57 +33,57 @@ public class ExtPanel extends UIInput implements Widget, ClientBehaviorHolder {
 	private static final Collection<String> EVENT_NAMES = Collections.unmodifiableCollection(Arrays.asList("change"));
 	static final Collection<String> AVAIABLE_POSITIONS = Collections.unmodifiableCollection(Arrays.asList("top","right","bottom","left"));
 	static final String DEFAULT_POSITION = "top";
-	
+
         @Override
 	public Collection<String> getEventNames() {
-		return EVENT_NAMES;
+            return EVENT_NAMES;
 	}
 
         @Override
 	public String getDefaultEventName() {
-		return "change";
+            return "change";
 	}
 
         @Override
 	public String getFamily() {
-		return COMPONENT_FAMILY;
+            return COMPONENT_FAMILY;
 	}
 
 	public String getWidgetVar() {
-		return (String) getStateHelper().eval(PropertyKeys.widgetVar, null);
+            return (String) getStateHelper().eval(PropertyKeys.widgetVar, null);
 	}
 
 	public void setWidgetVar(String _widgetVar) {
-		getStateHelper().put(PropertyKeys.widgetVar, _widgetVar);
+            getStateHelper().put(PropertyKeys.widgetVar, _widgetVar);
 	}
-	
+
 	public String getPosition() {
-		return (String) getStateHelper().eval(PropertyKeys.position, DEFAULT_POSITION);
+            return (String) getStateHelper().eval(PropertyKeys.position, DEFAULT_POSITION);
 	}
 
-	public void setPosition(String _widgetVar) {
-		getStateHelper().put(PropertyKeys.position, _widgetVar);
+	public void setPosition(String position) {
+            getStateHelper().put(PropertyKeys.position, position);
 	}
-	
+
         public String getTitle() {
-		return (String) getStateHelper().eval(PropertyKeys.title, null);
+            return (String) getStateHelper().eval(PropertyKeys.title, null);
 	}
 
-	public void setTitle(String _widgetVar) {
-		getStateHelper().put(PropertyKeys.title, _widgetVar);
+	public void setTitle(String title) {
+            getStateHelper().put(PropertyKeys.title, title);
 	}
 
         @Override
 	public String resolveWidgetVar() {
-		FacesContext context = getFacesContext();
-		String userWidgetVar = (String) getAttributes().get("widgetVar");
+            FacesContext context = getFacesContext();
+            String userWidgetVar = (String) getAttributes().get("widgetVar");
 
-		if (userWidgetVar != null)
-			return userWidgetVar;
-		else	return "widget_"+ getClientId(context).replaceAll("-|" + UINamingContainer.getSeparatorChar(context), "_");
+            if (userWidgetVar != null)
+                return userWidgetVar;
+            else return "widget_"+ getClientId(context).replaceAll("-|" + UINamingContainer.getSeparatorChar(context), "_");
 	}
-	
+
 	protected static enum PropertyKeys {
-		title, position, widgetVar;
+            title, position, widgetVar;
 	}
 }
