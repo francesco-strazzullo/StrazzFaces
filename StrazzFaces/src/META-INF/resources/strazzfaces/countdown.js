@@ -25,8 +25,6 @@ PrimeFaces.widget.CountDown = PrimeFaces.widget.BaseWidget.extend({
 
         jQuery(document).ready(function() {
             
-            console.log("that.dayText = "+ cfg.dayText);
-            
             jQuery(that.jqId).kkcountdown({
                 dayText         : cfg.dayText,
                 daysText        : cfg.daysText,
