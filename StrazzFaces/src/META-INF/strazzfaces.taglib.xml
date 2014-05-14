@@ -321,7 +321,7 @@
 			<type>java.lang.String</type>
 		</attribute>
                 <attribute>
-			<description><![CDATA[Indicate the name of fucntion which should be launched after the end of countdown. Default value is null]]></description>
+			<description><![CDATA[Indicate the name of function which should be launched after the end of countdown. Default value is null]]></description>
 			<name>callback</name>
 			<required>false</required>
 			<type>java.lang.String</type>

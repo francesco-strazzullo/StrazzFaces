@@ -1,7 +1,7 @@
 package it.strazz.faces.countdown;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Date;
 
 import javax.faces.component.UIComponent;
@@ -66,15 +66,15 @@ public class CountDownRenderer extends CoreRenderer {
     private void encodeMarkup(FacesContext context, CountDown countdownComponent) throws IOException {
         ResponseWriter writer = context.getResponseWriter();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("");
-
         writer.startElement("span", countdownComponent);
         writer.writeAttribute("id", countdownComponent.getClientId(), null);
         writer.writeAttribute("class", "countdown ui-widget ui-widget-header ui-corner-all "+ countdownComponent.getStyleClass(), null);
+        
         if(countdownComponent.getStyle()!=null && !countdownComponent.getStyle().isEmpty())
             writer.writeAttribute("style", countdownComponent.getStyle(), null);
         long seconds = (countdownComponent.getDate().getTime() - new Date().getTime()) / 1000;
         writer.writeAttribute("data-seconds", seconds, null);
+
         writer.endElement("span");
     }
 }
