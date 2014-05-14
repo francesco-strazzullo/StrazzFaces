@@ -2,6 +2,7 @@ package it.strazz.faces.countdown;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -72,7 +73,8 @@ public class CountDownRenderer extends CoreRenderer {
         writer.writeAttribute("class", "countdown ui-widget ui-widget-header ui-corner-all "+ countdownComponent.getStyleClass(), null);
         if(countdownComponent.getStyle()!=null && !countdownComponent.getStyle().isEmpty())
             writer.writeAttribute("style", countdownComponent.getStyle(), null);
-        writer.writeAttribute("data-time", countdownComponent.getDate().getTime(), null);
+        long seconds = (countdownComponent.getDate().getTime() - new Date().getTime()) / 1000;
+        writer.writeAttribute("data-seconds", seconds, null);
         writer.endElement("span");
     }
 }
