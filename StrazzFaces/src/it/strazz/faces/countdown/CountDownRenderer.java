@@ -69,7 +69,9 @@ public class CountDownRenderer extends CoreRenderer {
 
         writer.startElement("span", countdownComponent);
         writer.writeAttribute("id", countdownComponent.getClientId(), null);
-        writer.writeAttribute("class", "countdown ui-widget ui-widget-header ui-corner-all", null);
+        writer.writeAttribute("class", "countdown ui-widget ui-widget-header ui-corner-all "+ countdownComponent.getStyleClass(), null);
+        if(countdownComponent.getStyle()!=null && !countdownComponent.getStyle().isEmpty())
+            writer.writeAttribute("style", countdownComponent.getStyle(), null);
         writer.writeAttribute("data-time", countdownComponent.getDate().getTime(), null);
         writer.endElement("span");
     }

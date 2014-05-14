@@ -157,6 +157,24 @@ public class CountDown extends UIInput implements Widget, ClientBehaviorHolder {
             getStateHelper().put(PropertyKeys.callback, callback);
 	}
 
+        // Inline style
+        public String getStyle() {
+            return (String) getStateHelper().eval(PropertyKeys.style, null);
+	}
+
+	public void setStyle(String style) {
+            getStateHelper().put(PropertyKeys.style, style);
+	}
+
+        // CSS styleClass
+        public String getStyleClass() {
+            return (String) getStateHelper().eval(PropertyKeys.styleClass, null);
+	}
+
+	public void setStyleClass(String styleClass) {
+            getStateHelper().put(PropertyKeys.styleClass, styleClass);
+	}
+
         @Override
 	public String resolveWidgetVar() {
             FacesContext context = getFacesContext();
@@ -180,6 +198,8 @@ public class CountDown extends UIInput implements Widget, ClientBehaviorHolder {
             displayZeroDays,
             addClass,
             callback,
+            style,
+            styleClass,
             widgetVar;
 	}
 }
