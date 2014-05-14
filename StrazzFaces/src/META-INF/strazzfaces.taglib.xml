@@ -327,6 +327,18 @@
 			<type>java.lang.String</type>
 		</attribute>
                 <attribute>
+			<description><![CDATA[Inline style]]></description>
+			<name>style</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+                <attribute>
+			<description><![CDATA[CSS styleClass]]></description>
+			<name>styleClass</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+                <attribute>
 			<description><![CDATA[Indicate the name of fucntion which should be launched after the end of countdown. Default value is null]]></description>
 			<name>date</name>
 			<required>true</required>
