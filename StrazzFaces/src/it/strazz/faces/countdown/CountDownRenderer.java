@@ -57,7 +57,7 @@ public class CountDownRenderer extends CoreRenderer {
         wb.attr("displayDays",      countdownComponent.isDisplayDays());
         wb.attr("displayZeroDays",  countdownComponent.isDisplayZeroDays());
         wb.attr("addClass",         countdownComponent.getAddClass());
-        wb.attr("callback",         countdownComponent.getCallback());
+        wb.attr("callback",         countdownComponent.getOncomplete());
         encodeClientBehaviors(context, countdownComponent);
 
         wb.finish();

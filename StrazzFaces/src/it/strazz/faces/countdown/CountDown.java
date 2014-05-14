@@ -1,8 +1,5 @@
 package it.strazz.faces.countdown;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
 
 import javax.faces.application.ResourceDependencies;
@@ -21,7 +18,7 @@ import org.primefaces.component.api.Widget;
     @ResourceDependency(library = "primefaces", name = "primefaces.css"),
     @ResourceDependency(library = "primefaces", name = "primefaces.js"),
     @ResourceDependency(library = "strazzfaces", name = "countdown.js"),
-    @ResourceDependency(library = "strazzfaces", name = "kkcountdown.min.js"),
+    @ResourceDependency(library = "strazzfaces", name = "kkcountdown.js"),
     @ResourceDependency(library = "css", name = "countdown.css"),
 })
 /**
@@ -31,9 +28,6 @@ public class CountDown extends UIInput implements Widget, ClientBehaviorHolder {
  
 	public static final String COMPONENT_TYPE = "it.strazz.faces.CountDown";
 	public static final String COMPONENT_FAMILY = "it.strazz.faces.components";
-
-	static final Collection<String> AVAIABLE_SIZE = Collections.unmodifiableCollection(Arrays.asList("lg","md","sm","xs"));
-	static final String DEFAULT_SIZE = "md";
 
         @Override
 	public String getFamily() {
@@ -148,13 +142,13 @@ public class CountDown extends UIInput implements Widget, ClientBehaviorHolder {
             getStateHelper().put(PropertyKeys.addClass, addClass);
 	}
 
-        // Indicate the name of function which should be launched after the end of countdown
-        public String getCallback() {
-            return (String) getStateHelper().eval(PropertyKeys.callback, null);
+        // Indicate the function which should be launched after the end of countdown
+        public String getOncomplete() {
+            return (String) getStateHelper().eval(PropertyKeys.oncomplete, null);
 	}
 
-	public void setCallback(String callback) {
-            getStateHelper().put(PropertyKeys.callback, callback);
+	public void setOncomplete(String oncomplete) {
+            getStateHelper().put(PropertyKeys.oncomplete, oncomplete);
 	}
 
         // Inline style
@@ -197,7 +191,7 @@ public class CountDown extends UIInput implements Widget, ClientBehaviorHolder {
             displayDays,
             displayZeroDays,
             addClass,
-            callback,
+            oncomplete,
             style,
             styleClass,
             widgetVar;
