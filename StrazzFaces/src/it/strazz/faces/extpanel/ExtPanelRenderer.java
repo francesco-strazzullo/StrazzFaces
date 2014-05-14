@@ -40,8 +40,8 @@ public class ExtPanelRenderer extends CoreRenderer {
         else extpanelComponent.setPosition(extpanelComponent.getPosition().toLowerCase());
 
         if("bottom".equalsIgnoreCase(extpanelComponent.getPosition()))
-            encodeBeginBottom(context, extpanelComponent, writer);
-        else encodeBeginTop(context, extpanelComponent, writer); // Same for Left, Right, Top
+            encodeBeginBottom(extpanelComponent, writer);
+        else encodeBeginTop(extpanelComponent, writer); // Same for Left, Right, Top
     }
 
     @Override
@@ -78,7 +78,7 @@ public class ExtPanelRenderer extends CoreRenderer {
         else encodeMarkupTop(extpanelComponent, writer); // Same for Left, Right, Top
     }
     
-    private void encodeBeginTop(FacesContext context, ExtPanel extpanelComponent, ResponseWriter writer) throws IOException {
+    private void encodeBeginTop(ExtPanel extpanelComponent, ResponseWriter writer) throws IOException {
         // ExtPanel
         writer.startElement("div", extpanelComponent);
         writer.writeAttribute("id", extpanelComponent.getClientId(), null);
@@ -90,7 +90,7 @@ public class ExtPanelRenderer extends CoreRenderer {
         writer.writeAttribute("style", "display:none", null);
     }
 
-    private void encodeBeginBottom(FacesContext context, ExtPanel extpanelComponent, ResponseWriter writer) throws IOException {
+    private void encodeBeginBottom(ExtPanel extpanelComponent, ResponseWriter writer) throws IOException {
         // ExtPanel
         writer.startElement("div", extpanelComponent);
         writer.writeAttribute("id", extpanelComponent.getClientId(), null);
