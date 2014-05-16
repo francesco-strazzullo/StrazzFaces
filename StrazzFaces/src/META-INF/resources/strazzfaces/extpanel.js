@@ -9,6 +9,8 @@ PrimeFaces.widget.ExtPanel = PrimeFaces.widget.BaseWidget.extend({
         this.name = cfg.widgetName;
         this.position = cfg.position;
         this.title = cfg.title;
+        this.cbOnOpen = cfg.onopen;
+        this.cbOnClose = cfg.onclose;
         this.isOpen = false;
         
         this.extpanelJQ = jQuery(this.jqId);
@@ -49,6 +51,7 @@ PrimeFaces.widget.ExtPanel = PrimeFaces.widget.BaseWidget.extend({
 
     open: function() {
         if(!this.isOpen) {
+            this.onopen();
             this.extpanelJQ.removeClass("extpanel-close").addClass("extpanel-open");
             if(this.position === "top")
                 this.extpanelJQ.find("SPAN.ui-icon").removeClass("ui-icon-circle-triangle-s").addClass("ui-icon-circle-triangle-n");
@@ -62,6 +65,7 @@ PrimeFaces.widget.ExtPanel = PrimeFaces.widget.BaseWidget.extend({
             
     close: function() {
         if(this.isOpen) {
+            this.onclose();
             this.extpanelJQ.removeClass("extpanel-open").addClass("extpanel-close");
             if(this.position === "top")
                 this.extpanelJQ.find("SPAN.ui-icon").removeClass("ui-icon-circle-triangle-n").addClass("ui-icon-circle-triangle-s");
@@ -71,5 +75,13 @@ PrimeFaces.widget.ExtPanel = PrimeFaces.widget.BaseWidget.extend({
             this.refreshTopBottom();
             this.isOpen = false;
         }
+    },
+    
+    onopen: function() {
+      if(this.cbOnOpen && this.cbOnOpen !== "") { eval(this.cbOnOpen); }  
+    },
+
+     onclose: function() {
+      if(this.cbOnClose && this.cbOnClose !== "") {  eval(this.cbOnClose); }  
     }
 });
