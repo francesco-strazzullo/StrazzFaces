@@ -75,7 +75,7 @@ public class CountDownRenderer extends CoreRenderer {
         if(Util.isValid(countdownComponent.getStyle()))
             writer.writeAttribute("style", countdownComponent.getStyle(), null);
         long seconds = (countdownComponent.getDate().getTime() - new Date().getTime()) / 1000;
-        writer.writeAttribute("data-seconds", seconds, null);
+        writer.writeAttribute("data-seconds", seconds > 0 ? seconds : 0, null);
 
         writer.endElement("span");
     }
