@@ -230,6 +230,30 @@
 			<type>java.lang.String</type>
 		</attribute>
                 <attribute>
+			<description><![CDATA[Inline style.]]></description>
+			<name>style</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+                <attribute>
+			<description><![CDATA[CSS panel styleClass.]]></description>
+			<name>styleClass</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+                <attribute>
+			<description><![CDATA[Client side callback function to be execute on panel open.]]></description>
+			<name>onopen</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+                <attribute>
+			<description><![CDATA[Client side callback function to be execute on panel close.]]></description>
+			<name>onclose</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+                <attribute>
 			<description><![CDATA[extPanel title.]]></description>
 			<name>title</name>
 			<required>true</required>
