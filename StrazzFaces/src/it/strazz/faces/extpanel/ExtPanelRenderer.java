@@ -1,5 +1,6 @@
 package it.strazz.faces.extpanel;
 
+import it.strazz.faces.util.Util;
 import java.io.IOException;
 
 import javax.faces.component.UIComponent;
@@ -60,6 +61,8 @@ public class ExtPanelRenderer extends CoreRenderer {
         wb.init("ExtPanel", widgetVar, clientId);
         wb.attr("widgetName", widgetVar);
         wb.attr("position", getExtPanelPosition(extpanelComponent));
+        wb.attr("onopen", extpanelComponent.getOnopen());
+        wb.attr("onclose", extpanelComponent.getOnclose());
         encodeClientBehaviors(context, extpanelComponent);
 
         wb.finish();
@@ -82,7 +85,13 @@ public class ExtPanelRenderer extends CoreRenderer {
         // ExtPanel
         writer.startElement("div", extpanelComponent);
         writer.writeAttribute("id", extpanelComponent.getClientId(), null);
-        writer.writeAttribute("class", "extpanel extpanel-close ui-widget extpanel-"+ extpanelComponent.getPosition(), null);
+        if(Util.isValid(extpanelComponent.getStyleClass()))
+            writer.writeAttribute("class", "extpanel extpanel-close ui-widget extpanel-"+ extpanelComponent.getPosition() 
+                                          +" "+ extpanelComponent.getStyleClass(), null);
+        else writer.writeAttribute("class", "extpanel extpanel-close ui-widget extpanel-"+ extpanelComponent.getPosition(), null);
+
+        if(Util.isValid(extpanelComponent.getStyle()))
+            writer.writeAttribute("style", extpanelComponent.getStyle(), null);
 
         // ExtPanel Content
         writer.startElement("div", extpanelComponent);
@@ -94,7 +103,13 @@ public class ExtPanelRenderer extends CoreRenderer {
         // ExtPanel
         writer.startElement("div", extpanelComponent);
         writer.writeAttribute("id", extpanelComponent.getClientId(), null);
-        writer.writeAttribute("class", "extpanel extpanel-close ui-widget extpanel-"+ extpanelComponent.getPosition(), null);
+        if(Util.isValid(extpanelComponent.getStyleClass()))
+            writer.writeAttribute("class", "extpanel extpanel-close ui-widget extpanel-"+ extpanelComponent.getPosition() 
+                                          +" "+ extpanelComponent.getStyleClass(), null);
+        else writer.writeAttribute("class", "extpanel extpanel-close ui-widget extpanel-"+ extpanelComponent.getPosition(), null);
+
+        if(Util.isValid(extpanelComponent.getStyle()))
+            writer.writeAttribute("style", extpanelComponent.getStyle(), null);
         
         // ExtPanel Header
         writer.startElement("div", extpanelComponent);

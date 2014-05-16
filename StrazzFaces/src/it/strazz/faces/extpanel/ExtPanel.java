@@ -73,6 +73,38 @@ public class ExtPanel extends UIInput implements Widget, ClientBehaviorHolder {
         getStateHelper().put(PropertyKeys.title, title);
     }
 
+    public String getStyle() {
+        return (String) getStateHelper().eval(PropertyKeys.style, null);
+    }
+
+    public void setStyle(String style) {
+        getStateHelper().put(PropertyKeys.style, style);
+    }
+
+    public String getStyleClass() {
+        return (String) getStateHelper().eval(PropertyKeys.styleClass, null);
+    }
+
+    public void setStyleClass(String styleClass) {
+        getStateHelper().put(PropertyKeys.styleClass, styleClass);
+    }
+
+    public String getOnopen() {
+        return (String) getStateHelper().eval(PropertyKeys.onopen, null);
+    }
+
+    public void setOnopen(String onopen) {
+        getStateHelper().put(PropertyKeys.onopen, onopen);
+    }
+
+    public String getOnclose() {
+        return (String) getStateHelper().eval(PropertyKeys.onclose, null);
+    }
+
+    public void setOnclose(String onclose) {
+        getStateHelper().put(PropertyKeys.onclose, onclose);
+    }
+
     @Override
     public String resolveWidgetVar() {
         FacesContext context = getFacesContext();
@@ -84,6 +116,6 @@ public class ExtPanel extends UIInput implements Widget, ClientBehaviorHolder {
     }
 
     protected static enum PropertyKeys {
-        title, position, widgetVar;
+        title, position, style, styleClass, onopen, onclose, widgetVar;
     }
 }
