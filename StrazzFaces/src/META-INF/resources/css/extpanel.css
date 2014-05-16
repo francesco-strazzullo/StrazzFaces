@@ -4,13 +4,6 @@
     Author     : f1l0
     Description: ExtPanel stylesheet.
 */
-.ui-widget, .ui-widget .ui-widget {
-    font-size: 95% !important;
-}
-BODY {
-    padding: 0px;
-    margin: 0px;
-}
 .extpanel {
     text-align: center;
 }
