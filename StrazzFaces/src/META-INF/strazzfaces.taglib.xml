@@ -194,10 +194,10 @@
 		</attribute>
 	</tag>
         <tag>
-		<tag-name>extpanel</tag-name>
+		<tag-name>dockablepanel</tag-name>
 		<component>
-			<component-type>it.strazz.faces.ExtPanel</component-type>
-			<renderer-type>it.strazz.faces.ExtPanelRenderer</renderer-type>
+			<component-type>it.strazz.faces.DockablePanel</component-type>
+			<renderer-type>it.strazz.faces.DockablePanelRenderer</renderer-type>
 		</component>
 		<attribute>
 			<description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
@@ -224,7 +224,7 @@
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[extPanel position. It could be "top","right","bottom","left"]]></description>
+			<description><![CDATA[DockablePanel position. It could be "top","right","bottom","left"]]></description>
 			<name>position</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -254,7 +254,7 @@
 			<type>java.lang.String</type>
 		</attribute>
                 <attribute>
-			<description><![CDATA[extPanel title.]]></description>
+			<description><![CDATA[DockablePanel title.]]></description>
 			<name>title</name>
 			<required>true</required>
 			<type>java.lang.String</type>

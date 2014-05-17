@@ -1,42 +1,42 @@
 /* 
-    Document   : extpanel
+    Document   : dockablepanel
     Created on : 11-mag-2014, 9.39.50
     Author     : f1l0
-    Description: ExtPanel stylesheet.
+    Description: DockablePanel stylesheet.
 */
-.extpanel {
+.dockablepanel {
     text-align: center;
 }
-.extpanel .extpanel-content {
+.dockablepanel .dockablepanel-content {
     text-align: left;
     padding: 15px;
 }
-.extpanel .extpanel-header {
+.dockablepanel .dockablepanel-header {
     padding: 5px;
 }
-.extpanel .extpanel-header:hover {
+.dockablepanel .dockablepanel-header:hover {
     cursor: pointer;
 }
-.extpanel,.extpanel .extpanel-header,.extpanel .extpanel-header-content { 
+.dockablepanel,.dockablepanel .dockablepanel-header,.dockablepanel .dockablepanel-header-content { 
     display: inline-block;
 }
-.extpanel .extpanel-header-content {
+.dockablepanel .dockablepanel-header-content {
     padding: 0.2em; /*0.3em 0.5em 0.2em;*/
 }
-.extpanel .extpanel-header-content .ui-icon, .extpanel .extpanel-header-content .ui-panel-title {
+.dockablepanel .dockablepanel-header-content .ui-icon, .dockablepanel .dockablepanel-header-content .ui-panel-title {
     display: inline-block;
     vertical-align: middle;
 }
-.extpanel .extpanel-header {
+.dockablepanel .dockablepanel-header {
     border-top: 1px solid #FFFFFF;
 }
-.extpanel.extpanel-top .extpanel-header-content .ui-icon, .extpanel.extpanel-bottom .extpanel-header-content .ui-icon {
+.dockablepanel.dockablepanel-top .dockablepanel-header-content .ui-icon, .dockablepanel.dockablepanel-bottom .dockablepanel-header-content .ui-icon {
     padding-right: 5px;
     margin: 0 5px;
     width: 12px;
 }
 
-.extpanel.extpanel-open {     
+.dockablepanel.dockablepanel-open {     
     animation: fadein 1s;
     -moz-animation: fadein 1s; /* Firefox */
     -webkit-animation: fadein 1s; /* Safari and Chrome */
@@ -44,63 +44,63 @@
 }
 
 /* Position Top */
-.extpanel.extpanel-top .ui-shadow {
+.dockablepanel.dockablepanel-top .ui-shadow {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
 }
-.extpanel.extpanel-top {
+.dockablepanel.dockablepanel-top {
     position: absolute;
     left: 50%;
     top: 0;
 }
-.extpanel.extpanel-top .extpanel-content, .extpanel.extpanel-top .extpanel-header {
+.dockablepanel.dockablepanel-top .dockablepanel-content, .dockablepanel.dockablepanel-top .dockablepanel-header {
     border-top: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
-.extpanel.extpanel-top .extpanel-header {
+.dockablepanel.dockablepanel-top .dockablepanel-header {
     position: relative;
     top: -1px;
 }
 /* Position Bottom */
-.extpanel.extpanel-bottom .ui-shadow {
+.dockablepanel.dockablepanel-bottom .ui-shadow {
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.8);
 }
-.extpanel.extpanel-bottom {
+.dockablepanel.dockablepanel-bottom {
     position: absolute;
     left: 50%;
     bottom: 0;
 }
-.extpanel.extpanel-bottom .extpanel-content, .extpanel.extpanel-bottom .extpanel-header {
+.dockablepanel.dockablepanel-bottom .dockablepanel-content, .dockablepanel.dockablepanel-bottom .dockablepanel-header {
     border-bottom: 0;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
-.extpanel.extpanel-open.extpanel-bottom .extpanel-header {
+.dockablepanel.dockablepanel-open.dockablepanel-bottom .dockablepanel-header {
     position: relative;
     top: 1px;
 }
 /* Position Left */
-.extpanel.extpanel-left .ui-shadow {
+.dockablepanel.dockablepanel-left .ui-shadow {
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.8);
 }
-.extpanel.extpanel-left {
+.dockablepanel.dockablepanel-left {
     position: absolute;
     top: 50%;
     bottom: 0;
 }
-.extpanel.extpanel-left .extpanel-content, .extpanel.extpanel-left .extpanel-header {
+.dockablepanel.dockablepanel-left .dockablepanel-content, .dockablepanel.dockablepanel-left .dockablepanel-header {
     border-left: 0;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
-.extpanel.extpanel-open.extpanel-left .extpanel-header {
+.dockablepanel.dockablepanel-open.dockablepanel-left .dockablepanel-header {
     position: relative;
     right: 1px;
 }
-.extpanel.extpanel-left .extpanel-header-content SPAN {
+.dockablepanel.dockablepanel-left .dockablepanel-header-content SPAN {
     display: block;
 }
-.extpanel.extpanel-left .extpanel-header-content .ui-panel-title {
+.dockablepanel.dockablepanel-left .dockablepanel-header-content .ui-panel-title {
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);

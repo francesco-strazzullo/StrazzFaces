@@ -1,7 +1,7 @@
 /**
  * @author f1l0
  */
-PrimeFaces.widget.ExtPanel = PrimeFaces.widget.BaseWidget.extend({
+PrimeFaces.widget.DockablePanel = PrimeFaces.widget.BaseWidget.extend({
 
     init: function(cfg) {
 
@@ -13,7 +13,7 @@ PrimeFaces.widget.ExtPanel = PrimeFaces.widget.BaseWidget.extend({
         this.cbOnClose = cfg.onclose;
         this.isOpen = false;
         
-        this.extpanelJQ = jQuery(this.jqId);
+        this.dockablepanelJQ = jQuery(this.jqId);
 
         var that = this;
 
@@ -32,7 +32,7 @@ PrimeFaces.widget.ExtPanel = PrimeFaces.widget.BaseWidget.extend({
 
     bindEvent: function() {
         var _this = this;
-        this.extpanelJQ.find("DIV.extpanel-header").click(function() { _this.toggle(); });
+        this.dockablepanelJQ.find("DIV.dockablepanel-header").click(function() { _this.toggle(); });
     },
 
     toggle: function() {
@@ -42,22 +42,22 @@ PrimeFaces.widget.ExtPanel = PrimeFaces.widget.BaseWidget.extend({
     },
 
     refreshTopBottom: function() {
-        this.extpanelJQ.css("margin-left", "-"+ parseInt(this.extpanelJQ.width()/2, 10) +"px");
+        this.dockablepanelJQ.css("margin-left", "-"+ parseInt(this.dockablepanelJQ.width()/2, 10) +"px");
     },
 
     refreshRightLeft: function() {
-        this.extpanelJQ.css("margin-top", "-"+ parseInt(this.extpanelJQ.height()/2, 10) +"px");
+        this.dockablepanelJQ.css("margin-top", "-"+ parseInt(this.dockablepanelJQ.height()/2, 10) +"px");
     },
 
     open: function() {
         if(!this.isOpen) {
             this.onopen();
-            this.extpanelJQ.removeClass("extpanel-close").addClass("extpanel-open");
+            this.dockablepanelJQ.removeClass("dockablepanel-close").addClass("dockablepanel-open");
             if(this.position === "top")
-                this.extpanelJQ.find("SPAN.ui-icon").removeClass("ui-icon-circle-triangle-s").addClass("ui-icon-circle-triangle-n");
+                this.dockablepanelJQ.find("SPAN.ui-icon").removeClass("ui-icon-circle-triangle-s").addClass("ui-icon-circle-triangle-n");
             else if(this.position === "bottom")
-                this.extpanelJQ.find("SPAN.ui-icon").removeClass("ui-icon-circle-triangle-n").addClass("ui-icon-circle-triangle-s");
-            this.extpanelJQ.find("DIV.extpanel-content").css("display", "");
+                this.dockablepanelJQ.find("SPAN.ui-icon").removeClass("ui-icon-circle-triangle-n").addClass("ui-icon-circle-triangle-s");
+            this.dockablepanelJQ.find("DIV.dockablepanel-content").css("display","");
             this.refreshTopBottom();
             this.isOpen = true;
         }
@@ -66,12 +66,12 @@ PrimeFaces.widget.ExtPanel = PrimeFaces.widget.BaseWidget.extend({
     close: function() {
         if(this.isOpen) {
             this.onclose();
-            this.extpanelJQ.removeClass("extpanel-open").addClass("extpanel-close");
+            this.dockablepanelJQ.removeClass("dockablepanel-open").addClass("dockablepanel-close");
             if(this.position === "top")
-                this.extpanelJQ.find("SPAN.ui-icon").removeClass("ui-icon-circle-triangle-n").addClass("ui-icon-circle-triangle-s");
+                this.dockablepanelJQ.find("SPAN.ui-icon").removeClass("ui-icon-circle-triangle-n").addClass("ui-icon-circle-triangle-s");
             else if(this.position === "bottom")
-                this.extpanelJQ.find("SPAN.ui-icon").removeClass("ui-icon-circle-triangle-s").addClass("ui-icon-circle-triangle-n");
-            this.extpanelJQ.find("DIV.extpanel-content").css( "display","none");
+                this.dockablepanelJQ.find("SPAN.ui-icon").removeClass("ui-icon-circle-triangle-s").addClass("ui-icon-circle-triangle-n");
+            this.dockablepanelJQ.find("DIV.dockablepanel-content").css( "display","none");
             this.refreshTopBottom();
             this.isOpen = false;
         }
