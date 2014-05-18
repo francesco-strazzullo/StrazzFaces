@@ -29,16 +29,15 @@ public class SwitchRenderer extends CoreRenderer {
 		switchComponent.setSubmittedValue(Boolean.parseBoolean(submittedValue));
 	}
 
-	public void encodeEnd(FacesContext context, UIComponent component)
-			throws IOException {
+        @Override
+	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
 		Switch switchComponent = (Switch) component;
 
 		encodeMarkup(context, switchComponent);
 		encodeScript(context, switchComponent);
 	}
 
-	private void encodeScript(FacesContext context, Switch switchComponent)
-			throws IOException {
+	private void encodeScript(FacesContext context, Switch switchComponent) throws IOException {
 		String clientId = switchComponent.getClientId();
 		String widgetVar = switchComponent.resolveWidgetVar();
 
