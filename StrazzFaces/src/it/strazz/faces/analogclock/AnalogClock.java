@@ -23,7 +23,7 @@ public class AnalogClock extends UIComponentBase implements Widget {
 	public static final String COMPONENT_TYPE = "it.strazz.faces.AnalogClock";
 	public static final String COMPONENT_FAMILY = "it.strazz.faces.components";
 
-        @Override
+	@Override
 	public String getFamily() {
 		return COMPONENT_FAMILY;
 	}
@@ -43,12 +43,12 @@ public class AnalogClock extends UIComponentBase implements Widget {
 	public void setMode(String _mode) {
 		getStateHelper().put(PropertyKeys.mode, _mode);
 	}
-	
-	public Integer getWidth(){
-		return (Integer) this.getStateHelper().eval(PropertyKeys.width,null);
+
+	public Integer getWidth() {
+		return (Integer) this.getStateHelper().eval(PropertyKeys.width, null);
 	}
-	
-	public void setWidth(Integer width){
+
+	public void setWidth(Integer width) {
 		this.getStateHelper().put(PropertyKeys.width, width);
 	}
 
@@ -59,8 +59,8 @@ public class AnalogClock extends UIComponentBase implements Widget {
 	public void setWidgetVar(String _widgetVar) {
 		getStateHelper().put(PropertyKeys.widgetVar, _widgetVar);
 	}
-	
-        @Override
+
+	@Override
 	public String resolveWidgetVar() {
 		FacesContext context = getFacesContext();
 		String userWidgetVar = (String) getAttributes().get("widgetVar");

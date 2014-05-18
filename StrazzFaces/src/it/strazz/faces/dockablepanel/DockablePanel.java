@@ -16,106 +16,114 @@ import org.primefaces.component.api.Widget;
 
 @FacesComponent(value = DockablePanel.COMPONENT_TYPE)
 @ResourceDependencies({
-    @ResourceDependency(library = "primefaces", name = "jquery/jquery.js"),
-    @ResourceDependency(library = "primefaces", name = "primefaces.css"),
-    @ResourceDependency(library = "primefaces", name = "primefaces.js"),
-    @ResourceDependency(library = "strazzfaces", name = "dockablepanel.js"),
-    @ResourceDependency(library = "css", name = "dockablepanel.css")
-})
+		@ResourceDependency(library = "primefaces", name = "jquery/jquery.js"),
+		@ResourceDependency(library = "primefaces", name = "primefaces.css"),
+		@ResourceDependency(library = "primefaces", name = "primefaces.js"),
+		@ResourceDependency(library = "strazzfaces", name = "dockablepanel.js"),
+		@ResourceDependency(library = "css", name = "dockablepanel.css") })
 /**
  * @author f1l0
  */
-public class DockablePanel extends UIInput implements Widget, ClientBehaviorHolder {
- 
-    public static final String COMPONENT_TYPE = "it.strazz.faces.DockablePanel";
-    public static final String COMPONENT_FAMILY = "it.strazz.faces.components";
+public class DockablePanel extends UIInput implements Widget,
+		ClientBehaviorHolder {
 
-    private static final Collection<String> EVENT_NAMES = Collections.unmodifiableCollection(Arrays.asList("change"));
-    static final Collection<String> AVAIABLE_POSITIONS = Collections.unmodifiableCollection(Arrays.asList("top","right","bottom","left"));
-    static final String DEFAULT_POSITION = "top";
+	public static final String COMPONENT_TYPE = "it.strazz.faces.DockablePanel";
+	public static final String COMPONENT_FAMILY = "it.strazz.faces.components";
 
-    @Override
-    public Collection<String> getEventNames() {
-        return EVENT_NAMES;
-    }
+	private static final Collection<String> EVENT_NAMES = Collections
+			.unmodifiableCollection(Arrays.asList("change"));
+	static final Collection<String> AVAIABLE_POSITIONS = Collections
+			.unmodifiableCollection(Arrays.asList("top", "right", "bottom",
+					"left"));
+	static final String DEFAULT_POSITION = "top";
 
-    @Override
-    public String getDefaultEventName() {
-        return "change";
-    }
+	@Override
+	public Collection<String> getEventNames() {
+		return EVENT_NAMES;
+	}
 
-    @Override
-    public String getFamily() {
-        return COMPONENT_FAMILY;
-    }
+	@Override
+	public String getDefaultEventName() {
+		return "change";
+	}
 
-    public String getWidgetVar() {
-        return (String) getStateHelper().eval(PropertyKeys.widgetVar, null);
-    }
+	@Override
+	public String getFamily() {
+		return COMPONENT_FAMILY;
+	}
 
-    public void setWidgetVar(String _widgetVar) {
-        getStateHelper().put(PropertyKeys.widgetVar, _widgetVar);
-    }
+	public String getWidgetVar() {
+		return (String) getStateHelper().eval(PropertyKeys.widgetVar, null);
+	}
 
-    public String getPosition() {
-        return (String) getStateHelper().eval(PropertyKeys.position, DEFAULT_POSITION);
-    }
+	public void setWidgetVar(String _widgetVar) {
+		getStateHelper().put(PropertyKeys.widgetVar, _widgetVar);
+	}
 
-    public void setPosition(String position) {
-        getStateHelper().put(PropertyKeys.position, position);
-    }
+	public String getPosition() {
+		return (String) getStateHelper().eval(PropertyKeys.position,
+				DEFAULT_POSITION);
+	}
 
-    public String getTitle() {
-        return (String) getStateHelper().eval(PropertyKeys.title, null);
-    }
+	public void setPosition(String position) {
+		getStateHelper().put(PropertyKeys.position, position);
+	}
 
-    public void setTitle(String title) {
-        getStateHelper().put(PropertyKeys.title, title);
-    }
+	public String getTitle() {
+		return (String) getStateHelper().eval(PropertyKeys.title, null);
+	}
 
-    public String getStyle() {
-        return (String) getStateHelper().eval(PropertyKeys.style, null);
-    }
+	public void setTitle(String title) {
+		getStateHelper().put(PropertyKeys.title, title);
+	}
 
-    public void setStyle(String style) {
-        getStateHelper().put(PropertyKeys.style, style);
-    }
+	public String getStyle() {
+		return (String) getStateHelper().eval(PropertyKeys.style, null);
+	}
 
-    public String getStyleClass() {
-        return (String) getStateHelper().eval(PropertyKeys.styleClass, null);
-    }
+	public void setStyle(String style) {
+		getStateHelper().put(PropertyKeys.style, style);
+	}
 
-    public void setStyleClass(String styleClass) {
-        getStateHelper().put(PropertyKeys.styleClass, styleClass);
-    }
+	public String getStyleClass() {
+		return (String) getStateHelper().eval(PropertyKeys.styleClass, null);
+	}
 
-    public String getOnopen() {
-        return (String) getStateHelper().eval(PropertyKeys.onopen, null);
-    }
+	public void setStyleClass(String styleClass) {
+		getStateHelper().put(PropertyKeys.styleClass, styleClass);
+	}
 
-    public void setOnopen(String onopen) {
-        getStateHelper().put(PropertyKeys.onopen, onopen);
-    }
+	public String getOnopen() {
+		return (String) getStateHelper().eval(PropertyKeys.onopen, null);
+	}
 
-    public String getOnclose() {
-        return (String) getStateHelper().eval(PropertyKeys.onclose, null);
-    }
+	public void setOnopen(String onopen) {
+		getStateHelper().put(PropertyKeys.onopen, onopen);
+	}
 
-    public void setOnclose(String onclose) {
-        getStateHelper().put(PropertyKeys.onclose, onclose);
-    }
+	public String getOnclose() {
+		return (String) getStateHelper().eval(PropertyKeys.onclose, null);
+	}
 
-    @Override
-    public String resolveWidgetVar() {
-        FacesContext context = getFacesContext();
-        String userWidgetVar = (String) getAttributes().get("widgetVar");
+	public void setOnclose(String onclose) {
+		getStateHelper().put(PropertyKeys.onclose, onclose);
+	}
 
-        if (userWidgetVar != null)
-            return userWidgetVar;
-        else return "widget_"+ getClientId(context).replaceAll("-|" + UINamingContainer.getSeparatorChar(context), "_");
-    }
+	@Override
+	public String resolveWidgetVar() {
+		FacesContext context = getFacesContext();
+		String userWidgetVar = (String) getAttributes().get("widgetVar");
 
-    protected static enum PropertyKeys {
-        title, position, style, styleClass, onopen, onclose, widgetVar;
-    }
+		if (userWidgetVar != null)
+			return userWidgetVar;
+		else
+			return "widget_"
+					+ getClientId(context).replaceAll(
+							"-|" + UINamingContainer.getSeparatorChar(context),
+							"_");
+	}
+
+	protected static enum PropertyKeys {
+		title, position, style, styleClass, onopen, onclose, widgetVar;
+	}
 }

@@ -29,15 +29,17 @@ public class SwitchRenderer extends CoreRenderer {
 		switchComponent.setSubmittedValue(Boolean.parseBoolean(submittedValue));
 	}
 
-        @Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	@Override
+	public void encodeEnd(FacesContext context, UIComponent component)
+			throws IOException {
 		Switch switchComponent = (Switch) component;
 
 		encodeMarkup(context, switchComponent);
 		encodeScript(context, switchComponent);
 	}
 
-	private void encodeScript(FacesContext context, Switch switchComponent) throws IOException {
+	private void encodeScript(FacesContext context, Switch switchComponent)
+			throws IOException {
 		String clientId = switchComponent.getClientId();
 		String widgetVar = switchComponent.resolveWidgetVar();
 
@@ -51,23 +53,28 @@ public class SwitchRenderer extends CoreRenderer {
 		wb.finish();
 
 	}
-	
-	private String getSwitchType(Switch switchComponent){
+
+	private String getSwitchType(Switch switchComponent) {
 		String type = String.valueOf(switchComponent.getType());
-		return Switch.AVAIABLE_TYPES.contains(type) ? type : Switch.DEFAULT_TYPE;
+		return Switch.AVAIABLE_TYPES.contains(type) ? type
+				: Switch.DEFAULT_TYPE;
 	}
 
-	private void encodeMarkup(FacesContext context, Switch switchComponent) throws IOException {
+	private void encodeMarkup(FacesContext context, Switch switchComponent)
+			throws IOException {
 		ResponseWriter writer = context.getResponseWriter();
 
 		writer.startElement("div", switchComponent);
 		writer.writeAttribute("id", switchComponent.getClientId(), null);
 
 		writer.startElement("input", switchComponent);
-		writer.writeAttribute("id", switchComponent.getClientId() + "_hidden",null);
-		writer.writeAttribute("name",switchComponent.getClientId() + "_hidden", null);
+		writer.writeAttribute("id", switchComponent.getClientId() + "_hidden",
+				null);
+		writer.writeAttribute("name",
+				switchComponent.getClientId() + "_hidden", null);
 		writer.writeAttribute("type", "hidden", null);
-		writer.writeAttribute("value", Boolean.TRUE.equals(switchComponent.getValue()) + "", null);
+		writer.writeAttribute("value",
+				Boolean.TRUE.equals(switchComponent.getValue()) + "", null);
 		writer.endElement("input");
 
 		writer.endElement("div");

@@ -25,21 +25,24 @@ public class Switch extends UIInput implements Widget, ClientBehaviorHolder {
 	public static final String COMPONENT_TYPE = "it.strazz.faces.Switch";
 	public static final String COMPONENT_FAMILY = "it.strazz.faces.components";
 
-	private static final Collection<String> EVENT_NAMES = Collections.unmodifiableCollection(Arrays.asList("change"));
-	static final Collection<String> AVAIABLE_TYPES = Collections.unmodifiableCollection(Arrays.asList("rocker","arc","side","circle","rect","toggle"));
+	private static final Collection<String> EVENT_NAMES = Collections
+			.unmodifiableCollection(Arrays.asList("change"));
+	static final Collection<String> AVAIABLE_TYPES = Collections
+			.unmodifiableCollection(Arrays.asList("rocker", "arc", "side",
+					"circle", "rect", "toggle"));
 	static final String DEFAULT_TYPE = "toggle";
-	
-        @Override
+
+	@Override
 	public Collection<String> getEventNames() {
 		return EVENT_NAMES;
 	}
 
-        @Override
+	@Override
 	public String getDefaultEventName() {
 		return "change";
 	}
 
-        @Override
+	@Override
 	public String getFamily() {
 		return COMPONENT_FAMILY;
 	}
@@ -51,7 +54,7 @@ public class Switch extends UIInput implements Widget, ClientBehaviorHolder {
 	public void setWidgetVar(String _widgetVar) {
 		getStateHelper().put(PropertyKeys.widgetVar, _widgetVar);
 	}
-	
+
 	public String getType() {
 		return (String) getStateHelper().eval(PropertyKeys.type, DEFAULT_TYPE);
 	}
@@ -59,8 +62,8 @@ public class Switch extends UIInput implements Widget, ClientBehaviorHolder {
 	public void setType(String _widgetVar) {
 		getStateHelper().put(PropertyKeys.type, _widgetVar);
 	}
-	
-        @Override
+
+	@Override
 	public String resolveWidgetVar() {
 		FacesContext context = getFacesContext();
 		String userWidgetVar = (String) getAttributes().get("widgetVar");
@@ -73,7 +76,7 @@ public class Switch extends UIInput implements Widget, ClientBehaviorHolder {
 							"-|" + UINamingContainer.getSeparatorChar(context),
 							"_");
 	}
-	
+
 	protected static enum PropertyKeys {
 		type, widgetVar;
 	}
