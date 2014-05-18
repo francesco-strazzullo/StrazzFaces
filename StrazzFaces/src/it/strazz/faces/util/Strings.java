@@ -7,7 +7,7 @@ package it.strazz.faces.util;
  */
 public class Strings {
 
-	public static boolean isValid(String str) {
+	public static boolean isNotEmpty(String str) {
 		return str != null && !str.isEmpty();
 	}
 }

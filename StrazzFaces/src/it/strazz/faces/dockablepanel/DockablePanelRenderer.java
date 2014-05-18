@@ -99,7 +99,7 @@ public class DockablePanelRenderer extends CoreRenderer {
 		// ExtPanel
 		writer.startElement("div", dockablepanelComponent);
 		writer.writeAttribute("id", dockablepanelComponent.getClientId(), null);
-		if (Strings.isValid(dockablepanelComponent.getStyleClass()))
+		if (Strings.isNotEmpty(dockablepanelComponent.getStyleClass()))
 			writer.writeAttribute("class",
 					"dockablepanel dockablepanel-close ui-widget dockablepanel-"
 							+ dockablepanelComponent.getPosition() + " "
@@ -109,7 +109,7 @@ public class DockablePanelRenderer extends CoreRenderer {
 					"dockablepanel dockablepanel-close ui-widget dockablepanel-"
 							+ dockablepanelComponent.getPosition(), null);
 
-		if (Strings.isValid(dockablepanelComponent.getStyle()))
+		if (Strings.isNotEmpty(dockablepanelComponent.getStyle()))
 			writer.writeAttribute("style", dockablepanelComponent.getStyle(),
 					null);
 
@@ -127,7 +127,7 @@ public class DockablePanelRenderer extends CoreRenderer {
 		// ExtPanel
 		writer.startElement("div", dockablepanelComponent);
 		writer.writeAttribute("id", dockablepanelComponent.getClientId(), null);
-		if (Strings.isValid(dockablepanelComponent.getStyleClass()))
+		if (Strings.isNotEmpty(dockablepanelComponent.getStyleClass()))
 			writer.writeAttribute("class",
 					"dockablepanel dockablepanel-close ui-widget dockablepanel-"
 							+ dockablepanelComponent.getPosition() + " "
@@ -137,7 +137,7 @@ public class DockablePanelRenderer extends CoreRenderer {
 					"dockablepanel dockablepanel-close ui-widget dockablepanel-"
 							+ dockablepanelComponent.getPosition(), null);
 
-		if (Strings.isValid(dockablepanelComponent.getStyle()))
+		if (Strings.isNotEmpty(dockablepanelComponent.getStyle()))
 			writer.writeAttribute("style", dockablepanelComponent.getStyle(),
 					null);
 
