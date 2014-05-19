@@ -9,6 +9,9 @@
 .vaccordion .vtab {
     width: 14px;
 }
+.vaccordion .vtab.vtab-close.vtab-notlast {
+    border-right: 0;
+}
 .vaccordion .vtab-content {
     padding: 0.5em 1em;
     vertical-align: top;

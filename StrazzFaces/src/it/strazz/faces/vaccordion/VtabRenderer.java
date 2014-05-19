@@ -43,6 +43,7 @@ public class VtabRenderer extends CoreRenderer {
         
         writer.endElement("span");
         
+        // Content
         writer.startElement("div", vtabComponent);
         writer.writeAttribute("style", "display:none", null);
         writer.writeAttribute("class", "vtab-content ui-widget ui-widget-content", null);

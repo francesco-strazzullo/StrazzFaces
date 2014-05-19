@@ -21,7 +21,7 @@ PrimeFaces.widget.vAccordion = PrimeFaces.widget.BaseWidget.extend({
             var content = componentJQ.find(".vaccordion-content > *");
 
             var firstContent = jQuery(content.get(1));
-            firstContent.css("display","");
+            firstContent.css("display","").addClass("vtab-content-open");
             
             var maxHeight = firstContent.parent().height();
 
@@ -29,16 +29,19 @@ PrimeFaces.widget.vAccordion = PrimeFaces.widget.BaseWidget.extend({
                 var elem = jQuery(el);
                 elem.css("height", maxHeight +"px");
                 if(idx===0) {
-                    elem.addClass("ui-corner-left");
+                    elem.addClass("ui-corner-left vtab-open vtab-notlast");
                     elem.find("SPAN.ui-icon").addClass(that.iconOpen);
                 }
                 else if(idx===content.size()-2) {
-                    elem.addClass("ui-corner-right");
+                    elem.addClass("ui-corner-right vtab-close");
                     elem.find("SPAN.ui-icon").addClass(that.iconClose);
                 }
                 else if(elem.hasClass("vtab-content"))
                     elem.css("border-right","0");
-                else elem.find("SPAN.ui-icon").addClass(that.iconClose);
+                else {
+                    elem.addClass("vtab-close vtab-notlast");
+                    elem.find("SPAN.ui-icon").addClass(that.iconClose);
+                }
             });
 
             that.bindEvent();
@@ -66,8 +69,10 @@ PrimeFaces.widget.vAccordion = PrimeFaces.widget.BaseWidget.extend({
             if(icon.hasClass(that.iconClose)) {
                 icons.find(".ui-icon").removeClass(that.iconOpen).addClass(that.iconClose);
                 icon.removeClass(that.iconClose).addClass(that.iconOpen);
-                componentJQ.find(".vtab-content").css("display","none");
-                jQuery(this).parent().next().css("display","");
+                componentJQ.find(".vtab-content").removeClass("vtab-content-open").css("display","none");
+                componentJQ.find(".vtab").removeClass("vtab-open").addClass("vtab-close");
+                jQuery(this).parent().removeClass("vtab-close").addClass("vtab-open");
+                jQuery(this).parent().next().css("display","").addClass("vtab-content-open");
             }
 //            componentJQ.find(".vtab").each(function(){
 //                if(jQuery(this).find("."+ that.iconClose).size()>0)
