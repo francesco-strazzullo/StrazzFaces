@@ -54,9 +54,9 @@ PrimeFaces.widget.DockablePanel = PrimeFaces.widget.BaseWidget.extend({
             this.onopen();
             this.dockablepanelJQ.removeClass("dockablepanel-close").addClass("dockablepanel-open");
             if(this.position === "top")
-                this.dockablepanelJQ.find("SPAN.ui-icon").removeClass("ui-icon-circle-triangle-s").addClass("ui-icon-circle-triangle-n");
+                this.dockablepanelJQ.find(".dockablepanel-header SPAN.ui-icon").removeClass("ui-icon-circle-triangle-s").addClass("ui-icon-circle-triangle-n");
             else if(this.position === "bottom")
-                this.dockablepanelJQ.find("SPAN.ui-icon").removeClass("ui-icon-circle-triangle-n").addClass("ui-icon-circle-triangle-s");
+                this.dockablepanelJQ.find(".dockablepanel-header SPAN.ui-icon").removeClass("ui-icon-circle-triangle-n").addClass("ui-icon-circle-triangle-s");
             this.dockablepanelJQ.find("DIV.dockablepanel-content").css("display","");
             this.refreshTopBottom();
             this.isOpen = true;
