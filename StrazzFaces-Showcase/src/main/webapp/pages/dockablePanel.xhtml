@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:s="http://it.strazz.faces/ui">
+<h:head>
+	<h:outputStylesheet name="bootstrap.css" library="css" />
+	<h:outputStylesheet name="css/chargen.css" />
+	<h:outputStylesheet
+		name="webjars/font-awesome/4.0.3/css/font-awesome.css" />
+	<h:outputStylesheet name="style.css" library="css" />
+	<h:outputScript name="jquery-1.11.0.min.js" library="js" />
+	<h:outputScript name="bootstrap.js" library="js" />
+	<link rel="stylesheet"
+		href="http://yandex.st/highlightjs/8.0/styles/default.min.css" />
+	<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+	<script>
+		hljs.initHighlightingOnLoad();
+	</script>
+</h:head>
+<h:body>
+	<div id="wrap">
+		<s:dockablepanel title="Menu" position="top">
+			<h:panelGrid>
+				<h:form>
+					<p:menu>
+						<p:submenu label="Components">
+							<p:menuitem value="Clock" action="/pages/clock.jsf?faces-redirect=true" />
+							<p:menuitem value="Switch" action="/pages/switch/index.jsf?faces-redirect=true" />
+							<p:menuitem value="Document Viewer" action="/pages/documentViewer/index.jsf?faces-redirect=true" />
+						</p:submenu>
+						<p:submenu>
+							<p:menuitem value="Download" action="/pages/download.jsf?faces-redirect=true" />
+							<p:menuitem value="Docs" action="/pages/docs.jsf?faces-redirect=true" />
+							<p:menuitem value="Contacts" action="/pages/contacts.jsf?faces-redirect=true" />
+						</p:submenu>
+					</p:menu>
+				</h:form>
+			</h:panelGrid>
+		</s:dockablepanel>
+		<s:dockablepanel title="Nyan Cat!" position="bottom">
+			<p:graphicImage name="nyan.gif" library="images" />
+		</s:dockablepanel>
+	</div>
+	<div id="footer">
+		<div class="container">
+			<p class="text-muted">
+				StrazzFaces #{StrazzFaces.VERSION} by <a rel="author"
+					href="https://plus.google.com/+FrancescoStrazzullo86/posts">Francesco
+					Strazzullo</a>
+			</p>
+		</div>
+	</div>
+</h:body>
+</html>

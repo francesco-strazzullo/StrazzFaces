@@ -18,7 +18,7 @@ import org.primefaces.component.api.Widget;
 		@ResourceDependency(library = "primefaces", name = "primefaces.css"),
 		@ResourceDependency(library = "primefaces", name = "primefaces.js"),
 		@ResourceDependency(library = "strazzfaces", name = "countdown.js"),
-		@ResourceDependency(library = "strazzfaces", name = "kkcountdown.js"),
+		@ResourceDependency(library = "kkcountdown", name = "kkcountdown.js"),
 		@ResourceDependency(library = "css", name = "countdown.css"), })
 /**
  * @author f1l0

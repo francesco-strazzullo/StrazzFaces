@@ -11,10 +11,10 @@ import javax.faces.render.FacesRenderer;
 import org.primefaces.renderkit.CoreRenderer;
 import org.primefaces.util.WidgetBuilder;
 
-@FacesRenderer(componentFamily = DockablePanel.COMPONENT_FAMILY, rendererType = DockablePanelRenderer.RENDERER_TYPE)
 /**
  * @author f1l0
  */
+@FacesRenderer(componentFamily = DockablePanel.COMPONENT_FAMILY, rendererType = DockablePanelRenderer.RENDERER_TYPE)
 public class DockablePanelRenderer extends CoreRenderer {
 
 	public static final String RENDERER_TYPE = "it.strazz.faces.DockablePanelRenderer";
