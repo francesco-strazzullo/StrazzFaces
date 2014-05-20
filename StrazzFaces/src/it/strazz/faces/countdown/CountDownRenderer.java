@@ -1,6 +1,6 @@
 package it.strazz.faces.countdown;
 
-import it.strazz.faces.util.Util;
+import it.strazz.faces.util.Strings;
 import java.io.IOException;
 import java.util.Date;
 
@@ -68,11 +68,11 @@ public class CountDownRenderer extends CoreRenderer {
 
         writer.startElement("span", countdownComponent);
         writer.writeAttribute("id", countdownComponent.getClientId(), null);
-        if(Util.isValid(countdownComponent.getStyleClass()))
+        if(Strings.isNotEmpty(countdownComponent.getStyleClass()))
             writer.writeAttribute("class", "countdown ui-widget ui-widget-header ui-corner-all "+ countdownComponent.getStyleClass(), null);
         else writer.writeAttribute("class", "countdown ui-widget ui-widget-header ui-corner-all", null);
         
-        if(Util.isValid(countdownComponent.getStyle()))
+        if(Strings.isNotEmpty(countdownComponent.getStyle()))
             writer.writeAttribute("style", countdownComponent.getStyle(), null);
         long seconds = (countdownComponent.getDate().getTime() - new Date().getTime()) / 1000;
         writer.writeAttribute("data-seconds", seconds > 0 ? seconds : 0, null);

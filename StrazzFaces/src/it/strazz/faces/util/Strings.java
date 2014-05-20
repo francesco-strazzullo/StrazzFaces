@@ -8,15 +8,15 @@ import javax.faces.context.FacesContext;
  * @author f1l0
  */
 @ApplicationScoped
-public final class Util {
+public final class Strings {
     
-    public static boolean isValid(String str) {
+    public static boolean isNotEmpty(String str) {
         return str!=null && !str.isEmpty();
     }
     
     public static String getTheme() {
         String theme = FacesContext.getCurrentInstance().getExternalContext().getInitParameter("primefaces.THEME");
-        if(isValid(theme))
+        if(isNotEmpty(theme))
             return theme;
         return "aristo";
     }

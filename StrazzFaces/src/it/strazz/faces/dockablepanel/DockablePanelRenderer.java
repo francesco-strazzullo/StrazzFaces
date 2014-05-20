@@ -1,6 +1,6 @@
 package it.strazz.faces.dockablepanel;
 
-import it.strazz.faces.util.Util;
+import it.strazz.faces.util.Strings;
 import java.io.IOException;
 
 import javax.faces.component.UIComponent;
@@ -85,12 +85,12 @@ public class DockablePanelRenderer extends CoreRenderer {
         // ExtPanel
         writer.startElement("div", dockablepanelComponent);
         writer.writeAttribute("id", dockablepanelComponent.getClientId(), null);
-        if(Util.isValid(dockablepanelComponent.getStyleClass()))
+        if(Strings.isNotEmpty(dockablepanelComponent.getStyleClass()))
             writer.writeAttribute("class", "dockablepanel dockablepanel-close ui-widget dockablepanel-"+ dockablepanelComponent.getPosition() 
                                           +" "+ dockablepanelComponent.getStyleClass(), null);
         else writer.writeAttribute("class", "dockablepanel dockablepanel-close ui-widget dockablepanel-"+ dockablepanelComponent.getPosition(), null);
 
-        if(Util.isValid(dockablepanelComponent.getStyle()))
+        if(Strings.isNotEmpty(dockablepanelComponent.getStyle()))
             writer.writeAttribute("style", dockablepanelComponent.getStyle(), null);
 
         // ExtPanel Content
@@ -103,12 +103,12 @@ public class DockablePanelRenderer extends CoreRenderer {
         // ExtPanel
         writer.startElement("div", dockablepanelComponent);
         writer.writeAttribute("id", dockablepanelComponent.getClientId(), null);
-        if(Util.isValid(dockablepanelComponent.getStyleClass()))
+        if(Strings.isNotEmpty(dockablepanelComponent.getStyleClass()))
             writer.writeAttribute("class", "dockablepanel dockablepanel-close ui-widget dockablepanel-"+ dockablepanelComponent.getPosition() 
                                           +" "+ dockablepanelComponent.getStyleClass(), null);
         else writer.writeAttribute("class", "dockablepanel dockablepanel-close ui-widget dockablepanel-"+ dockablepanelComponent.getPosition(), null);
 
-        if(Util.isValid(dockablepanelComponent.getStyle()))
+        if(Strings.isNotEmpty(dockablepanelComponent.getStyle()))
             writer.writeAttribute("style", dockablepanelComponent.getStyle(), null);
         
         // ExtPanel Header

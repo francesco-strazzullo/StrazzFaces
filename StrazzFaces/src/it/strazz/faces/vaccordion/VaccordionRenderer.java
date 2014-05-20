@@ -1,6 +1,6 @@
 package it.strazz.faces.vaccordion;
 
-import it.strazz.faces.util.Util;
+import it.strazz.faces.util.Strings;
 import java.io.IOException;
 
 import javax.faces.component.UIComponent;
@@ -28,11 +28,11 @@ public class VaccordionRenderer extends CoreRenderer {
 
         writer.startElement("div", vaccordionComponent);
         writer.writeAttribute("id", vaccordionComponent.getClientId(), null);
-        if(Util.isValid(vaccordionComponent.getStyleClass()))
+        if(Strings.isNotEmpty(vaccordionComponent.getStyleClass()))
             writer.writeAttribute("class", "vaccordion ui-panel ui-widget ui-widget-content ui-corner-all "+ vaccordionComponent.getStyleClass(), null);
         else writer.writeAttribute("class", "vaccordion ui-panel ui-widget ui-widget-content ui-corner-all", null);
         
-        if(Util.isValid(vaccordionComponent.getStyle()))
+        if(Strings.isNotEmpty(vaccordionComponent.getStyle()))
             writer.writeAttribute("style", vaccordionComponent.getStyle(), null);
         
         if(vaccordionComponent.isShowHeader()) {
@@ -43,7 +43,7 @@ public class VaccordionRenderer extends CoreRenderer {
             // Header Title
             writer.startElement("span", vaccordionComponent);
             writer.writeAttribute("class", "vaccordion-header-title ui-panel-title", null);
-            writer.writeText(Util.isValid(vaccordionComponent.getHeader()) ? vaccordionComponent.getHeader() : "", null);
+            writer.writeText(Strings.isNotEmpty(vaccordionComponent.getHeader()) ? vaccordionComponent.getHeader() : "", null);
             writer.endElement("span");
 
             writer.endElement("div");
@@ -61,7 +61,7 @@ public class VaccordionRenderer extends CoreRenderer {
         writer.endElement("div");
         
         // Footer
-        if(Util.isValid(vaccordionComponent.getFooter())) {
+        if(Strings.isNotEmpty(vaccordionComponent.getFooter())) {
             writer.startElement("div", vaccordionComponent);
             writer.writeAttribute("class", "vaccordion-footer ui-panel-footer ui-widget-content", null);
             writer.writeText(vaccordionComponent.getFooter(), null);

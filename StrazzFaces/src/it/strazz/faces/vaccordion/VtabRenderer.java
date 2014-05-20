@@ -1,6 +1,6 @@
 package it.strazz.faces.vaccordion;
 
-import it.strazz.faces.util.Util;
+import it.strazz.faces.util.Strings;
 import java.io.IOException;
 
 import javax.faces.component.UIComponent;
@@ -25,11 +25,11 @@ public class VtabRenderer extends CoreRenderer {
 
         // Tab
         writer.startElement("span", vtabComponent);
-        if(Util.isValid(vtabComponent.getStyleClass()))
+        if(Strings.isNotEmpty(vtabComponent.getStyleClass()))
             writer.writeAttribute("class", "vtab ui-widget ui-widget-header "+ vtabComponent.getStyleClass(), null);
         else writer.writeAttribute("class", "vtab ui-widget ui-widget-header l", null);
         
-        if(Util.isValid(vtabComponent.getStyle()))
+        if(Strings.isNotEmpty(vtabComponent.getStyle()))
             writer.writeAttribute("style", vtabComponent.getStyle(), null);
 
         // Icon
