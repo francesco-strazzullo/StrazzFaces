@@ -4,6 +4,13 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd" id="s">
     <namespace>http://it.strazz.faces/ui</namespace>
     <tag>
+        <tag-name>gChart</tag-name>
+        <component>
+            <component-type>it.strazz.faces.GChart</component-type>
+            <renderer-type>it.strazz.faces.GChartRenderer</renderer-type>
+        </component>
+    </tag>
+    <tag>
         <tag-name>analogClock</tag-name>
         <component>
             <component-type>it.strazz.faces.AnalogClock</component-type>
