@@ -1,6 +1,7 @@
 package it.strazz.faces.countdown;
 
 import it.strazz.faces.util.Strings;
+
 import java.io.IOException;
 import java.util.Date;
 

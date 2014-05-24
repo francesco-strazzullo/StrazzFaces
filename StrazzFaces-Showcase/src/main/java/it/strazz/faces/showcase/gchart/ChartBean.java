@@ -7,7 +7,11 @@ import it.strazz.faces.gchart.model.PieChartModel;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.SelectEvent;
 
 @ManagedBean
 public class ChartBean implements Serializable {
@@ -31,6 +35,10 @@ public class ChartBean implements Serializable {
 		chartModel.addRow("Mushrooms", mushrooms);
 		chartModel.addRow("Onions", onions);
 	
+	}
+	
+	public void onSelect(SelectEvent event){
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "You have selected: " + event.getObject(), null));
 	}
 
 	public int getMushrooms() {

@@ -14,6 +14,7 @@ public class GChartModelFactory {
 		chartClasses.put(PieChartModel.CHART_TYPE, PieChartModel.class);
 		chartClasses.put(BarChartModel.CHART_TYPE, BarChartModel.class);
 		chartClasses.put(ColumnChartModel.CHART_TYPE, ColumnChartModel.class);
+		chartClasses.put(AreaChartModel.CHART_TYPE, AreaChartModel.class);
 	}
 	
 	private GChartModelFactory(){}

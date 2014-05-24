@@ -10,6 +10,7 @@ PrimeFaces.widget.GChart = PrimeFaces.widget.BaseWidget.extend({
 		this.height = cfg.height;
 		this.width = cfg.width;
 		this.title = cfg.title;
+		this.input = jQuery(this.jqId+"_hidden");
 		
 		google.load('visualization', '1.0', {
 			'packages' : [ 'corechart' ]
@@ -29,22 +30,27 @@ PrimeFaces.widget.GChart = PrimeFaces.widget.BaseWidget.extend({
 		// Create the data table.
 		var dataTable = google.visualization.arrayToDataTable(this.data);
 
+		var that = this;
+		
 		var options = {};
 
 		options.title = this.title;
 		options.width = parseInt(this.width,10);
 		options.height = parseInt(this.height,10);
-		/*
-		 * var options = {'title':'How Much Pizza I Ate Last Night',
-		 * 'width':400, 'height':300};
-		 */
-
+		
 		var wrapper = new google.visualization.ChartWrapper({
 			chartType : this.type,
 			dataTable : dataTable,
 			options : options,
 			containerId : this.id
 		});
+		
+		if(this.cfg.behaviors && this.cfg.behaviors.select) {
+			google.visualization.events.addListener(wrapper, 'select', function(e){
+				that.input.val(JSON.stringify(wrapper.getChart().getSelection()));
+				that.cfg.behaviors.select.call(that.input);
+			});
+		}
 
 		wrapper.draw();
 

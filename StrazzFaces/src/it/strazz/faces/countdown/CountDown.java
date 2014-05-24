@@ -98,7 +98,7 @@ public class CountDown extends UIInput implements Widget, ClientBehaviorHolder {
 	// Class will be added if there is less than 24 hours untill the end of
 	// countdown
 	public boolean isOneDayClass() {
-		return (boolean) getStateHelper().eval(PropertyKeys.oneDayClass, false);
+		return (Boolean) getStateHelper().eval(PropertyKeys.oneDayClass, false);
 	}
 
 	public void setOneDayClass(boolean oneDayClass) {
@@ -119,7 +119,7 @@ public class CountDown extends UIInput implements Widget, ClientBehaviorHolder {
 	// true -> the number of days is displayed,
 	// false -> the number of days is not displayed
 	public boolean isDisplayDays() {
-		return (boolean) getStateHelper().eval(PropertyKeys.displayDays, true);
+		return (Boolean) getStateHelper().eval(PropertyKeys.displayDays, true);
 	}
 
 	public void setDisplayDays(boolean displayDays) {
@@ -128,7 +128,7 @@ public class CountDown extends UIInput implements Widget, ClientBehaviorHolder {
 
 	// Displaying the number of days when number of days is 0.
 	public boolean isDisplayZeroDays() {
-		return (boolean) getStateHelper().eval(PropertyKeys.displayZeroDays,
+		return (Boolean) getStateHelper().eval(PropertyKeys.displayZeroDays,
 				false);
 	}
 
@@ -137,7 +137,7 @@ public class CountDown extends UIInput implements Widget, ClientBehaviorHolder {
 	}
 
 	// Adding a class to markers indicating countdown (e.g. indicated the name
-	// of call e.g. â€˜class-nameâ€™)
+	// of call e.g. ‘class-name’)
 	public String getAddClass() {
 		return (String) getStateHelper().eval(PropertyKeys.addClass, null);
 	}

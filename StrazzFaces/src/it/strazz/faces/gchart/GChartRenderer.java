@@ -1,7 +1,6 @@
 package it.strazz.faces.gchart;
 
 import it.strazz.faces.gchart.model.GChartModel;
-import it.strazz.faces.gchart.model.PieChartModel;
 
 import java.io.IOException;
 
@@ -19,6 +18,11 @@ public class GChartRenderer extends CoreRenderer {
 
 	public static final String RENDERER_TYPE = "it.strazz.faces.GChartRenderer";
 
+	public void decode(FacesContext context, UIComponent component) {
+		super.decode(context, component);
+		decodeBehaviors(context, component);
+	}
+	
 	@Override
 	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
 		GChart analogClock = (GChart) component;
@@ -29,6 +33,12 @@ public class GChartRenderer extends CoreRenderer {
 
 	protected void encodeMarkup(FacesContext context, GChart chart)	throws IOException {
 		ResponseWriter writer = context.getResponseWriter();
+		
+		writer.startElement("input", chart);
+		writer.writeAttribute("id", chart.getClientId() + "_hidden",null);
+		writer.writeAttribute("name",chart.getClientId() + "_hidden", null);
+		writer.writeAttribute("type", "hidden", null);
+		writer.endElement("input");
 
 		writer.startElement("div", chart);
 		writer.writeAttribute("id", chart.getClientId(), null);
@@ -37,6 +47,7 @@ public class GChartRenderer extends CoreRenderer {
 		this.startScript(writer, chart.getClientId());
 		writer.writeAttribute("src", "https://www.google.com/jsapi", null);
 		this.endScript(writer);
+		
 	}
 
 	protected void encodeScript(FacesContext context, GChart chart) throws IOException {
@@ -60,6 +71,8 @@ public class GChartRenderer extends CoreRenderer {
 		wb.attr("title",chart.getTitle());
 		wb.attr("width",chart.getWidth());
 		wb.attr("height",chart.getHeight());
+		
+		encodeClientBehaviors(context, chart);
 		
 		wb.finish();
 	}

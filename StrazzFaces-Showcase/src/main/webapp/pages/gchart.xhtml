@@ -24,12 +24,13 @@
 						<f:selectItem itemLabel="PieChart" itemValue="PieChart" />
 						<f:selectItem itemLabel="ColumnChart" itemValue="ColumnChart" />
 						<f:selectItem itemLabel="BarChart" itemValue="BarChart" />
+						<f:selectItem itemLabel="AreaChart" itemValue="AreaChart" />
 					</h:selectOneMenu>
 				</h:panelGrid>
-				<p:commandButton value="Generate" update="@form"
-					action="#{chartBean.generateModel}" />
-				<s:gChart value="#{chartBean.chart}"
-					title="How Much Pizza I Ate Last Night" />
+				<p:commandButton value="Generate" update="@form" action="#{chartBean.generateModel}" />
+				<s:gChart value="#{chartBean.chart}" title="How Much Pizza I Ate Last Night">
+					<p:ajax listener="#{chartBean.onSelect}"/>
+				</s:gChart>
 			</p:tab>
 			<p:tab title="XHTML Page">
 				<pre><code>

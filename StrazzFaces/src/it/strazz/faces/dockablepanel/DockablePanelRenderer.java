@@ -1,6 +1,7 @@
 package it.strazz.faces.dockablepanel;
 
 import it.strazz.faces.util.Strings;
+
 import java.io.IOException;
 
 import javax.faces.component.UIComponent;
