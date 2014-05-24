@@ -35,6 +35,7 @@
 			</p:tab>
 			<p:tab title="XHTML Page">
 				<pre><code>
+&lt;p:messages autoUpdate=&quot;true&quot;/&gt;
 &lt;h:panelGrid columns=&quot;3&quot;&gt;
 	&lt;h:outputText value=&quot;Mushrooms&quot; /&gt;
 	&lt;h:outputText value=&quot;Onions&quot; /&gt;
@@ -47,12 +48,13 @@
 		&lt;f:selectItem itemLabel=&quot;PieChart&quot; itemValue=&quot;PieChart&quot; /&gt;
 		&lt;f:selectItem itemLabel=&quot;ColumnChart&quot; itemValue=&quot;ColumnChart&quot; /&gt;
 		&lt;f:selectItem itemLabel=&quot;BarChart&quot; itemValue=&quot;BarChart&quot; /&gt;
+		&lt;f:selectItem itemLabel=&quot;AreaChart&quot; itemValue=&quot;AreaChart&quot; /&gt;
 	&lt;/h:selectOneMenu&gt;
 &lt;/h:panelGrid&gt;
-&lt;p:commandButton value=&quot;Generate&quot; update=&quot;@form&quot;
-	action=&quot;#{'#{chartBean.generateModel}'}&quot; /&gt;
-&lt;s:gChart value=&quot;#{'#{chartBean.chart}'}&quot;
-	title=&quot;How Much Pizza I Ate Last Night&quot; /&gt;
+&lt;p:commandButton value=&quot;Generate&quot; update=&quot;@form&quot; action=&quot;#{'#{chartBean.generateModel}'}&quot; /&gt;
+&lt;s:gChart value=&quot;#{'#{chartBean.chart}'}&quot; title=&quot;How Much Pizza I Ate Last Night&quot;&gt;
+	&lt;p:ajax listener=&quot;#{'#{chartBean.onSelect'}&quot;/&gt;
+&lt;/s:gChart&gt;
 				</code></pre>
 			</p:tab>
 			<p:tab title="Bean">
@@ -79,6 +81,19 @@ public class ChartBean implements Serializable {
 		chartModel.addRow("Mushrooms", mushrooms);
 		chartModel.addRow("Onions", onions);
 	
+	}
+	
+	public void onSelect(SelectEvent event){
+		try {
+			JSONArray value = (JSONArray) event.getObject();
+			if(value.length() > 0){
+				JSONObject object = (JSONObject) value.get(0);
+				String label = (String) this.getChart().getData().get(1+(int) object.get("row"))[0];
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "You have selected: " + label, null));
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public int getMushrooms() {

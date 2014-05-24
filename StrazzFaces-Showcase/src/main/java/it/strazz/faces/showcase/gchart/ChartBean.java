@@ -16,8 +16,6 @@ import org.primefaces.json.JSONArray;
 import org.primefaces.json.JSONException;
 import org.primefaces.json.JSONObject;
 
-import com.google.gson.JsonArray;
-
 @ManagedBean
 public class ChartBean implements Serializable {
 	

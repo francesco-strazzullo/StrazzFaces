@@ -51,7 +51,7 @@ PrimeFaces.widget.GChart = PrimeFaces.widget.BaseWidget.extend({
 		
 		if(this.cfg.behaviors && this.cfg.behaviors.select) {
 			google.visualization.events.addListener(this.wrapper, 'select', function(e){
-				console.log("Click");
+				console.log(that.wrapper.getChart().getSelection());
 				jQuery(that.jqId+"_hidden").val(JSON.stringify(that.wrapper.getChart().getSelection()));
 				that.cfg.behaviors.select.call(jQuery(that.jqId+"_hidden"));
 			});
