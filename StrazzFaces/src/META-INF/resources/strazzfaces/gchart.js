@@ -15,14 +15,18 @@ PrimeFaces.widget.GChart = PrimeFaces.widget.BaseWidget.extend({
 		google.load('visualization', '1.0', {
 			'packages' : [ 'corechart' ]
 		});
-		google.setOnLoadCallback(function() {
-			that.draw();
+		
+		jQuery(document).ready(function(){
+			google.setOnLoadCallback(function() {
+				that.draw();
+			});
+
+			if (google.visualization) {
+				that.draw();
+			}
+
 		});
-
-		if (google.visualization) {
-			that.draw();
-		}
-
+		
 	},
 
 	draw : function() {
@@ -38,7 +42,7 @@ PrimeFaces.widget.GChart = PrimeFaces.widget.BaseWidget.extend({
 		options.width = parseInt(this.width,10);
 		options.height = parseInt(this.height,10);
 		
-		var wrapper = new google.visualization.ChartWrapper({
+		this.wrapper = new google.visualization.ChartWrapper({
 			chartType : this.type,
 			dataTable : dataTable,
 			options : options,
@@ -46,13 +50,14 @@ PrimeFaces.widget.GChart = PrimeFaces.widget.BaseWidget.extend({
 		});
 		
 		if(this.cfg.behaviors && this.cfg.behaviors.select) {
-			google.visualization.events.addListener(wrapper, 'select', function(e){
-				that.input.val(JSON.stringify(wrapper.getChart().getSelection()));
-				that.cfg.behaviors.select.call(that.input);
+			google.visualization.events.addListener(this.wrapper, 'select', function(e){
+				console.log("Click");
+				jQuery(that.jqId+"_hidden").val(JSON.stringify(that.wrapper.getChart().getSelection()));
+				that.cfg.behaviors.select.call(jQuery(that.jqId+"_hidden"));
 			});
 		}
 
-		wrapper.draw();
+		this.wrapper.draw();
 
 	}
 

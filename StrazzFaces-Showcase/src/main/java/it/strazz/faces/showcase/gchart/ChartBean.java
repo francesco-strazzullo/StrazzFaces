@@ -12,6 +12,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.SelectEvent;
+import org.primefaces.json.JSONArray;
+import org.primefaces.json.JSONException;
+import org.primefaces.json.JSONObject;
+
+import com.google.gson.JsonArray;
 
 @ManagedBean
 public class ChartBean implements Serializable {
@@ -38,7 +43,16 @@ public class ChartBean implements Serializable {
 	}
 	
 	public void onSelect(SelectEvent event){
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "You have selected: " + event.getObject(), null));
+		try {
+			JSONArray value = (JSONArray) event.getObject();
+			if(value.length() > 0){
+				JSONObject object = (JSONObject) value.get(0);
+				String label = (String) this.getChart().getData().get(1+(int) object.get("row"))[0];
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "You have selected: " + label, null));
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public int getMushrooms() {

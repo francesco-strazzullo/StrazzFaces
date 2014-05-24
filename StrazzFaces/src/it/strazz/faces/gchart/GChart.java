@@ -17,6 +17,8 @@ import javax.faces.event.FacesEvent;
 
 import org.primefaces.component.api.Widget;
 import org.primefaces.event.SelectEvent;
+import org.primefaces.json.JSONArray;
+import org.primefaces.json.JSONException;
 import org.primefaces.util.Constants;
 
 @FacesComponent(value = GChart.COMPONENT_TYPE)
@@ -101,7 +103,14 @@ public class GChart extends UIInput implements Widget,ClientBehaviorHolder {
             if(eventName.equals("select")) {
                 AjaxBehaviorEvent behaviorEvent = (AjaxBehaviorEvent) event;
                 String clientId = this.getClientId(context);
-                String value = params.get(clientId + "_hidden");
+                
+                Object value = params.get(clientId + "_hidden");
+                try {
+					value = new JSONArray(value.toString());
+				} catch (JSONException e) {
+					e.printStackTrace();
+					value = "";
+				}
                 
                 SelectEvent selectEvent = new SelectEvent(this, behaviorEvent.getBehavior(), value);
                 selectEvent.setPhaseId(behaviorEvent.getPhaseId());
