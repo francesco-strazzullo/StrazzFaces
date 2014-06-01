@@ -10,6 +10,7 @@ PrimeFaces.widget.GChart = PrimeFaces.widget.BaseWidget.extend({
 		this.height = cfg.height;
 		this.width = cfg.width;
 		this.title = cfg.title;
+		this.options = cfg.options ? JSON.parse(cfg.options) : {};
 		this.input = jQuery(this.jqId+"_hidden");
 		
 		google.load('visualization', '1.0', {
@@ -17,35 +18,31 @@ PrimeFaces.widget.GChart = PrimeFaces.widget.BaseWidget.extend({
 		});
 		
 		jQuery(document).ready(function(){
-			google.setOnLoadCallback(function() {
-				that.draw();
-			});
-
 			if (google.visualization) {
 				that.draw();
+			}else{
+				google.setOnLoadCallback(function() {
+					that.draw();
+				});
 			}
-
 		});
 		
 	},
 
 	draw : function() {
 
-		// Create the data table.
 		var dataTable = google.visualization.arrayToDataTable(this.data);
 
 		var that = this;
 		
-		var options = {};
-
-		options.title = this.title;
-		options.width = parseInt(this.width,10);
-		options.height = parseInt(this.height,10);
+		this.options.title = this.title;
+		this.options.width = parseInt(this.width,10);
+		this.options.height = parseInt(this.height,10);
 		
 		this.wrapper = new google.visualization.ChartWrapper({
 			chartType : this.type,
 			dataTable : dataTable,
-			options : options,
+			options : this.options,
 			containerId : this.id
 		});
 		
@@ -64,5 +61,6 @@ PrimeFaces.widget.GChart = PrimeFaces.widget.BaseWidget.extend({
 });
 
 PrimeFaces.widget.GChart.packages = {
-		GeoChart: 'geochart'
+		GeoChart: 'geochart',
+		OrgChart: 'orgchart'
 }

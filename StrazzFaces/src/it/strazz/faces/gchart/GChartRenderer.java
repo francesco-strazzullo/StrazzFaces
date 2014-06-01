@@ -6,7 +6,6 @@ import it.strazz.faces.gchart.model.GChartModelRow;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -14,7 +13,7 @@ import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
 import org.primefaces.json.JSONArray;
-import org.primefaces.json.JSONException;
+import org.primefaces.json.JSONObject;
 import org.primefaces.renderkit.CoreRenderer;
 import org.primefaces.util.WidgetBuilder;
 
@@ -67,9 +66,11 @@ public class GChartRenderer extends CoreRenderer {
 		GChartModel m = (GChartModel) chart.getValue();
 		
 		String data = extractDataFromModel(m);
+		String options = new JSONObject(m.getOptions()).toString();
 		
 		wb.attr("data",this.escapeText(data));
 		wb.attr("type",m != null ? m.getChartType().getChartName() : "");
+		wb.attr("options", this.escapeText(options));
 		wb.attr("title",chart.getTitle());
 		wb.attr("width",chart.getWidth());
 		wb.attr("height",chart.getHeight());

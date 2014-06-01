@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:s="http://it.strazz.faces/ui" template="/template.xhtml">
+	<ui:define name="content">
+		<h1 class="text-center title">Organizational Chart</h1>
+		<p></p>
+		<p:tabView>
+			<p:tab title="Result">
+				<s:gChart value="#{orgChartBean.chart}"/>
+			</p:tab>
+			<p:tab title="XHTML Page">
+				<pre><code>
+				</code></pre>
+			</p:tab>
+			<p:tab title="Bean">
+				<pre><code>
+				</code></pre>
+			</p:tab>
+		</p:tabView>
+	</ui:define>
+</ui:composition>

@@ -5,6 +5,7 @@ public enum GChartType {
 	AREA("AreaChart"),
 	BAR("BarChart"),
 	GEO("GeoChart"),
+	ORGANIZATIONAL("OrgChart"),
 	COLUMN("ColumnChart");
 	
 	public String getChartName() {

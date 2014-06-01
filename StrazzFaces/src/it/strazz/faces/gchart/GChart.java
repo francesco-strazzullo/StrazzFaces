@@ -25,7 +25,8 @@ import org.primefaces.util.Constants;
 @ResourceDependencies({
 		@ResourceDependency(library = "primefaces", name = "jquery/jquery.js"),
 		@ResourceDependency(library = "primefaces", name = "primefaces.js"),
-		@ResourceDependency(library = "strazzfaces", name = "gchart.js") })
+		@ResourceDependency(library = "strazzfaces", name = "gchart.js"),
+		@ResourceDependency(library = "strazzfaces/css", name = "gchart.css") })
 public class GChart extends UIOutput implements Widget,ClientBehaviorHolder {
 	public static final String COMPONENT_TYPE = "it.strazz.faces.GChart";
 	public static final String COMPONENT_FAMILY = "it.strazz.faces.components";
