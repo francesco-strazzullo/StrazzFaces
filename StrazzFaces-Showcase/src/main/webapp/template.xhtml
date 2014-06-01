@@ -11,7 +11,8 @@
 <h:head>
 	<h:outputStylesheet name="bootstrap.css" library="css" />
 	<h:outputStylesheet name="css/chargen.css" />
-	<h:outputStylesheet name="webjars/font-awesome/4.0.3/css/font-awesome.css"/>
+	<h:outputStylesheet
+		name="webjars/font-awesome/4.0.3/css/font-awesome.css" />
 	<h:outputStylesheet name="style.css" library="css" />
 	<h:outputScript name="jquery-1.11.0.min.js" library="js" />
 	<h:outputScript name="bootstrap.js" library="js" />
@@ -20,6 +21,23 @@
 	<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
 	<script>
 		hljs.initHighlightingOnLoad();
+	</script>
+	<script>
+		(function(i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function() {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script',
+				'//www.google-analytics.com/analytics.js', 'ga');
+
+		ga('create', 'UA-50862245-1',
+				'strazzfacesshowcase-thestrazz.rhcloud.com');
+		ga('send', 'pageview');
 	</script>
 </h:head>
 <h:body>
@@ -54,12 +72,15 @@
 								<li class="dropdown"><a href="#" class="dropdown-toggle"
 									data-toggle="dropdown">Components<b class="caret"></b></a>
 									<ul class="dropdown-menu">
-										<li><h:commandLink action="/pages/gchart.jsf?faces-redirect=true">GChart</h:commandLink></li>
-										<li><h:commandLink action="/pages/clock.jsf?faces-redirect=true">Clock</h:commandLink></li>
-										<li><h:commandLink action="/pages/switch/index.jsf?faces-redirect=true">Switch</h:commandLink></li>
-										<li><h:commandLink action="/pages/documentViewer/index.jsf?faces-redirect=true">Document Viewer</h:commandLink></li>
-									</ul>
-								</li>
+										<li><h:commandLink
+												action="/pages/gchart/index.jsf?faces-redirect=true">GChart</h:commandLink></li>
+										<li><h:commandLink
+												action="/pages/clock.jsf?faces-redirect=true">Clock</h:commandLink></li>
+										<li><h:commandLink
+												action="/pages/switch/index.jsf?faces-redirect=true">Switch</h:commandLink></li>
+										<li><h:commandLink
+												action="/pages/documentViewer/index.jsf?faces-redirect=true">Document Viewer</h:commandLink></li>
+									</ul></li>
 								<li><h:commandLink
 										action="/pages/download.jsf?faces-redirect=true">Download</h:commandLink></li>
 								<li><h:commandLink
@@ -68,6 +89,16 @@
 										action="/pages/contacts.jsf?faces-redirect=true">Contacts</h:commandLink></li>
 								<li><a href="http://francescostrazzullo.info"
 									target="_blank">Blog</a></li>
+							</ul>
+							<ul class="nav navbar-nav navbar-right">
+								<li><a class="pull-right"
+									href="https://flattr.com/submit/auto?user_id=francesco.strazzullo&amp;url=https://github.com/francesco-strazzullo/StrazzFaces&amp;title=StrazzFaces&amp;language=&amp;tags=github&amp;category=software">
+										<img
+										src="https://camo.githubusercontent.com/739a757846f69c1cc10163619eec008e871b591b/687474703a2f2f6170692e666c617474722e636f6d2f627574746f6e2f666c617474722d62616467652d6c617267652e706e67"
+										alt="Flattr this git repo"
+										data-canonical-src="http://api.flattr.com/button/flattr-badge-large.png"
+										style="max-width: 100%;"> </img>
+								</a></li>
 							</ul>
 						</div>
 						<!--/.nav-collapse -->

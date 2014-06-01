@@ -1,14 +1,12 @@
 package it.strazz.faces.gchart.model;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
+import java.util.Map;
 
 public interface GChartModel extends Serializable{
-	public abstract List<Object[]> getData();
-
-	public abstract String getChartType();
-
-	public abstract void addRow(Object...value);
-
-	public abstract void setColumns(String[] columns);
+	public abstract Collection<GChartModelRow> getRows();
+	public abstract Collection<String> getColumns();
+	public abstract Map<String,Object> getOptions();
+	public abstract GChartType getChartType();
 }

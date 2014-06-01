@@ -8,8 +8,8 @@ import java.util.Map;
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
 import javax.faces.component.FacesComponent;
-import javax.faces.component.UIInput;
 import javax.faces.component.UINamingContainer;
+import javax.faces.component.UIOutput;
 import javax.faces.component.behavior.ClientBehaviorHolder;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
@@ -26,7 +26,7 @@ import org.primefaces.util.Constants;
 		@ResourceDependency(library = "primefaces", name = "jquery/jquery.js"),
 		@ResourceDependency(library = "primefaces", name = "primefaces.js"),
 		@ResourceDependency(library = "strazzfaces", name = "gchart.js") })
-public class GChart extends UIInput implements Widget,ClientBehaviorHolder {
+public class GChart extends UIOutput implements Widget,ClientBehaviorHolder {
 	public static final String COMPONENT_TYPE = "it.strazz.faces.GChart";
 	public static final String COMPONENT_FAMILY = "it.strazz.faces.components";
 	private static final Collection<String> EVENT_NAMES = Collections.unmodifiableCollection(Arrays.asList("select"));

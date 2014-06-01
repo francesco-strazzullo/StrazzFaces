@@ -13,7 +13,7 @@ PrimeFaces.widget.GChart = PrimeFaces.widget.BaseWidget.extend({
 		this.input = jQuery(this.jqId+"_hidden");
 		
 		google.load('visualization', '1.0', {
-			'packages' : [ 'corechart' ]
+			'packages' : [ PrimeFaces.widget.GChart.packages[this.type] || 'corechart' ]
 		});
 		
 		jQuery(document).ready(function(){
@@ -62,3 +62,7 @@ PrimeFaces.widget.GChart = PrimeFaces.widget.BaseWidget.extend({
 	}
 
 });
+
+PrimeFaces.widget.GChart.packages = {
+		GeoChart: 'geochart'
+}

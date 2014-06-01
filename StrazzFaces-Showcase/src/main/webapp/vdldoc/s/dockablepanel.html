@@ -2,7 +2,7 @@
 <html lang="en" xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:vdldoc="http://vdldoc.org/vdldoc" xmlns:fo="http://www.w3.org/1999/XSL/Format">
 <head>
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>switch (StrazzFacess v.0.2-SNAPSHOT)
+<title>dockablepanel (StrazzFacess v.0.2-SNAPSHOT)
 			</title>
 <meta name="keywords" content="$title">
 <link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
@@ -32,12 +32,12 @@
 <div class="subNav">
 <ul class="navList">
 <li>
-<a target="_top" href="../index.html?s/switch.html">
+<a target="_top" href="../index.html?s/dockablepanel.html">
 									Frames
 								</a>
 </li>
 <li>
-<a target="_top" href="switch.html">
+<a target="_top" href="dockablepanel.html">
 									No Frames
 								</a>
 </li>
@@ -55,7 +55,7 @@
 <h1 title="Library" class="title">s</h1>
 <h2>
 									Tag
-									switch</h2>
+									dockablepanel</h2>
 </div>
 <div class="contentContainer">
 <div class="description">
@@ -84,16 +84,16 @@
 </thead>
 <tbody>
 <tr class="rowColor">
-<td class="colFirst">Component Type</td><td class="colLast"><code>it.strazz.faces.Switch</code></td>
+<td class="colFirst">Component Type</td><td class="colLast"><code>it.strazz.faces.DockablePanel</code></td>
 </tr>
 <tr class="altColor">
 <td class="colFirst">Handler Class</td><td class="colLast"><i>None</i></td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst">Renderer Type</td><td class="colLast"><code>it.strazz.faces.SwitchRenderer</code></td>
+<td class="colFirst">Renderer Type</td><td class="colLast"><code>it.strazz.faces.DockablePanelRenderer</code></td>
 </tr>
 <tr class="altColor">
-<td class="colFirst">Description</td><td class="colLast"><i>None</i></td>
+<td class="colFirst">Description</td><td class="colLast">DockablePanel with open/close functionality and callback functionsn.</td>
 </tr>
 </tbody>
 </table>
@@ -128,61 +128,40 @@
 <br>(<i>must evaluate to </i><code>javax.faces.component.UIComponent</code>)
 					</td><td class="colLast">An el expression referring to a server side UIComponent instance in a backing bean.</td>
 </tr>
-<tr id="value" class="altColor">
-<td class="colFirst"><a href="#value"><code>value</code></a></td><td class="colOne"><code>false</code></td><td class="colOne"><code>javax.el.ValueExpression</code>
-<br>(<i>must evaluate to </i><code>java.lang.Object</code>)
-					</td><td class="colLast">Value of the component.</td>
-</tr>
-<tr id="converter" class="rowColor">
-<td class="colFirst"><a href="#converter"><code>converter</code></a></td><td class="colOne"><code>false</code></td><td class="colOne"><code>javax.el.ValueExpression</code>
-<br>(<i>must evaluate to </i><code>java.faces.convert.Converter</code>)
-					</td><td class="colLast">An el expression or a literal text that defines a converter for the component. When it's an EL expression, it's resolved to a converter instance. 
-In case it's a static text, it must refer to a converter id.</td>
-</tr>
-<tr id="immediate" class="altColor">
-<td class="colFirst"><a href="#immediate"><code>immediate</code></a></td><td class="colOne"><code>false</code></td><td class="colOne"><code>javax.el.ValueExpression</code>
-<br>(<i>must evaluate to </i><code>java.lang.Boolean</code>)
-					</td><td class="colLast">When set true, process validations logic is executed at apply request values phase for this component. Default is false.</td>
-</tr>
-<tr id="required" class="rowColor">
-<td class="colFirst"><a href="#required"><code>required</code></a></td><td class="colOne"><code>false</code></td><td class="colOne"><code>javax.el.ValueExpression</code>
-<br>(<i>must evaluate to </i><code>java.lang.Boolean</code>)
-					</td><td class="colLast">Marks component as required.</td>
-</tr>
-<tr id="validator" class="altColor">
-<td class="colFirst"><a href="#validator"><code>validator</code></a></td><td class="colOne"><code>false</code></td><td class="colOne"><code>javax.el.ValueExpression</code>
-<br>(<i>must evaluate to </i><code>javax.faces.validator.Validator</code>)
-					</td><td class="colLast">A method expression referring to a method validationg the input.</td>
-</tr>
-<tr id="valueChangeListener" class="rowColor">
-<td class="colFirst"><a href="#valueChangeListener"><code>valueChangeListener</code></a></td><td class="colOne"><code>false</code></td><td class="colOne"><code>javax.el.ValueExpression</code>
-<br>(<i>must evaluate to </i><code>javax.faces.event.ValueChangeListener</code>)
-					</td><td class="colLast">A method binding expression referring to a method for handling a valuchangeevent.</td>
-</tr>
-<tr id="requiredMessage" class="altColor">
-<td class="colFirst"><a href="#requiredMessage"><code>requiredMessage</code></a></td><td class="colOne"><code>false</code></td><td class="colOne"><code>javax.el.ValueExpression</code>
-<br>(<i>must evaluate to </i><code>java.lang.String</code>)
-					</td><td class="colLast">Message to display when required field validation fails.</td>
-</tr>
-<tr id="converterMessage" class="rowColor">
-<td class="colFirst"><a href="#converterMessage"><code>converterMessage</code></a></td><td class="colOne"><code>false</code></td><td class="colOne"><code>javax.el.ValueExpression</code>
-<br>(<i>must evaluate to </i><code>java.lang.String</code>)
-					</td><td class="colLast">Message to display when conversion fails.</td>
-</tr>
-<tr id="validatorMessage" class="altColor">
-<td class="colFirst"><a href="#validatorMessage"><code>validatorMessage</code></a></td><td class="colOne"><code>false</code></td><td class="colOne"><code>javax.el.ValueExpression</code>
-<br>(<i>must evaluate to </i><code>java.lang.String</code>)
-					</td><td class="colLast">Message to display when validation fails.</td>
-</tr>
-<tr id="widgetVar" class="rowColor">
+<tr id="widgetVar" class="altColor">
 <td class="colFirst"><a href="#widgetVar"><code>widgetVar</code></a></td><td class="colOne"><code>false</code></td><td class="colOne"><code>javax.el.ValueExpression</code>
 <br>(<i>must evaluate to </i><code>java.lang.String</code>)
 					</td><td class="colLast">Name of the client side widget.</td>
 </tr>
-<tr id="type" class="altColor">
-<td class="colFirst"><a href="#type"><code>type</code></a></td><td class="colOne"><code>false</code></td><td class="colOne"><code>javax.el.ValueExpression</code>
+<tr id="position" class="rowColor">
+<td class="colFirst"><a href="#position"><code>position</code></a></td><td class="colOne"><code>false</code></td><td class="colOne"><code>javax.el.ValueExpression</code>
 <br>(<i>must evaluate to </i><code>java.lang.String</code>)
-					</td><td class="colLast">switch type. It could be "rocker","arc","side","circle","rect","toggle"</td>
+					</td><td class="colLast">DockablePanel position. It could be "top","right","bottom","left"</td>
+</tr>
+<tr id="style" class="altColor">
+<td class="colFirst"><a href="#style"><code>style</code></a></td><td class="colOne"><code>false</code></td><td class="colOne"><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+					</td><td class="colLast">Inline style.</td>
+</tr>
+<tr id="styleClass" class="rowColor">
+<td class="colFirst"><a href="#styleClass"><code>styleClass</code></a></td><td class="colOne"><code>false</code></td><td class="colOne"><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+					</td><td class="colLast">CSS panel styleClass.</td>
+</tr>
+<tr id="onopen" class="altColor">
+<td class="colFirst"><a href="#onopen"><code>onopen</code></a></td><td class="colOne"><code>false</code></td><td class="colOne"><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+					</td><td class="colLast">Client side callback function to be execute on panel open.</td>
+</tr>
+<tr id="onclose" class="rowColor">
+<td class="colFirst"><a href="#onclose"><code>onclose</code></a></td><td class="colOne"><code>false</code></td><td class="colOne"><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+					</td><td class="colLast">Client side callback function to be execute on panel close.</td>
+</tr>
+<tr id="title" class="altColor">
+<td class="colFirst"><a href="#title"><code>title</code></a></td><td class="colOne"><code>true</code></td><td class="colOne"><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+					</td><td class="colLast">DockablePanel title.</td>
 </tr>
 </tbody>
 </table>
@@ -208,12 +187,12 @@ In case it's a static text, it must refer to a converter id.</td>
 <div class="subNav">
 <ul class="navList">
 <li>
-<a target="_bottom" href="../index.html?s/switch.html">
+<a target="_bottom" href="../index.html?s/dockablepanel.html">
 									Frames
 								</a>
 </li>
 <li>
-<a target="_bottom" href="switch.html">
+<a target="_bottom" href="dockablepanel.html">
 									No Frames
 								</a>
 </li>
