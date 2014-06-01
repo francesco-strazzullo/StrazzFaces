@@ -13,4 +13,4 @@ Components:
 * **CountDown** CountDown component with a callback function
 * **Horizontal Accordion** Accordion Component with horizontal alignment
 
-[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=TheStrazz&url=https://github.com/francesco-strazzullo/StrazzFaces&title=StrazzFaces&language=&tags=github&category=software) 
+[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=francesco.strazzullo&url=https://github.com/francesco-strazzullo/StrazzFaces&title=StrazzFaces&language=&tags=github&category=software) 
