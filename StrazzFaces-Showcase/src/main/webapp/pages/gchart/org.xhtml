@@ -10,17 +10,42 @@
 	xmlns:s="http://it.strazz.faces/ui" template="/template.xhtml">
 	<ui:define name="content">
 		<h1 class="text-center title">Organizational Chart</h1>
-		<p></p>
+		<p>Google Charts is extremely versatile, in this example we use it to display an organizational Chart.</p>
 		<p:tabView>
 			<p:tab title="Result">
 				<s:gChart value="#{orgChartBean.chart}"/>
 			</p:tab>
 			<p:tab title="XHTML Page">
 				<pre><code>
+&lt;s:gChart value=&quot;#{'#{orgChartBean.chart}'}&quot;/&gt;
 				</code></pre>
 			</p:tab>
 			<p:tab title="Bean">
 				<pre><code>
+@ManagedBean
+public class OrgChartBean implements Serializable {
+	
+	private static final long serialVersionUID = 253762400419864192L;
+
+	private GChartModel chartModel = null;
+	
+	public GChartModel getChart(){
+		return chartModel;
+	}
+	
+	@PostConstruct
+	public void generateModel() {
+		chartModel = new GChartModelBuilder().setChartType(GChartType.ORGANIZATIONAL)
+			.addColumns(&quot;Name&quot;,&quot;Manager&quot;,&quot;Role&quot;)
+			.addRow(&quot;Mike&quot;, null,&quot;President&quot;)
+			.addRow(&quot;Alice&quot;, &quot;Mike&quot;,&quot;Manager&quot;)
+			.addRow(&quot;Jim&quot;, &quot;Mike&quot;,&quot;Manager&quot;)
+			.addRow(&quot;Bob&quot;, &quot;Alice&quot;,null)
+			.addOption(&quot;size&quot;, &quot;large&quot;)
+			.build();
+	}
+}
+
 				</code></pre>
 			</p:tab>
 		</p:tabView>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:s="http://it.strazz.faces/ui"
+	template="/template.xhtml">
+	<ui:define name="content">
+		<h1 class="text-center title">Clock</h1>
+		<p:tabView>
+			<p:tab title="Result">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-3">
+							<p>Aristo</p>
+							<s:analogClock />
+						</div>
+						<div class="col-md-3">
+							<p>Black</p>
+							<s:analogClock colorTheme="black" />
+						</div>
+						<div class="col-md-3">
+							<p>Custom</p>
+							<s:analogClock colorTheme="#{themeClockBean.customTheme}" />
+						</div>
+						<div class="col-md-3">
+							<p>Random</p>
+							<s:analogClock colorTheme="#{themeClockBean.randomTheme}" />
+						</div>
+					</div>
+				</div>
+			</p:tab>
+			<p:tab title="XHTML Page">
+				<pre>
+					<code>
+&lt;div class=&quot;container&quot;&gt;
+	&lt;div class=&quot;row&quot;&gt;
+		&lt;div class=&quot;col-md-3&quot;&gt;
+			&lt;p&gt;Aristo&lt;/p&gt;
+			&lt;s:analogClock /&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-3&quot;&gt;
+			&lt;p&gt;Black&lt;/p&gt;
+			&lt;s:analogClock colorTheme=&quot;black&quot; /&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-3&quot;&gt;
+			&lt;p&gt;Custom&lt;/p&gt;
+			&lt;s:analogClock colorTheme=&quot;#{'#{themeClockBean.customTheme}'}&quot; /&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-3&quot;&gt;
+			&lt;p&gt;Random&lt;/p&gt;
+			&lt;s:analogClock colorTheme=&quot;#{'#{themeClockBean.randomTheme}'}&quot; /&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+				</code>
+				</pre>
+			</p:tab>
+			<p:tab title="Bean">
+				<pre>
+					<code>
+@ManagedBean
+@RequestScoped
+public class ThemeClockBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	private ColorTheme randomTheme = new DefaultColorTheme();
+	private ColorTheme customTheme = new DefaultColorTheme();
+	private Random random = new Random();
+
+	public ThemeClockBean() {
+		
+		customTheme.setBorder(Color.RED);
+		customTheme.setFace(Color.DARK_GRAY);
+		customTheme.setHourHand(Color.WHITE);
+		customTheme.setHourSigns(Color.DARK_GRAY);
+		customTheme.setMinuteHand(Color.WHITE);
+		customTheme.setPin(Color.RED);
+		customTheme.setSecondHand(Color.WHITE);
+		
+		randomTheme.setBorder(randomColor());
+		randomTheme.setFace(randomColor());
+		randomTheme.setHourHand(randomColor());
+		randomTheme.setHourSigns(randomColor());
+		randomTheme.setMinuteHand(randomColor());
+		randomTheme.setPin(randomColor());
+		randomTheme.setSecondHand(randomColor());
+		
+	}
+
+	public ColorTheme getCustomTheme() {
+		return customTheme;
+	}
+
+	public ColorTheme getRandomTheme() {
+		return randomTheme;
+	}
+
+	private Color randomColor() {
+		int red = random.nextInt(256);
+		int green = random.nextInt(256);
+		int blue = random.nextInt(256);
+		return new Color(red, green, blue);
+	}
+
+}
+				</code>
+				</pre>
+			</p:tab>
+		</p:tabView>
+	</ui:define>
+</ui:composition>

@@ -9,18 +9,47 @@
 	xmlns:pe="http://primefaces.org/ui/extensions"
 	xmlns:s="http://it.strazz.faces/ui" template="/template.xhtml">
 	<ui:define name="content">
-		<h1 class="text-center title">GChart</h1>
-		<p></p>
+		<h1 class="text-center title">Geo Chart</h1>
+		<p>In this example we use a GeoChart to show data about countries. As you can see to add the rows to our datatable we can use simple strings or java.util.Locale.</p>
 		<p:tabView>
 			<p:tab title="Result">
-				<s:gChart value="#{geoChartBean.chart}" title="Example GeoChart"/>
+				<s:gChart value="#{geoChartBean.chart}"/>
 			</p:tab>
 			<p:tab title="XHTML Page">
 				<pre><code>
+&lt;s:gChart value=&quot;#{'#{geoChartBean.chart}'}&quot; /&gt;
 				</code></pre>
 			</p:tab>
 			<p:tab title="Bean">
 				<pre><code>
+@ManagedBean
+public class GeoChartBean implements Serializable {
+	
+	private static final long serialVersionUID = 253762400419864192L;
+
+	private GChartModel chartModel = null;
+	
+	public GChartModel getChart(){
+		return chartModel;
+	}
+	
+	@PostConstruct
+	public void generateModel() {
+		
+		Locale englishLocale = Locale.ENGLISH;
+		
+		chartModel = new GChartModelBuilder().setChartType(GChartType.GEO)
+				.addColumns(&quot;Country&quot;, &quot;Popularity&quot;)
+				.addRow(Locale.GERMANY.getDisplayCountry(englishLocale), 1200)
+				.addRow(Locale.FRANCE.getDisplayCountry(englishLocale), 1800)
+				.addRow(&quot;Russia&quot;, 1800)
+				.addRow(Locale.ITALY.getDisplayCountry(englishLocale), 2000)
+				.addRow(Locale.CHINA.getDisplayCountry(englishLocale),2200)
+				.addRow(Locale.US.getDisplayCountry(englishLocale),2500)
+				
+				.build();
+	}
+}
 				</code></pre>
 			</p:tab>
 		</p:tabView>

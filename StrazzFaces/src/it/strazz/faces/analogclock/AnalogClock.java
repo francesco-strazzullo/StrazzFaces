@@ -10,9 +10,11 @@ import javax.faces.component.UINamingContainer;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.component.api.Widget;
+import org.primefaces.context.RequestContext;
 
 @FacesComponent(value = AnalogClock.COMPONENT_TYPE)
 @ResourceDependencies({
+		@ResourceDependency(library = "underscore", name = "underscore-min.js"),
 		@ResourceDependency(library = "moment", name = "moment.min.js"),
 		@ResourceDependency(library = "primefaces", name = "jquery/jquery.js"),
 		@ResourceDependency(library = "raphael", name = "raphael-min.js"),
@@ -22,7 +24,7 @@ public class AnalogClock extends UIComponentBase implements Widget {
 
 	public static final String COMPONENT_TYPE = "it.strazz.faces.AnalogClock";
 	public static final String COMPONENT_FAMILY = "it.strazz.faces.components";
-
+	
 	@Override
 	public String getFamily() {
 		return COMPONENT_FAMILY;
@@ -59,6 +61,14 @@ public class AnalogClock extends UIComponentBase implements Widget {
 	public void setWidgetVar(String _widgetVar) {
 		getStateHelper().put(PropertyKeys.widgetVar, _widgetVar);
 	}
+	
+	public Object getColorTheme() {
+		return getStateHelper().eval(PropertyKeys.colorTheme, RequestContext.getCurrentInstance().getApplicationContext().getConfig().getTheme());
+	}
+
+	public void setColorTheme(Object colorScheme) {
+		getStateHelper().put(PropertyKeys.colorTheme, colorScheme);
+	}
 
 	@Override
 	public String resolveWidgetVar() {
@@ -75,6 +85,6 @@ public class AnalogClock extends UIComponentBase implements Widget {
 	}
 
 	protected static enum PropertyKeys {
-		width, widgetVar, startTime, mode;
+		colorTheme,width, widgetVar, startTime, mode;
 	}
 }

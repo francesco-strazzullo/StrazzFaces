@@ -5,7 +5,9 @@ PrimeFaces.widget.AnalogClock = PrimeFaces.widget.BaseWidget.extend({
 
 				this.startTime = cfg.time && cfg.mode !== 'client' ? moment(cfg.time) : moment();
 
-				this.colorScheme = cfg.colorScheme || 'standard';
+				this.colorTheme = cfg.colorTheme || 'aristo';
+				
+				this.themeObject = cfg.themeObject ? JSON.parse(cfg.themeObject) : PrimeFaces.widget.AnalogClock.colorThemes[this.colorTheme];
 				
 				this.dimensions = new PrimeFaces.widget.AnalogClock.Dimensions(this.cfg.width || this.jq.width());
 				
@@ -24,8 +26,8 @@ PrimeFaces.widget.AnalogClock = PrimeFaces.widget.BaseWidget.extend({
 				
 				this.clock = this.canvas.circle(this.dimensions.half, this.dimensions.half, this.dimensions.clock_width);
 				this.clock.attr({
-					"fill" : PrimeFaces.widget.AnalogClock.colorSchemes[this.colorScheme].face,
-					"stroke" :PrimeFaces.widget.AnalogClock.colorSchemes[this.colorScheme].border,
+					"fill" : this.themeObject.face,
+					"stroke" :this.themeObject.border,
 					"stroke-width" : "5"
 				})
 				
@@ -34,7 +36,7 @@ PrimeFaces.widget.AnalogClock = PrimeFaces.widget.BaseWidget.extend({
 				this.draw_hands();
 				
 				var pin = this.canvas.circle(this.dimensions.half, this.dimensions.half, this.dimensions.pin_width);
-				pin.attr("fill", PrimeFaces.widget.AnalogClock.colorSchemes[this.colorScheme].pin);
+				pin.attr("fill", this.themeObject.pin);
 
 				this.update();
 			},
@@ -51,7 +53,7 @@ PrimeFaces.widget.AnalogClock = PrimeFaces.widget.BaseWidget.extend({
 					
 					hour_sign = this.canvas.path("M" + start_x + " " + start_y	+ "L" + end_x + " " + end_y);
 					hour_sign.attr({
-						"stroke":PrimeFaces.widget.AnalogClock.colorSchemes[this.colorScheme].hour_signs,
+						"stroke":this.themeObject.hourSigns,
 						"stroke-width" : this.dimensions.hour_sign_stroke_width
 					});
 				}
@@ -61,19 +63,19 @@ PrimeFaces.widget.AnalogClock = PrimeFaces.widget.BaseWidget.extend({
 				
 				this.hour_hand = this.canvas.path("M" + this.dimensions.half + " " + this.dimensions.half	+ "L" + this.dimensions.half + " " + this.dimensions.hour_hand_start_position);
 				this.hour_hand.attr({
-					stroke : PrimeFaces.widget.AnalogClock.colorSchemes[this.colorScheme].hour_hand,
+					stroke : this.themeObject.hourHand,
 					"stroke-width" : this.dimensions.hour_hand_stroke_width
 				});
 				
 				this.minute_hand = this.canvas.path("M" + this.dimensions.half + " " + this.dimensions.half	+ "L" + this.dimensions.half + " " + this.dimensions.minute_hand_start_position);
 				this.minute_hand.attr({
-					stroke : PrimeFaces.widget.AnalogClock.colorSchemes[this.colorScheme].minute_hand,
+					stroke : this.themeObject.minuteHand,
 					"stroke-width" : this.dimensions.minute_hand_stroke_width
 				});
 				
 				this.second_hand = this.canvas.path("M" + this.dimensions.half + " " + this.dimensions.half	+ "L" + this.dimensions.half + " " + this.dimensions.second_hand_start_position);
 				this.second_hand.attr({
-					stroke : PrimeFaces.widget.AnalogClock.colorSchemes[this.colorScheme].second_hand,
+					stroke : this.themeObject.secondHand,
 					"stroke-width" : this.dimensions.second_hand_stroke_width
 				});
 			},
@@ -90,24 +92,34 @@ PrimeFaces.widget.AnalogClock = PrimeFaces.widget.BaseWidget.extend({
 
 		});
 
-PrimeFaces.widget.AnalogClock.colorSchemes = {
-	standard : {
+PrimeFaces.widget.AnalogClock.colorThemes = {
+	aristo : {
 		face:'#f5f5f5',
 		border:'#444444',
-		hour_signs: '#000000',
-		hour_hand: '#444444',
-		minute_hand: '#444444',
-		second_hand: '#444444',
+		hourSigns: '#000000',
+		hourHand: '#444444',
+		minuteHand: '#444444',
+		secondHand: '#444444',
 		pin: '#000000'
 		
 	},
-	all_black : {
+	black : {
 		face:'#000000',
 		border:'#000000',
-		hour_signs: '#000000',
-		hour_hand: '#FFFFFF',
-		minute_hand: '#FFFFFF',
-		second_hand: '#FFFFFF',
+		hourSigns: '#000000',
+		hourHand: '#FFFFFF',
+		minuteHand: '#FFFFFF',
+		secondHand: '#FFFFFF',
+		pin: '#FFFFFF'
+		
+	},
+	blue : {
+		face:'#1B1BB3',
+		border:'#7373D9',
+		hourSigns: '#090974',
+		hourHand: '#FFFFFF',
+		minuteHand: '#FFFFFF',
+		secondHand: '#FFFFFF',
 		pin: '#FFFFFF'
 		
 	}

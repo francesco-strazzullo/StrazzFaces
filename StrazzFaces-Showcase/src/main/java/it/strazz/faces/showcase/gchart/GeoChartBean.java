@@ -5,6 +5,7 @@ import it.strazz.faces.gchart.model.GChartModelBuilder;
 import it.strazz.faces.gchart.model.GChartType;
 
 import java.io.Serializable;
+import java.util.Locale;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -22,8 +23,18 @@ public class GeoChartBean implements Serializable {
 	
 	@PostConstruct
 	public void generateModel() {
+		
+		Locale englishLocale = Locale.ENGLISH;
+		
 		chartModel = new GChartModelBuilder().setChartType(GChartType.GEO)
-				.addColumns("Country", "Popularity").addRow("Germany", 400).addRow("France", 600)
-				.addRow("Italy", 1000).build();
+				.addColumns("Country", "Popularity")
+				.addRow(Locale.GERMANY.getDisplayCountry(englishLocale), 1200)
+				.addRow(Locale.FRANCE.getDisplayCountry(englishLocale), 1800)
+				.addRow("Russia", 1800)
+				.addRow(Locale.ITALY.getDisplayCountry(englishLocale), 2000)
+				.addRow(Locale.CHINA.getDisplayCountry(englishLocale),2200)
+				.addRow(Locale.US.getDisplayCountry(englishLocale),2500)
+				
+				.build();
 	}
 }

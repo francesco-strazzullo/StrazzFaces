@@ -23,7 +23,13 @@ public class OrgChartBean implements Serializable {
 	@PostConstruct
 	public void generateModel() {
 		chartModel = new GChartModelBuilder().setChartType(GChartType.ORGANIZATIONAL)
-				.addColumns("Name","Manager","Role").addRow("Mike", null,"President").addRow("Alice", "Mike","Manager")
-				.addRow("Jim", "Mike","Manager").addRow("Bob", "Alice",null).addOption("size", "large").build();
+			.addColumns("Name","Manager","Role")
+			.addRow("Mike", null,"President")
+			.addRow("Alice", "Mike","Manager")
+			.addRow("Jim", "Mike","Manager")
+			.addRow("Bob", "Alice",null)
+			.addOption("size", "large")
+			.build();
 	}
 }
+

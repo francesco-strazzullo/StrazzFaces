@@ -42,17 +42,14 @@
 	&lt;p:inputText converter=&quot;javax.faces.Integer&quot;
 		value=&quot;#{'#{chartBean.mushrooms}'}&quot; /&gt;
 	&lt;p:inputText converter=&quot;javax.faces.Integer&quot;
-		value=&quot;#{'chartBean.onions}'}&quot; /&gt;
+		value=&quot;#{'#{chartBean.onions}'}&quot; /&gt;
 	&lt;h:selectOneMenu value=&quot;#{'#{chartBean.chartType}'}&quot;&gt;
-		&lt;f:selectItem itemLabel=&quot;PieChart&quot; itemValue=&quot;PieChart&quot; /&gt;
-		&lt;f:selectItem itemLabel=&quot;ColumnChart&quot; itemValue=&quot;ColumnChart&quot; /&gt;
-		&lt;f:selectItem itemLabel=&quot;BarChart&quot; itemValue=&quot;BarChart&quot; /&gt;
-		&lt;f:selectItem itemLabel=&quot;AreaChart&quot; itemValue=&quot;AreaChart&quot; /&gt;
+		&lt;f:selectItems value=&quot;#{'#{GChartType}'}&quot;/&gt;
 	&lt;/h:selectOneMenu&gt;
 &lt;/h:panelGrid&gt;
 &lt;p:commandButton value=&quot;Generate&quot; update=&quot;@form&quot; action=&quot;#{'#{chartBean.generateModel}'}&quot; /&gt;
 &lt;s:gChart value=&quot;#{'#{chartBean.chart}'}&quot; title=&quot;How Much Pizza I Ate Last Night&quot;&gt;
-	&lt;p:ajax listener=&quot;#{'#{chartBean.onSelect'}&quot;/&gt;
+	&lt;p:ajax listener=&quot;#{'#{chartBean.onSelect}'}&quot;/&gt;
 &lt;/s:gChart&gt;
 				</code></pre>
 			</p:tab>
@@ -65,7 +62,7 @@ public class ChartBean implements Serializable {
 
 	private int mushrooms = 1;
 	private int onions = 1;
-	private String chartType = PieChartModel.CHART_TYPE;
+	private GChartType chartType = GChartType.PIE;
 	private GChartModel chartModel = null;
 	
 	public GChartModel getChart(){
@@ -73,22 +70,19 @@ public class ChartBean implements Serializable {
 	}
 	
 	@PostConstruct
-	public void generateModel(){
-		
-		chartModel = GChartModelFactory.newChartModel(getChartType());
-		chartModel.setColumns(new String[]{"Topping","Slices"});
-		chartModel.addRow("Mushrooms", mushrooms);
-		chartModel.addRow("Onions", onions);
-	
+	public void generateModel() {
+		chartModel = new GChartModelBuilder().setChartType(getChartType())
+				.addColumns(&quot;Topping&quot;, &quot;Slices&quot;).addRow(&quot;Mushrooms&quot;, mushrooms)
+				.addRow(&quot;Onions&quot;, onions).build();
 	}
 	
 	public void onSelect(SelectEvent event){
 		try {
 			JSONArray value = (JSONArray) event.getObject();
-			if(value.length() > 0){
+			if(value.length() &gt; 0){
 				JSONObject object = (JSONObject) value.get(0);
-				String label = (String) this.getChart().getData().get(1+(int) object.get("row"))[0];
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "You have selected: " + label, null));
+				String label = new ArrayList&lt;GChartModelRow&gt;(this.getChart().getRows()).get((Integer) object.get(&quot;row&quot;)).getLabel();
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, &quot;You have selected: &quot; + label, null));
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -111,11 +105,11 @@ public class ChartBean implements Serializable {
 		this.onions = onions;
 	}
 
-	public String getChartType() {
+	public GChartType getChartType() {
 		return chartType;
 	}
 
-	public void setChartType(String chartType) {
+	public void setChartType(GChartType chartType) {
 		this.chartType = chartType;
 	}
 }
