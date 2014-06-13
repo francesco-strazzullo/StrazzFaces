@@ -35,6 +35,12 @@
             <type>javax.faces.component.UIComponent</type>
         </attribute>
         <attribute>
+            <description><![CDATA[theme of the analogClock. It can also be a ColorTheme object to set a custom theme]]></description>
+            <name>colorTheme</name>
+            <required>false</required>
+            <type>java.lang.Object</type>
+        </attribute>
+        <attribute>
             <description><![CDATA[Name of the client side widget.]]></description>
             <name>widgetVar</name>
             <required>false</required>
