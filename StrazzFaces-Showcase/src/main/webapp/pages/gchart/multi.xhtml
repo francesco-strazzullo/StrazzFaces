@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:s="http://it.strazz.faces/ui" template="/template.xhtml">
+	<ui:define name="content">
+		<h1 class="text-center title">GChart</h1>
+		<p>You can also use multiple series in GCharts, the only thing to do is to choose the right GChartType ('COLUMN' in this case) and fill more columns.</p>
+		<p:tabView>
+			<p:tab title="Result">
+				<s:gChart value="#{multiSeriesChartBean.chart}" title="Company Performance"/>
+			</p:tab>
+			<p:tab title="XHTML Page">
+				<pre><code>
+&lt;s:gChart value=&quot;#{'#{multiSeriesChartBean.chart}'}&quot; title=&quot;Company Performance&quot;/&gt;
+				</code></pre>
+			</p:tab>
+			<p:tab title="Bean">
+				<pre><code>
+@ManagedBean
+public class MultiSeriesChartBean implements Serializable {
+	
+	private static final long serialVersionUID = 253762400419864192L;
+
+	private GChartModel chartModel = null;
+	
+	public GChartModel getChart(){
+		return chartModel;
+	}
+	
+	@PostConstruct
+	public void generateModel() {
+		chartModel = new GChartModelBuilder().setChartType(GChartType.COLUMN)
+				.addColumns("Year", "Salves","Expenses")
+				.addRow("2010",  1000, 400)
+				.addRow("2011",  1200, 800)
+				.addRow("2012",  2000, 1800)
+				.addRow("2013",  1500, 1800)
+				.addRow("2014",  1300, 1000)
+				.build();
+	}
+}
+				</code></pre>
+			</p:tab>
+		</p:tabView>
+	</ui:define>
+</ui:composition>
