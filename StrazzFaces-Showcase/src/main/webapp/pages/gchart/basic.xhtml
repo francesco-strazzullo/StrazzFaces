@@ -10,7 +10,7 @@
 	xmlns:s="http://it.strazz.faces/ui" template="/template.xhtml">
 	<ui:define name="content">
 		<h1 class="text-center title">GChart</h1>
-		<p>GChart in a JSF <a href="https://developers.google.com/chart/" target="_blank">Google Charts</a> Wrapper. You can also use a <i>p:ajax</i> that is fired when the user select some data from the chart.</p>
+		<p>GChart is a JSF <a href="https://developers.google.com/chart/" target="_blank">Google Charts</a> Wrapper. You can also use a <i>p:ajax</i> that is fired when the user select some data from the chart.</p>
 		<pe:importConstants className="it.strazz.faces.gchart.model.GChartType"	var="GChartType" />
 		<p:tabView>
 			<p:tab title="Result">
@@ -24,7 +24,7 @@
 					<p:inputText converter="javax.faces.Integer"
 						value="#{chartBean.onions}" />
 					<h:selectOneMenu value="#{chartBean.chartType}">
-						<f:selectItems value="#{GChartType}"/>
+						<f:selectItems value="#{chartBean.types}"/>
 					</h:selectOneMenu>
 				</h:panelGrid>
 				<p:commandButton value="Generate" update="@form" action="#{chartBean.generateModel}" />
@@ -44,7 +44,7 @@
 	&lt;p:inputText converter=&quot;javax.faces.Integer&quot;
 		value=&quot;#{'#{chartBean.onions}'}&quot; /&gt;
 	&lt;h:selectOneMenu value=&quot;#{'#{chartBean.chartType}'}&quot;&gt;
-		&lt;f:selectItems value=&quot;#{'#{GChartType}'}&quot;/&gt;
+		&lt;f:selectItems value=&quot;#{'#{chartBean.types}'}&quot;/&gt;
 	&lt;/h:selectOneMenu&gt;
 &lt;/h:panelGrid&gt;
 &lt;p:commandButton value=&quot;Generate&quot; update=&quot;@form&quot; action=&quot;#{'#{chartBean.generateModel}'}&quot; /&gt;
@@ -60,8 +60,9 @@ public class ChartBean implements Serializable {
 	
 	private static final long serialVersionUID = 253762400419864192L;
 
-	private int mushrooms = 1;
-	private int onions = 1;
+	private Random random = new Random();
+	private int mushrooms = random.nextInt(10);
+	private int onions = random.nextInt(10);
 	private GChartType chartType = GChartType.PIE;
 	private GChartModel chartModel = null;
 	
@@ -111,6 +112,10 @@ public class ChartBean implements Serializable {
 
 	public void setChartType(GChartType chartType) {
 		this.chartType = chartType;
+	}
+	
+	public List&lt;GChartType&gt; getTypes(){
+		return Lists.newArrayList(GChartType.AREA,GChartType.BAR,GChartType.COLUMN,GChartType.PIE);
 	}
 }
 				</code></pre>

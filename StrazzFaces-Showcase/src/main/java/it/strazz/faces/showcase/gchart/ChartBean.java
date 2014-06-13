@@ -7,6 +7,8 @@ import it.strazz.faces.gchart.model.GChartType;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -18,13 +20,16 @@ import org.primefaces.json.JSONArray;
 import org.primefaces.json.JSONException;
 import org.primefaces.json.JSONObject;
 
+import com.google.common.collect.Lists;
+
 @ManagedBean
 public class ChartBean implements Serializable {
 	
 	private static final long serialVersionUID = 253762400419864192L;
 
-	private int mushrooms = 1;
-	private int onions = 1;
+	private Random random = new Random();
+	private int mushrooms = random.nextInt(10);
+	private int onions = random.nextInt(10);
 	private GChartType chartType = GChartType.PIE;
 	private GChartModel chartModel = null;
 	
@@ -74,5 +79,9 @@ public class ChartBean implements Serializable {
 
 	public void setChartType(GChartType chartType) {
 		this.chartType = chartType;
+	}
+	
+	public List<GChartType> getTypes(){
+		return Lists.newArrayList(GChartType.AREA,GChartType.BAR,GChartType.COLUMN,GChartType.PIE);
 	}
 }
