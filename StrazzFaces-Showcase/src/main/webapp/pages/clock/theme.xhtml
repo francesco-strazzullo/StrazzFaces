@@ -10,20 +10,24 @@
 	<ui:define name="content">
 		<h1 class="text-center title">Analog Clock</h1>
 		<p>
-			It's also possible to paint your <i>s:analogClock</i>! You can use one of the presets (for now only "blue" and "black") or use a ColorTheme model to create your own set. 
-			Soon the colors of your clock will sync with PrimeFaces Theme!
+			It's also possible to paint your <i>s:analogClock</i>! It will sync with the PrimeFaces theme! If you need custom colors you can use a ColorTheme model to create your own set. 
 		</p>
 		<p:tabView>
 			<p:tab title="Result">
+				Change Theme
+				<p:themeSwitcher id="basic" style="width:200px">
+					<f:selectItems value="#{showcaseBean.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme.name}" />
+				</p:themeSwitcher>
+				<hr/>
 				<div class="container">
 					<div class="row">
 						<div class="col-md-3">
-							<p>Aristo</p>
+							<p>Theme Sync</p>
 							<s:analogClock />
 						</div>
 						<div class="col-md-3">
-							<p>Black</p>
-							<s:analogClock colorTheme="black" />
+							<p>Black-Tie</p>
+							<s:analogClock colorTheme="black-tie" />
 						</div>
 						<div class="col-md-3">
 							<p>Custom</p>
@@ -47,7 +51,7 @@
 		&lt;/div&gt;
 		&lt;div class=&quot;col-md-3&quot;&gt;
 			&lt;p&gt;Black&lt;/p&gt;
-			&lt;s:analogClock colorTheme=&quot;black&quot; /&gt;
+			&lt;s:analogClock colorTheme=&quot;black-tie&quot; /&gt;
 		&lt;/div&gt;
 		&lt;div class=&quot;col-md-3&quot;&gt;
 			&lt;p&gt;Custom&lt;/p&gt;

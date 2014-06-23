@@ -19,6 +19,7 @@ import org.primefaces.context.RequestContext;
 		@ResourceDependency(library = "primefaces", name = "jquery/jquery.js"),
 		@ResourceDependency(library = "raphael", name = "raphael-min.js"),
 		@ResourceDependency(library = "primefaces", name = "primefaces.js"),
+		@ResourceDependency(library = "strazzfaces", name = "core.js"),
 		@ResourceDependency(library = "strazzfaces", name = "analog-clock.js") })
 public class AnalogClock extends UIComponentBase implements Widget {
 

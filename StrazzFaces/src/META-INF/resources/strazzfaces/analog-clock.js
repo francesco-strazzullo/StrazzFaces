@@ -5,6 +5,8 @@ PrimeFaces.widget.AnalogClock = PrimeFaces.widget.BaseWidget.extend({
 
 				this.startTime = cfg.time && cfg.mode !== 'client' ? moment(cfg.time) : moment();
 
+				this.sync = !(cfg.colorTheme || cfg.themeObject);
+				
 				this.colorTheme = cfg.colorTheme || 'aristo';
 				
 				this.themeObject = cfg.themeObject ? JSON.parse(cfg.themeObject) : PrimeFaces.widget.AnalogClock.colorThemes[this.colorTheme];
@@ -16,7 +18,19 @@ PrimeFaces.widget.AnalogClock = PrimeFaces.widget.BaseWidget.extend({
 						self.update();
 					}
 				})(this), 1000);
-
+				
+				var that = this;
+				
+				if(this.sync){
+					$(document).on("StrazzFaces.themeChanged",function(event,theme){
+						that.colorTheme = theme;
+						that.themeObject = PrimeFaces.widget.AnalogClock.colorThemes[that.colorTheme];
+						that.update();
+						console.log("changed in " + theme);
+					});
+				}
+				
+				
 				this.draw();
 			},
 
@@ -25,25 +39,17 @@ PrimeFaces.widget.AnalogClock = PrimeFaces.widget.BaseWidget.extend({
 				this.canvas = Raphael(this.id, this.dimensions.size, this.dimensions.size);
 				
 				this.clock = this.canvas.circle(this.dimensions.half, this.dimensions.half, this.dimensions.clock_width);
-				this.clock.attr({
-					"fill" : this.themeObject.face,
-					"stroke" :this.themeObject.border,
-					"stroke-width" : "5"
-				})
 				
 				this.draw_hour_signs();
 				
 				this.draw_hands();
 				
-				var pin = this.canvas.circle(this.dimensions.half, this.dimensions.half, this.dimensions.pin_width);
-				pin.attr("fill", this.themeObject.pin);
-
+				this.pin = this.canvas.circle(this.dimensions.half, this.dimensions.half, this.dimensions.pin_width);
+				
 				this.update();
 			},
 			
 			draw_hour_signs: function(){
-				var hour_sign;
-				
 				for (i = 0; i < 12; i++) {
 					
 					var start_x = this.dimensions.half + Math.round(this.dimensions.hour_sign_min_size * Math.cos(30 * i	* Math.PI / 180));
@@ -51,33 +57,19 @@ PrimeFaces.widget.AnalogClock = PrimeFaces.widget.BaseWidget.extend({
 					var end_x = this.dimensions.half + Math.round(this.dimensions.hour_sign_max_size * Math.cos(30 * i * Math.PI	/ 180));
 					var end_y = this.dimensions.half + Math.round(this.dimensions.hour_sign_max_size * Math.sin(30 * i * Math.PI	/ 180));
 					
-					hour_sign = this.canvas.path("M" + start_x + " " + start_y	+ "L" + end_x + " " + end_y);
-					hour_sign.attr({
-						"stroke":this.themeObject.hourSigns,
-						"stroke-width" : this.dimensions.hour_sign_stroke_width
-					});
+					this.hour_sign = this.canvas.path("M" + start_x + " " + start_y	+ "L" + end_x + " " + end_y);
+				
 				}
 			},
 			
 			draw_hands: function(){
 				
 				this.hour_hand = this.canvas.path("M" + this.dimensions.half + " " + this.dimensions.half	+ "L" + this.dimensions.half + " " + this.dimensions.hour_hand_start_position);
-				this.hour_hand.attr({
-					stroke : this.themeObject.hourHand,
-					"stroke-width" : this.dimensions.hour_hand_stroke_width
-				});
 				
 				this.minute_hand = this.canvas.path("M" + this.dimensions.half + " " + this.dimensions.half	+ "L" + this.dimensions.half + " " + this.dimensions.minute_hand_start_position);
-				this.minute_hand.attr({
-					stroke : this.themeObject.minuteHand,
-					"stroke-width" : this.dimensions.minute_hand_stroke_width
-				});
 				
 				this.second_hand = this.canvas.path("M" + this.dimensions.half + " " + this.dimensions.half	+ "L" + this.dimensions.half + " " + this.dimensions.second_hand_start_position);
-				this.second_hand.attr({
-					stroke : this.themeObject.secondHand,
-					"stroke-width" : this.dimensions.second_hand_stroke_width
-				});
+				
 			},
 
 			update : function() {
@@ -87,6 +79,34 @@ PrimeFaces.widget.AnalogClock = PrimeFaces.widget.BaseWidget.extend({
 				this.minute_hand.rotate(6 * this.startTime.minutes(), this.dimensions.half, this.dimensions.half);
 				this.second_hand.rotate(6 * this.startTime.seconds(), this.dimensions.half, this.dimensions.half);
 
+				this.clock.attr({
+					"fill" : this.themeObject.face,
+					"stroke" :this.themeObject.border,
+					"stroke-width" : "5"
+				});
+				
+				this.hour_sign.attr({
+					"stroke":this.themeObject.hourSigns,
+					"stroke-width" : this.dimensions.hour_sign_stroke_width
+				});
+				
+				this.hour_hand.attr({
+					stroke : this.themeObject.hourHand,
+					"stroke-width" : this.dimensions.hour_hand_stroke_width
+				});
+				
+				this.minute_hand.attr({
+					stroke : this.themeObject.minuteHand,
+					"stroke-width" : this.dimensions.minute_hand_stroke_width
+				});
+				
+				this.second_hand.attr({
+					stroke : this.themeObject.secondHand,
+					"stroke-width" : this.dimensions.second_hand_stroke_width
+				});
+				
+				this.pin.attr("fill", this.themeObject.pin);
+				
 				this.startTime.add('s', 1);
 			}
 
@@ -101,9 +121,8 @@ PrimeFaces.widget.AnalogClock.colorThemes = {
 		minuteHand: '#444444',
 		secondHand: '#444444',
 		pin: '#000000'
-		
 	},
-	black : {
+	'black-tie' : {
 		face:'#000000',
 		border:'#000000',
 		hourSigns: '#000000',
@@ -111,17 +130,6 @@ PrimeFaces.widget.AnalogClock.colorThemes = {
 		minuteHand: '#FFFFFF',
 		secondHand: '#FFFFFF',
 		pin: '#FFFFFF'
-		
-	},
-	blue : {
-		face:'#1B1BB3',
-		border:'#7373D9',
-		hourSigns: '#090974',
-		hourHand: '#FFFFFF',
-		minuteHand: '#FFFFFF',
-		secondHand: '#FFFFFF',
-		pin: '#FFFFFF'
-		
 	}
 }
 
