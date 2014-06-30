@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:s="http://it.strazz.faces/ui"
+	template="/template.xhtml">
+	<ui:define name="content">
+		<h1 class="text-center title">Gravatar</h1>
+		<p>
+			<i>s:gravatar</i> it's a simple wrapper of <a
+				href="https://gravatar.com/" target="_blank">Gravatar</a>. You just
+			need an email address and the component will show the profile photo
+			of the chosen Gravatar user. It's also possible to print a QR Code.
+		</p>
+		<p:tabView>
+			<p:tab title="Result">
+				<h3>Italian JSF Developers</h3>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Photo</th>
+							<th>Bio</th>
+							<th>QRCode</th>
+						</tr>
+					</thead>
+					<tbody>
+						<ui:repeat var="profile" value="#{basicGravatarBean.profiles}">
+							<tr>
+								<td>
+									#{profile.name}
+								</td>
+								<td>
+									<s:gravatar value="#{profile.email}"/>
+								</td>
+								<td>
+									#{profile.bio}
+								</td>
+								<td>
+									<s:gravatar value="#{profile.email}" qrCode="true"/>
+								</td>
+							</tr>
+						</ui:repeat>
+					</tbody>
+				</table>
+			</p:tab>
+			<p:tab title="XHTML Page">
+				<pre>
+					<code>
+&lt;h3&gt;Italian JSF Developers&lt;/h3&gt;
+&lt;table class=&quot;table&quot;&gt;
+	&lt;thead&gt;
+		&lt;tr&gt;
+			&lt;th&gt;Photo&lt;/th&gt;
+			&lt;th&gt;Bio&lt;/th&gt;
+			&lt;th&gt;QRCode&lt;/th&gt;
+		&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+		&lt;ui:repeat var=&quot;profile&quot; value=&quot;#{'#{basicGravatarBean.profiles}'}&quot;&gt;
+			&lt;tr&gt;
+				&lt;td&gt;
+					&lt;s:gravatar value=&quot;#{'#{profile.email}'}&quot;/&gt;
+				&lt;/td&gt;
+				&lt;td&gt;
+					#{'#{profile.bio}'}
+				&lt;/td&gt;
+				&lt;td&gt;
+					&lt;s:gravatar value=&quot;#{'#{profile.email}'}&quot; qrCode=&quot;true&quot;/&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt;
+		&lt;/ui:repeat&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+				</code>
+				</pre>
+			</p:tab>
+			<p:tab title="Bean">
+				<pre>
+					<code>
+@ManagedBean
+@RequestScoped
+public class ClockBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	private Date time = new Date();
+		
+	public Date getTime() {
+		return time;
+	}
+	
+}
+				</code>
+				</pre>
+			</p:tab>
+		</p:tabView>
+	</ui:define>
+</ui:composition>
