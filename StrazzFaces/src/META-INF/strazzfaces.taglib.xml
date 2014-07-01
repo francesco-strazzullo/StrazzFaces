@@ -151,6 +151,12 @@
             <type>java.lang.String</type>
         </attribute>
         <attribute>
+            <description><![CDATA['not found' icon]]></description>
+            <name>notFound</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description><![CDATA[email of the chosen profile]]></description>
             <name>value</name>
             <required>true</required>
