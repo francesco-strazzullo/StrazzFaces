@@ -1,8 +1,14 @@
 package it.strazz.faces.gravatar;
 
+import it.strazz.faces.util.Strings;
+
 import java.io.IOException;
+import java.net.URI;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.URIParameter;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -55,6 +61,12 @@ public class GravatarRenderer extends CoreRenderer{
 		String url = "http://www.gravatar.com/";
 		
 		boolean qrCode = gravatar.isQrCode();
+		Integer size = gravatar.getSize();
+		String notFound = gravatar.getNotFound();
+		
+		if(Strings.isNotEmpty(notFound) && (notFound.equals("default") || !Gravatar.NOT_FOUND_VALUES.contains(notFound))){
+			notFound = null;
+		}
 		
 		if(!qrCode){
 			url += "avatar/";
@@ -63,6 +75,27 @@ public class GravatarRenderer extends CoreRenderer{
 		url += generateMailHash(gravatar);
 		
 		url += qrCode ? ".qr" : ".jpg";
+		
+		String queryString = "";
+		
+		if(size != null || Strings.isNotEmpty(notFound)){
+			queryString = "?";
+			
+			if(size != null){
+				queryString += "s=" + size;
+			}
+			
+			if(Strings.isNotEmpty(notFound)){
+				if(size != null){
+					queryString += "&";
+				}
+				queryString += "d=" + notFound;
+			}
+		}
+		
+		url += queryString;
+		
+		
 		
 		return url;
 	}

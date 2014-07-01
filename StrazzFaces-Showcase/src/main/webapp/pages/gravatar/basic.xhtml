@@ -54,6 +54,7 @@
 &lt;table class=&quot;table&quot;&gt;
 	&lt;thead&gt;
 		&lt;tr&gt;
+			&lt;th&gt;Name&lt;/th&gt;
 			&lt;th&gt;Photo&lt;/th&gt;
 			&lt;th&gt;Bio&lt;/th&gt;
 			&lt;th&gt;QRCode&lt;/th&gt;
@@ -62,6 +63,9 @@
 	&lt;tbody&gt;
 		&lt;ui:repeat var=&quot;profile&quot; value=&quot;#{'#{basicGravatarBean.profiles}'}&quot;&gt;
 			&lt;tr&gt;
+				&lt;td&gt;
+					#{'#{profile.name}'}
+				&lt;/td&gt;
 				&lt;td&gt;
 					&lt;s:gravatar value=&quot;#{'#{profile.email}'}&quot;/&gt;
 				&lt;/td&gt;
@@ -82,17 +86,23 @@
 				<pre>
 					<code>
 @ManagedBean
-@RequestScoped
-public class ClockBean implements Serializable {
+@ApplicationScoped
+public class BasicGravatarBean implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	private Date time = new Date();
-		
-	public Date getTime() {
-		return time;
-	}
+	private List&lt;GravatarProfile&gt; profiles = new ArrayList&lt;GravatarProfile&gt;(0);
 	
+	public BasicGravatarBean() {
+		profiles.add(new GravatarProfile(&quot;Francesco Strazzullo&quot;,&quot;francesco.strazzullo86@gmail.com&quot;,  &quot;I'm a J2EE software architect, I usually work applications built with the Spring+Hibernate+JSF 2.X+Primefaces Stack. I'm the lead architect of JAF (Java Apra Framework): a RAD framework used to create enteprise web application. Recently I'm working on AngularJS application. I also deal with Business Process Management using the BPM Engine Activiti. At last I'm developing StrazzFaces: my personal JSF component library! ;)&quot;));
+		profiles.add(new GravatarProfile(&quot;Massimo Biagioli&quot;,&quot;biagiolimassimo@gmail.com&quot;, &quot;Senior Java Developer&quot;));
+		profiles.add(new GravatarProfile(&quot;Luca Vargetto&quot;,&quot;lucavargetto@gmail.com&quot;, &quot;Senior Software Engineer&quot;));
+	}
+
+	public List&lt;GravatarProfile&gt; getProfiles() {
+		return profiles;
+	}
+
 }
 				</code>
 				</pre>

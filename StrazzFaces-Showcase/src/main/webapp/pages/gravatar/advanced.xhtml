@@ -10,46 +10,104 @@
 	<ui:define name="content">
 		<h1 class="text-center title">Gravatar</h1>
 		<p>
-			<i>s:gravatar</i> it's a simple wrapper of <a href="https://gravatar.com/" target="_blank">Gravatar</a>. You just need an email address and the component will show
-			the profile photo of the chosen Gravatar user.
+			You can also change the size of you gravatar and manage the "not found" username. In some cases the image will change accordingly with the chosen username.
 		</p>
 		<p:tabView>
 			<p:tab title="Result">
-				<h3>Italian JSF Developers</h3>
-				<s:gravatar value="francesco.strazzullo86@gmail.com" style="margin-right:15px"/>
-				<s:gravatar value="biagiolimassimo@gmail.com" style="margin-right:15px"/>
-				<s:gravatar value="liukvar"/>
+				<p:outputPanel id="container" layout="block" style="width:100%;overflow:hidden;">
+					<h:panelGrid columns="1" style="margin-bottom: 10px">
+						<h:outputText value="Username" />
+						<p:inputText value="#{advancedGravatarBean.username}" size="40">
+							<p:ajax process="container" update="container"/>
+						</p:inputText>
+				        <h:outputText id="output" value="Image size #{advancedGravatarBean.size}px" />
+				        <h:inputHidden id="txt2" value="#{advancedGravatarBean.size}" />
+				        <p:slider minValue="1" maxValue="2048" for="txt2" display="output" style="width: 200px" displayTemplate="Image size {value}px">
+				        	<p:ajax event="slideEnd" process="container" update="container" />
+				        </p:slider>
+				         <h:outputText value="'Not Found' Placeholder" />
+				         <p:selectOneMenu value="#{advancedGravatarBean.notFound}">
+				         	<f:selectItem itemValue="default" itemLabel="Default"/>
+				         	<f:selectItem itemValue="mm" itemLabel="Mystery-Man"/>
+				         	<f:selectItem itemValue="identicon" itemLabel="Identicon"/>
+				         	<f:selectItem itemValue="monsterid" itemLabel="Monster"/>
+				         	<f:selectItem itemValue="wavatar" itemLabel="Face"/>
+				         	<f:selectItem itemValue="retro" itemLabel="Retro"/>
+				         	<f:selectItem itemValue="blank" itemLabel="Blank"/>
+				         	<p:ajax process="container" update="container"/>
+				         </p:selectOneMenu>
+		  	  		</h:panelGrid>
+		  	  		<div class="text-center">
+		  	  			<s:gravatar value="#{advancedGravatarBean.username}" size="#{advancedGravatarBean.size}" notFound="#{advancedGravatarBean.notFound}"/>
+		  	  		</div>
+				</p:outputPanel>
 			</p:tab>
 			<p:tab title="XHTML Page">
 				<pre><code>
-&lt;div class=&quot;container&quot;&gt;
-	&lt;div class=&quot;row&quot;&gt;
-		&lt;div class=&quot;col-md-6&quot;&gt;
-			&lt;p&gt;Server&lt;/p&gt;
-			&lt;s:analogClock startTime=&quot;#{'#{clockBean.time}'}&quot; mode=&quot;server&quot; /&gt;
-		&lt;/div&gt;
-		&lt;div class=&quot;col-md-6&quot;&gt;
-			&lt;p&gt;Client&lt;/p&gt;
-			&lt;s:analogClock /&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
+&lt;p:outputPanel id=&quot;container&quot; layout=&quot;block&quot; style=&quot;width:100%;overflow:hidden;&quot;&gt;
+	&lt;h:panelGrid columns=&quot;1&quot; style=&quot;margin-bottom: 10px&quot;&gt;
+		&lt;h:outputText value=&quot;Username&quot; /&gt;
+		&lt;p:inputText value=&quot;#{'#{advancedGravatarBean.username}'}&quot; size=&quot;40&quot;&gt;
+			&lt;p:ajax process=&quot;container&quot; update=&quot;container&quot;/&gt;
+		&lt;/p:inputText&gt;
+        &lt;h:outputText id=&quot;output&quot; value=&quot;Image size #{'#{advancedGravatarBean.size}'}px&quot; /&gt;
+        &lt;h:inputHidden id=&quot;txt2&quot; value=&quot;#{'#{advancedGravatarBean.size}'}&quot; /&gt;
+        &lt;p:slider minValue=&quot;1&quot; maxValue=&quot;2048&quot; for=&quot;txt2&quot; display=&quot;output&quot; style=&quot;width: 200px&quot; displayTemplate=&quot;Image size {value}px&quot;&gt;
+        	&lt;p:ajax event=&quot;slideEnd&quot; process=&quot;container&quot; update=&quot;container&quot; /&gt;
+        &lt;/p:slider&gt;
+         &lt;h:outputText value=&quot;'Not Found' Placeholder&quot; /&gt;
+         &lt;p:selectOneMenu value=&quot;#{'#{advancedGravatarBean.notFound}'}&quot;&gt;
+         	&lt;f:selectItem itemValue=&quot;default&quot; itemLabel=&quot;Default&quot;/&gt;
+         	&lt;f:selectItem itemValue=&quot;mm&quot; itemLabel=&quot;Mystery-Man&quot;/&gt;
+         	&lt;f:selectItem itemValue=&quot;identicon&quot; itemLabel=&quot;Identicon&quot;/&gt;
+         	&lt;f:selectItem itemValue=&quot;monsterid&quot; itemLabel=&quot;Monster&quot;/&gt;
+         	&lt;f:selectItem itemValue=&quot;wavatar&quot; itemLabel=&quot;Face&quot;/&gt;
+         	&lt;f:selectItem itemValue=&quot;retro&quot; itemLabel=&quot;Retro&quot;/&gt;
+         	&lt;f:selectItem itemValue=&quot;blank&quot; itemLabel=&quot;Blank&quot;/&gt;
+         	&lt;p:ajax process=&quot;container&quot; update=&quot;container&quot;/&gt;
+         &lt;/p:selectOneMenu&gt;
+	  		&lt;/h:panelGrid&gt;
+	  		&lt;div class=&quot;text-center&quot;&gt;
+	  			&lt;s:gravatar value=&quot;#{'#{advancedGravatarBean.username}'}&quot; size=&quot;#{'#{advancedGravatarBean.size}'}&quot; notFound=&quot;#{'#{advancedGravatarBean.notFound}'}&quot;/&gt;
+	  		&lt;/div&gt;
+&lt;/p:outputPanel&gt;
 				</code></pre>
 			</p:tab>
 			<p:tab title="Bean">
 				<pre><code>
 @ManagedBean
-@RequestScoped
-public class ClockBean implements Serializable {
+@ViewScoped
+public class AdvancedGravatarBean implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	private Date time = new Date();
-		
-	public Date getTime() {
-		return time;
+	private int size = 200;
+	private String notFound = &quot;default&quot;;
+	private String username = &quot;iamadummyuser@gmail.com&quot;;
+
+	public String getNotFound() {
+		return notFound;
 	}
-	
+
+	public void setNotFound(String notFound) {
+		this.notFound = notFound;
+	}
+
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
 }
 				</code></pre>
 			</p:tab>

@@ -139,8 +139,8 @@
             <type>javax.faces.component.UIComponent</type>
         </attribute>
         <attribute>
-            <description><![CDATA[width of the image]]></description>
-            <name>width</name>
+            <description><![CDATA[size of the image (1px up to 2048px)]]></description>
+            <name>size</name>
             <required>false</required>
             <type>java.lang.Integer</type>
         </attribute>
