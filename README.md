@@ -5,12 +5,10 @@ My Personal JSF Component Library.
 
 Components:
 -----------
-* **GChart** a JSF Wrapper from Google Charts API
-* **AnalogClock** Analog Clock made with Raphaël
+* **GChart** a JSF wrapper from Google Charts API
+* **AnalogClock** Analog Clock made with Rapha�l
 * **Switch** switch for manage boolean values
 * **Document Viewer** HTML5 Document Viewer
-* **DockablePanel** Panel with open/close functionality and callback functions
-* **CountDown** CountDown component with a callback function
-* **Horizontal Accordion** Accordion Component with horizontal alignment
+* **Gravatar** a wrapper for the Gravatar service
 
 [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=francesco.strazzullo&url=https://github.com/francesco-strazzullo/StrazzFaces&title=StrazzFaces&language=&tags=github&category=software) 
