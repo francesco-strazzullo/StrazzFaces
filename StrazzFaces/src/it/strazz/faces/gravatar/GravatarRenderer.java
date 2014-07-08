@@ -3,12 +3,10 @@ package it.strazz.faces.gravatar;
 import it.strazz.faces.util.Strings;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.URIParameter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -64,10 +62,6 @@ public class GravatarRenderer extends CoreRenderer{
 		Integer size = gravatar.getSize();
 		String notFound = gravatar.getNotFound();
 		
-		if(Strings.isNotEmpty(notFound) && (notFound.equals("default") || !Gravatar.NOT_FOUND_VALUES.contains(notFound))){
-			notFound = null;
-		}
-		
 		if(!qrCode){
 			url += "avatar/";
 		}
@@ -76,26 +70,19 @@ public class GravatarRenderer extends CoreRenderer{
 		
 		url += qrCode ? ".qr" : ".jpg";
 		
-		String queryString = "";
+		List<String> params = new ArrayList<String>();
 		
-		if(size != null || Strings.isNotEmpty(notFound)){
-			queryString = "?";
-			
-			if(size != null){
-				queryString += "s=" + size;
-			}
-			
-			if(Strings.isNotEmpty(notFound)){
-				if(size != null){
-					queryString += "&";
-				}
-				queryString += "d=" + notFound;
-			}
+		if(size != null){
+			params.add("s=" + size);
 		}
 		
-		url += queryString;
+		if(Strings.isNotEmpty(notFound) && !notFound.equals("default") && Gravatar.NOT_FOUND_VALUES.contains(notFound)){
+			params.add("d=" + notFound);
+		}
 		
-		
+		if(params.size() > 0){
+			url += "?" + Strings.join(params, "&");
+		}
 		
 		return url;
 	}
