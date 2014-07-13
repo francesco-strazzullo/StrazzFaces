@@ -70,8 +70,31 @@ public class DocumentViewer extends UIGraphic {
 		getStateHelper().put(PropertyKeys.unmapped, unmapped);
 	}
 
+	public Integer getPage(){
+		return (Integer) getStateHelper().eval(PropertyKeys.page);
+	}
+	
+	public void setPage(Integer page){
+		this.getStateHelper().put(PropertyKeys.page, page);
+	}
+	
+	public java.lang.Object getLocale() {
+		return (java.lang.Object) getStateHelper().eval(PropertyKeys.locale, null);
+	}
+	public void setLocale(java.lang.Object _locale) {
+		getStateHelper().put(PropertyKeys.locale, _locale);
+	}
+	
 	protected static enum PropertyKeys {
-		width, height, style, name, library, cache, unmapped;
+		width, 
+		height, 
+		style,
+		name,
+		library,
+		cache,
+		unmapped,
+		page,
+		locale;
 	}
 
 }

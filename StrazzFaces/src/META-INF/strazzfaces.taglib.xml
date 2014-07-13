@@ -125,6 +125,18 @@
 			<required>false</required>
 			<type>java.lang.Boolean</type>
 		</attribute>
+		<attribute>
+			<description><![CDATA[Locale to be used for labels.]]></description>
+			<name>locale</name>
+			<required>false</required>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Start page of the document.]]></description>
+			<name>page</name>
+			<required>false</required>
+			<type>java.lang.Object</type>
+		</attribute>
     </tag>
      <tag>
         <tag-name>gravatar</tag-name>

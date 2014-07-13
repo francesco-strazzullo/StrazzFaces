@@ -1,8 +1,13 @@
 package it.strazz.faces.documentviewer;
 
+import it.strazz.faces.util.Strings;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 import javax.faces.application.Resource;
 import javax.faces.application.ResourceHandler;
@@ -12,6 +17,7 @@ import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
 import org.primefaces.renderkit.CoreRenderer;
+import org.primefaces.util.ComponentUtils;
 import org.primefaces.util.DynamicResourceBuilder;
 
 @FacesRenderer(componentFamily = DocumentViewer.COMPONENT_FAMILY, rendererType = DocumentViewerRenderer.RENDERER_TYPE)
@@ -30,13 +36,6 @@ public class DocumentViewerRenderer extends CoreRenderer {
 
 		ResponseWriter writer = context.getResponseWriter();
 
-		String imageSrc;
-		try {
-			imageSrc = getDocumentSource(context, documentViewer);
-		} catch (Exception ex) {
-			throw new IOException(ex);
-		}
-
 		writer.startElement("iframe", documentViewer);
 		writer.writeAttribute("id", documentViewer.getClientId(), null);
 		writer.writeAttribute("style", documentViewer.getStyle(), null);
@@ -46,12 +45,43 @@ public class DocumentViewerRenderer extends CoreRenderer {
 		writer.writeAttribute("height", documentViewer.getHeight(), null);
 		writer.writeAttribute("allowfullscreen", "", null);
 		writer.writeAttribute("webkitallowfullscreen", "", null);
-		writer.writeAttribute("src",
-				context.getExternalContext().getRequestContextPath()
-						+ "/javax.faces.resource/" + getResourceURL(documentViewer,context) + "file="
-						+ URLEncoder.encode(imageSrc, "UTF-8"), null);
+		writer.writeAttribute("src",generateSrc(context, documentViewer), null);
 		writer.endElement("iframe");
 
+	}
+
+	private String generateSrc(FacesContext context,DocumentViewer documentViewer)	throws IOException {
+		String imageSrc;
+		try {
+			imageSrc = URLEncoder.encode(getDocumentSource(context, documentViewer), "UTF-8");
+		} catch (Exception ex) {
+			throw new IOException(ex);
+		}
+		
+		StringBuilder srcBuilder = new StringBuilder();
+		srcBuilder.append(context.getExternalContext().getRequestContextPath());
+		srcBuilder.append("/javax.faces.resource/");
+		srcBuilder.append(getResourceURL(documentViewer,context));
+		srcBuilder.append("file=");
+		srcBuilder.append(imageSrc);
+		srcBuilder.append(generateHashString(documentViewer,context));
+		
+		return srcBuilder.toString();
+	}
+
+	private String generateHashString(DocumentViewer documentViewer,FacesContext context) {
+		
+		List<String> params = new ArrayList<String>(1);
+		params.add("locale=" + getCalculatedLocale(documentViewer, context));
+		if(documentViewer.getPage() != null){
+			params.add("page="+documentViewer.getPage());
+		}
+		
+		if(!params.isEmpty()){
+			return "#" + Strings.join(params, "&");
+		}else{
+			return "";
+		}
 	}
 
 	private String getResourceURL(DocumentViewer documentViewer, FacesContext context) {
@@ -61,6 +91,21 @@ public class DocumentViewerRenderer extends CoreRenderer {
 			return "viewer.html.jsf?ln=pdf.js&";
 		}
 		
+	}
+	
+	private Locale getCalculatedLocale(DocumentViewer documentViewer,FacesContext context){
+		Object locale = documentViewer.getLocale();
+		if(locale == null){
+			return context.getViewRoot().getLocale();
+		}else{
+			if(locale instanceof Locale){
+				return (Locale) locale;
+			}else if(locale instanceof String){
+				return ComponentUtils.toLocale((String) locale);
+			}else{
+				throw new IllegalArgumentException("Type:" + locale.getClass() + " is not a valid locale type for calendar:" + documentViewer.getClientId(context));
+			}
+		}
 	}
 
 	protected String getDocumentSource(FacesContext context,
