@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:s="http://it.strazz.faces/ui"
+	template="/template.xhtml">
+	<ui:define name="content">
+		<h1 class="text-center title">Document Viewer</h1>
+		<p>You can also set the locale of the s:documentViewer or the currentPage</p>
+		<p:tabView>
+			<p:tab title="Result">
+				<p:outputPanel>
+					Page <p:spinner size="10" value="#{advancedDocumentViewerBean.page}" min="1" max="69">
+					<p:ajax process="@this" update="@parent"/>
+				</p:spinner>
+				<s:documentViewer 
+					height="800"
+					unmapped="true"
+					locale="af"
+					page="#{advancedDocumentViewerBean.page}"
+					library="books"
+					name="AliceInWonderland.pdf" />
+				</p:outputPanel>
+			</p:tab>
+			<p:tab title="XHTML Page">
+				<pre>
+					<code>
+lt;p:outputPanel&gt;
+	Page 
+	&lt;p:spinner size=&quot;10&quot; value=&quot;#{advancedDocumentViewerBean.page}&quot; min=&quot;1&quot; max=&quot;69&quot;&gt;
+		&lt;p:ajax process=&quot;@this&quot; update=&quot;@parent&quot;/&gt;
+	&lt;/p:spinner&gt;
+	&lt;s:documentViewer
+		height=&quot;800&quot;
+		unmapped=&quot;true&quot;
+		locale=&quot;af&quot;
+		page=&quot;#{'#{advancedDocumentViewerBean.page}'}&quot;
+		library=&quot;books&quot;
+		name=&quot;AliceInWonderland.pdf&quot; /&gt;
+&lt;/p:outputPanel&gt;
+					</code>
+				</pre>
+			</p:tab>
+			<p:tab title="Bean">
+				<pre>
+					<code>
+@ManagedBean
+@SessionScoped
+public class AdvancedDocumentViewerBean implements Serializable {
+	
+	private int page = 2;
+	
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
+	}
+}
+				</code>
+				</pre>
+			</p:tab>
+		</p:tabView>
+		
+		
+	</ui:define>
+</ui:composition>
