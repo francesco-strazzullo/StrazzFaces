@@ -4538,6 +4538,7 @@ var WorkerTransport = (function WorkerTransportClosure() {
     // as it arrives on the worker. Chrome added this with version 15.
     if (!globalScope.PDFJS.disableWorker && typeof Worker !== 'undefined') {
       var workerSrc = PDFJS.workerSrc;
+      
       if (!workerSrc) {
         error('No PDFJS.workerSrc specified');
       }
@@ -4545,6 +4546,7 @@ var WorkerTransport = (function WorkerTransportClosure() {
       try {
         // Some versions of FF can't create a worker on localhost, see:
         // https://bugzilla.mozilla.org/show_bug.cgi?id=683280
+    	workerSrc += '.jsf?ln=pdf.js';
         var worker = new Worker(workerSrc);
         var messageHandler = new MessageHandler('main', worker);
         this.messageHandler = messageHandler;

@@ -48,10 +48,19 @@ public class DocumentViewerRenderer extends CoreRenderer {
 		writer.writeAttribute("webkitallowfullscreen", "", null);
 		writer.writeAttribute("src",
 				context.getExternalContext().getRequestContextPath()
-						+ "/javax.faces.resource/pdf.js/viewer.html?file="
+						+ "/javax.faces.resource/" + getResourceURL(documentViewer,context) + "file="
 						+ URLEncoder.encode(imageSrc, "UTF-8"), null);
 		writer.endElement("iframe");
 
+	}
+
+	private String getResourceURL(DocumentViewer documentViewer, FacesContext context) {
+		if(documentViewer.isUnmapped()){
+			return "pdf.js_unmapped/viewer.html?";
+		}else{
+			return "viewer.html.jsf?ln=pdf.js&";
+		}
+		
 	}
 
 	protected String getDocumentSource(FacesContext context,

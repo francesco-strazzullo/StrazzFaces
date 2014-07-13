@@ -113,6 +113,18 @@
             <required>true</required>
             <type>java.lang.String</type>
         </attribute>
+        <attribute>
+			<description><![CDATA[Controls browser caching mode of the resource. Default is false]]></description>
+			<name>cache</name>
+			<required>false</required>
+			<type>java.lang.Boolean</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[set true to use OmniFaces UnmappedResourceHandler. Default is false]]></description>
+			<name>unmapped</name>
+			<required>false</required>
+			<type>java.lang.Boolean</type>
+		</attribute>
     </tag>
      <tag>
         <tag-name>gravatar</tag-name>

@@ -14,16 +14,19 @@
 				<h4>URL</h4>
 				<s:documentViewer 
 					height="500"
+					unmapped="true"
 					url="/files/Mela_Rossa.pdf" />
 				<h4>Resource</h4>
 				<s:documentViewer 
 					height="500"
+					unmapped="true"
 					library="books"
 					name="AliceInWonderland.pdf" />
 				<h4>Dynamic</h4>
 				<f:event listener="#{documentViewerBean.onPrerender}" type="preRenderView" />
 				<s:documentViewer 
 					height="500"
+					unmapped="true"
 					value="#{documentViewerBean.content}" />
 			</p:tab>
 			<p:tab title="XHTML Page">
@@ -32,16 +35,19 @@
 &lt;h4&gt;URL&lt;/h4&gt;
 &lt;s:documentViewer 
 	height=&quot;500&quot;
+	unmapped=&quot;true&quot;
 	url=&quot;/files/Mela_Rossa.pdf&quot; /&gt;
 &lt;h4&gt;Resource&lt;/h4&gt;
 &lt;s:documentViewer 
 	height=&quot;500&quot;
+	unmapped=&quot;true&quot;
 	library=&quot;books&quot;
 	name=&quot;AliceInWonderland.pdf&quot; /&gt;
 &lt;h4&gt;Dynamic&lt;/h4&gt;
 &lt;f:event listener=&quot;#{'#{documentViewerBean.onPrerender}'}&quot; type=&quot;preRenderView&quot; /&gt;
 &lt;s:documentViewer 
 	height=&quot;500&quot;
+	unmapped=&quot;true&quot;
 	value=&quot;#{'#{documentViewerBean.content}'}&quot; /&gt;t;
 					</code>
 				</pre>

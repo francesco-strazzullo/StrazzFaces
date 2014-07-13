@@ -61,9 +61,17 @@ public class DocumentViewer extends UIGraphic {
 	public void setCache(boolean _cache) {
 		getStateHelper().put(PropertyKeys.cache, _cache);
 	}
+	
+	public boolean isUnmapped() {
+		return (Boolean) getStateHelper().eval(PropertyKeys.unmapped, false);
+	}
+
+	public void setUnmapped(boolean unmapped) {
+		getStateHelper().put(PropertyKeys.unmapped, unmapped);
+	}
 
 	protected static enum PropertyKeys {
-		width, height, style, name, library, cache;
+		width, height, style, name, library, cache, unmapped;
 	}
 
 }

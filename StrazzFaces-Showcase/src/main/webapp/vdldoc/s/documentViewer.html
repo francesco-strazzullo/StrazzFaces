@@ -2,7 +2,7 @@
 <html lang="en" xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:vdldoc="http://vdldoc.org/vdldoc" xmlns:fo="http://www.w3.org/1999/XSL/Format">
 <head>
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>documentViewer (StrazzFacess v.0.2-SNAPSHOT)
+<title>documentViewer (StrazzFacess v.0.3-SNAPSHOT)
 			</title>
 <meta name="keywords" content="$title">
 <link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
@@ -147,6 +147,16 @@
 <td class="colFirst"><a href="#url"><code>url</code></a></td><td class="colOne"><code>true</code></td><td class="colOne"><code>javax.el.ValueExpression</code>
 <br>(<i>must evaluate to </i><code>java.lang.String</code>)
 					</td><td class="colLast">URL of the document to view.</td>
+</tr>
+<tr id="cache" class="altColor">
+<td class="colFirst"><a href="#cache"><code>cache</code></a></td><td class="colOne"><code>false</code></td><td class="colOne"><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.Boolean</code>)
+					</td><td class="colLast">Controls browser caching mode of the resource. Default is false</td>
+</tr>
+<tr id="unmapped" class="rowColor">
+<td class="colFirst"><a href="#unmapped"><code>unmapped</code></a></td><td class="colOne"><code>false</code></td><td class="colOne"><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.Boolean</code>)
+					</td><td class="colLast">set true to use OmniFaces UnmappedResourceHandler. Default is false</td>
 </tr>
 </tbody>
 </table>
