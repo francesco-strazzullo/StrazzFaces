@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:s="http://it.strazz.faces/ui"
+	template="/template.xhtml">
+	<ui:define name="content">
+		<h1 class="text-center title">Knob</h1>
+		<p>
+			<i>s:analogClock</i> it's similar to <a href="http://www.primefaces.org/showcase/ui/misc/clock.xhtml" target="_blank">PrimeFaces Clock</a>, but it's created using <a href="http://raphaeljs.com/" target="_blank">Raphaël</a>.
+			It can show the server time or the client time.
+		</p>
+		<p:tabView>
+			<p:tab title="Result">
+				<s:knob 
+					max="50" 
+					step="5"
+					showLabel="false"
+					value="#{knobBasicBean.value}"/>
+				<p:commandButton 
+					action="#{knobBasicBean.confirm}"
+					value="Choose"
+					process="@parent"/>
+				<p:messages 
+					autoUpdate="true"/>
+			</p:tab>
+			<p:tab title="XHTML Page">
+				<pre><code>
+&lt;div class=&quot;container&quot;&gt;
+	&lt;div class=&quot;row&quot;&gt;
+		&lt;div class=&quot;col-md-6&quot;&gt;
+			&lt;p&gt;Server&lt;/p&gt;
+			&lt;s:analogClock startTime=&quot;#{'#{clockBean.time}'}&quot; mode=&quot;server&quot; /&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-6&quot;&gt;
+			&lt;p&gt;Client&lt;/p&gt;
+			&lt;s:analogClock /&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+				</code></pre>
+			</p:tab>
+			<p:tab title="Bean">
+				<pre><code>
+@ManagedBean
+@RequestScoped
+public class ClockBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	private Date time = new Date();
+		
+	public Date getTime() {
+		return time;
+	}
+	
+}
+				</code></pre>
+			</p:tab>
+		</p:tabView>
+	</ui:define>
+</ui:composition>

@@ -1,119 +1,120 @@
 <?xml version="1.0"?>
 <facelet-taglib version="2.0"
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd" id="s">
-    <namespace>http://it.strazz.faces/ui</namespace>
-    <tag>
-        <tag-name>gChart</tag-name>
-        <component>
-            <component-type>it.strazz.faces.GChart</component-type>
-            <renderer-type>it.strazz.faces.GChartRenderer</renderer-type>
-        </component>
-    </tag>
-    <tag>
-        <tag-name>analogClock</tag-name>
-        <component>
-            <component-type>it.strazz.faces.AnalogClock</component-type>
-            <renderer-type>it.strazz.faces.AnalogClockRenderer</renderer-type>
-        </component>
-        <attribute>
-            <description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
-            <name>id</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
-            <name>rendered</name>
-            <required>false</required>
-            <type>java.lang.Boolean</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[An el expression referring to a server side UIComponent instance in a backing bean.]]></description>
-            <name>binding</name>
-            <required>false</required>
-            <type>javax.faces.component.UIComponent</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[theme of the analogClock. It can also be a ColorTheme object to set a custom theme]]></description>
-            <name>colorTheme</name>
-            <required>false</required>
-            <type>java.lang.Object</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Name of the client side widget.]]></description>
-            <name>widgetVar</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA['server' for using server time, use the client time otherwise]]></description>
-            <name>mode</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[time to display, the default value is current time]]></description>
-            <name>startTime</name>
-            <required>false</required>
-            <type>java.util.Date</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[width of the clock.]]></description>
-            <name>width</name>
-            <required>false</required>
-            <type>java.lang.Integer</type>
-        </attribute>
-    </tag>
-    <tag>
-        <tag-name>documentViewer</tag-name>
-        <component>
-            <component-type>it.strazz.faces.DocumentViewer</component-type>
-            <renderer-type>it.strazz.faces.DocumentViewerRenderer</renderer-type>
-        </component>
-        <attribute>
-            <description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
-            <name>id</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
-            <name>rendered</name>
-            <required>false</required>
-            <type>java.lang.Boolean</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[An el expression referring to a server side UIComponent instance in a backing bean.]]></description>
-            <name>binding</name>
-            <required>false</required>
-            <type>javax.faces.component.UIComponent</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[width of the viewer frame.]]></description>
-            <name>width</name>
-            <required>false</required>
-            <type>java.lang.Integer</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[height of the viewer frame.]]></description>
-            <name>height</name>
-            <required>false</required>
-            <type>java.lang.Integer</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[CSS style of the viewer frame.]]></description>
-            <name>style</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[URL of the document to view.]]></description>
-            <name>url</name>
-            <required>true</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
+	id="s">
+	<namespace>http://it.strazz.faces/ui</namespace>
+	<tag>
+		<tag-name>gChart</tag-name>
+		<component>
+			<component-type>it.strazz.faces.GChart</component-type>
+			<renderer-type>it.strazz.faces.GChartRenderer</renderer-type>
+		</component>
+	</tag>
+	<tag>
+		<tag-name>analogClock</tag-name>
+		<component>
+			<component-type>it.strazz.faces.AnalogClock</component-type>
+			<renderer-type>it.strazz.faces.AnalogClockRenderer</renderer-type>
+		</component>
+		<attribute>
+			<description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
+			<name>id</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
+			<name>rendered</name>
+			<required>false</required>
+			<type>java.lang.Boolean</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[An el expression referring to a server side UIComponent instance in a backing bean.]]></description>
+			<name>binding</name>
+			<required>false</required>
+			<type>javax.faces.component.UIComponent</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[theme of the analogClock. It can also be a ColorTheme object to set a custom theme]]></description>
+			<name>colorTheme</name>
+			<required>false</required>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Name of the client side widget.]]></description>
+			<name>widgetVar</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA['server' for using server time, use the client time otherwise]]></description>
+			<name>mode</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[time to display, the default value is current time]]></description>
+			<name>startTime</name>
+			<required>false</required>
+			<type>java.util.Date</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[width of the clock.]]></description>
+			<name>width</name>
+			<required>false</required>
+			<type>java.lang.Integer</type>
+		</attribute>
+	</tag>
+	<tag>
+		<tag-name>documentViewer</tag-name>
+		<component>
+			<component-type>it.strazz.faces.DocumentViewer</component-type>
+			<renderer-type>it.strazz.faces.DocumentViewerRenderer</renderer-type>
+		</component>
+		<attribute>
+			<description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
+			<name>id</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
+			<name>rendered</name>
+			<required>false</required>
+			<type>java.lang.Boolean</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[An el expression referring to a server side UIComponent instance in a backing bean.]]></description>
+			<name>binding</name>
+			<required>false</required>
+			<type>javax.faces.component.UIComponent</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[width of the viewer frame.]]></description>
+			<name>width</name>
+			<required>false</required>
+			<type>java.lang.Integer</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[height of the viewer frame.]]></description>
+			<name>height</name>
+			<required>false</required>
+			<type>java.lang.Integer</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[CSS style of the viewer frame.]]></description>
+			<name>style</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[URL of the document to view.]]></description>
+			<name>url</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
 			<description><![CDATA[Controls browser caching mode of the resource. Default is false]]></description>
 			<name>cache</name>
 			<required>false</required>
@@ -137,331 +138,159 @@
 			<required>false</required>
 			<type>java.lang.Object</type>
 		</attribute>
-    </tag>
-     <tag>
-        <tag-name>gravatar</tag-name>
-        <component>
-            <component-type>it.strazz.faces.Gravatar</component-type>
-            <renderer-type>it.strazz.faces.GravatarRenderer</renderer-type>
-        </component>
-        <attribute>
-            <description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
-            <name>id</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
-            <name>rendered</name>
-            <required>false</required>
-            <type>java.lang.Boolean</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[An el expression referring to a server side UIComponent instance in a backing bean.]]></description>
-            <name>binding</name>
-            <required>false</required>
-            <type>javax.faces.component.UIComponent</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[size of the image (1px up to 2048px)]]></description>
-            <name>size</name>
-            <required>false</required>
-            <type>java.lang.Integer</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[CSS style of the viewer frame.]]></description>
-            <name>style</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA['not found' icon]]></description>
-            <name>notFound</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[email of the chosen profile]]></description>
-            <name>value</name>
-            <required>true</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[use true to print a qrCode instead of the user photo]]></description>
-            <name>qrCode</name>
-            <required>false</required>
-            <type>java.lang.Boolean</type>
-        </attribute>
-    </tag>
-    <tag>
-        <tag-name>switch</tag-name>
-        <component>
-            <component-type>it.strazz.faces.Switch</component-type>
-            <renderer-type>it.strazz.faces.SwitchRenderer</renderer-type>
-        </component>
-        <attribute>
-            <description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
-            <name>id</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
-            <name>rendered</name>
-            <required>false</required>
-            <type>java.lang.Boolean</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[An el expression referring to a server side UIComponent instance in a backing bean.]]></description>
-            <name>binding</name>
-            <required>false</required>
-            <type>javax.faces.component.UIComponent</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Value of the component.]]></description>
-            <name>value</name>
-            <required>false</required>
-            <type>java.lang.Object</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[An el expression or a literal text that defines a converter for the component. When it's an EL expression, it's resolved to a converter instance. 
+	</tag>
+	<tag>
+		<tag-name>gravatar</tag-name>
+		<component>
+			<component-type>it.strazz.faces.Gravatar</component-type>
+			<renderer-type>it.strazz.faces.GravatarRenderer</renderer-type>
+		</component>
+		<attribute>
+			<description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
+			<name>id</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
+			<name>rendered</name>
+			<required>false</required>
+			<type>java.lang.Boolean</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[An el expression referring to a server side UIComponent instance in a backing bean.]]></description>
+			<name>binding</name>
+			<required>false</required>
+			<type>javax.faces.component.UIComponent</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[size of the image (1px up to 2048px)]]></description>
+			<name>size</name>
+			<required>false</required>
+			<type>java.lang.Integer</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[CSS style of the viewer frame.]]></description>
+			<name>style</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA['not found' icon]]></description>
+			<name>notFound</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[email of the chosen profile]]></description>
+			<name>value</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[use true to print a qrCode instead of the user photo]]></description>
+			<name>qrCode</name>
+			<required>false</required>
+			<type>java.lang.Boolean</type>
+		</attribute>
+	</tag>
+	<tag>
+		<tag-name>switch</tag-name>
+		<component>
+			<component-type>it.strazz.faces.Switch</component-type>
+			<renderer-type>it.strazz.faces.SwitchRenderer</renderer-type>
+		</component>
+		<attribute>
+			<description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
+			<name>id</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
+			<name>rendered</name>
+			<required>false</required>
+			<type>java.lang.Boolean</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[An el expression referring to a server side UIComponent instance in a backing bean.]]></description>
+			<name>binding</name>
+			<required>false</required>
+			<type>javax.faces.component.UIComponent</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Value of the component.]]></description>
+			<name>value</name>
+			<required>false</required>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[An el expression or a literal text that defines a converter for the component. When it's an EL expression, it's resolved to a converter instance. 
 In case it's a static text, it must refer to a converter id.]]></description>
-            <name>converter</name>
-            <required>false</required>
-            <type>java.faces.convert.Converter</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[When set true, process validations logic is executed at apply request values phase for this component. Default is false.]]></description>
-            <name>immediate</name>
-            <required>false</required>
-            <type>java.lang.Boolean</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Marks component as required.]]></description>
-            <name>required</name>
-            <required>false</required>
-            <type>java.lang.Boolean</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[A method expression referring to a method validationg the input.]]></description>
-            <name>validator</name>
-            <required>false</required>
-            <type>javax.faces.validator.Validator</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[A method binding expression referring to a method for handling a valuchangeevent.]]></description>
-            <name>valueChangeListener</name>
-            <required>false</required>
-            <type>javax.faces.event.ValueChangeListener</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Message to display when required field validation fails.]]></description>
-            <name>requiredMessage</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Message to display when conversion fails.]]></description>
-            <name>converterMessage</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Message to display when validation fails.]]></description>
-            <name>validatorMessage</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Name of the client side widget.]]></description>
-            <name>widgetVar</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[switch type. It could be "rocker","arc","side","circle","rect","toggle"]]></description>
-            <name>type</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-    </tag>
-    <tag>
-        <tag-name>dockablepanel</tag-name>
-        <component>
-            <description><![CDATA[DockablePanel with open/close functionality and callback functionsn.]]></description>
-            <component-type>it.strazz.faces.DockablePanel</component-type>
-            <renderer-type>it.strazz.faces.DockablePanelRenderer</renderer-type>
-        </component>
-        <attribute>
-            <description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
-            <name>id</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
-            <name>rendered</name>
-            <required>false</required>
-            <type>java.lang.Boolean</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[An el expression referring to a server side UIComponent instance in a backing bean.]]></description>
-            <name>binding</name>
-            <required>false</required>
-            <type>javax.faces.component.UIComponent</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Name of the client side widget.]]></description>
-            <name>widgetVar</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[DockablePanel position. It could be "top","right","bottom","left"]]></description>
-            <name>position</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Inline style.]]></description>
-            <name>style</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[CSS panel styleClass.]]></description>
-            <name>styleClass</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Client side callback function to be execute on panel open.]]></description>
-            <name>onopen</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Client side callback function to be execute on panel close.]]></description>
-            <name>onclose</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[DockablePanel title.]]></description>
-            <name>title</name>
-            <required>true</required>
-            <type>java.lang.String</type>
-        </attribute>
-    </tag>
-    <tag>
-        <tag-name>countdown</tag-name>
-        <component>
-            <description><![CDATA[CountDown Component with a callback function.]]></description>
-            <component-type>it.strazz.faces.CountDown</component-type>
-            <renderer-type>it.strazz.faces.CountDownRenderer</renderer-type>
-        </component>
-        <attribute>
-            <description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
-            <name>id</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
-            <name>rendered</name>
-            <required>false</required>
-            <type>java.lang.Boolean</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Name of the client side widget.]]></description>
-            <name>widgetVar</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Text displayed after certain number of days included in countdown (when number days = 1). Default value is ":"]]></description>
-            <name>dayText</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Text displayed after certain number of days included in countdown. Default value is ":"]]></description>
-            <name>daysText</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Text displayed after certain number of hours included in countdown. Default value is ":"]]></description>
-            <name>hoursText</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Text displayed after certain number of minutes included in countdown. Default value is ":"]]></description>
-            <name>minutesText</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Text displayed after certain number of seconds included in countdown. Default value is null]]></description>
-            <name>secondsText</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Class will be added if there is less than 24 hours untill the end of countdown. Default value is false]]></description>
-            <name>oneDayClass</name>
-            <required>false</required>
-            <type>java.lang.Boolean</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Text displayed after the countdown is over (quantity is not take into consideration if it is set up as ‘callback’ option). Default value is "Countdown complete!"]]></description>
-            <name>textAfterCount</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Displaying the number of days remaining till the end of countdown: true -> the number of days is displayed, false -> the number of days is not displayed. Default value is true]]></description>
-            <name>displayDays</name>
-            <required>false</required>
-            <type>java.lang.Boolean</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Displaying the number of days when number of days is 0. Default value is false]]></description>
-            <name>displayZeroDays</name>
-            <required>false</required>
-            <type>java.lang.Boolean</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Adding a class to markers indicating countdown (e.g. indicated the name of call e.g. ‘class-name’). Default value is null]]></description>
-            <name>addClass</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Indicate the function which should be launched after the end of countdown.]]></description>
-            <name>oncomplete</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Inline style]]></description>
-            <name>style</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[CSS styleClass]]></description>
-            <name>styleClass</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description><![CDATA[Indicate the name of fucntion which should be launched after the end of countdown. Default value is null]]></description>
-            <name>date</name>
-            <required>true</required>
-            <type>java.util.Date</type>
-        </attribute>
-    </tag>
-
+			<name>converter</name>
+			<required>false</required>
+			<type>java.faces.convert.Converter</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[When set true, process validations logic is executed at apply request values phase for this component. Default is false.]]></description>
+			<name>immediate</name>
+			<required>false</required>
+			<type>java.lang.Boolean</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Marks component as required.]]></description>
+			<name>required</name>
+			<required>false</required>
+			<type>java.lang.Boolean</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[A method expression referring to a method validationg the input.]]></description>
+			<name>validator</name>
+			<required>false</required>
+			<type>javax.faces.validator.Validator</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[A method binding expression referring to a method for handling a valuchangeevent.]]></description>
+			<name>valueChangeListener</name>
+			<required>false</required>
+			<type>javax.faces.event.ValueChangeListener</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Message to display when required field validation fails.]]></description>
+			<name>requiredMessage</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Message to display when conversion fails.]]></description>
+			<name>converterMessage</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Message to display when validation fails.]]></description>
+			<name>validatorMessage</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Name of the client side widget.]]></description>
+			<name>widgetVar</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[switch type. It could be "rocker","arc","side","circle","rect","toggle"]]></description>
+			<name>type</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+	<tag>
+		<tag-name>knob</tag-name>
+		<component>
+			<component-type>it.strazz.faces.Knob</component-type>
+			<renderer-type>it.strazz.faces.KnobRenderer</renderer-type>
+		</component>
+	</tag>
 </facelet-taglib>

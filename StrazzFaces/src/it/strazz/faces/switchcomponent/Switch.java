@@ -15,21 +15,13 @@ import javax.faces.context.FacesContext;
 import org.primefaces.component.api.Widget;
 
 @FacesComponent(value = Switch.COMPONENT_TYPE)
-@ResourceDependencies({
-		@ResourceDependency(library = "drinks", name = "Drinks.js"),
-		@ResourceDependency(library = "drinks", name = "Switch.js"),
-		@ResourceDependency(library = "primefaces", name = "jquery/jquery.js"),
-		@ResourceDependency(library = "primefaces", name = "primefaces.js"),
-		@ResourceDependency(library = "strazzfaces", name = "switch.js") })
+@ResourceDependencies({ @ResourceDependency(library = "drinks", name = "Drinks.js"), @ResourceDependency(library = "drinks", name = "Switch.js"), @ResourceDependency(library = "primefaces", name = "jquery/jquery.js"), @ResourceDependency(library = "primefaces", name = "primefaces.js"), @ResourceDependency(library = "strazzfaces", name = "switch.js") })
 public class Switch extends UIInput implements Widget, ClientBehaviorHolder {
 	public static final String COMPONENT_TYPE = "it.strazz.faces.Switch";
 	public static final String COMPONENT_FAMILY = "it.strazz.faces.components";
 
-	private static final Collection<String> EVENT_NAMES = Collections
-			.unmodifiableCollection(Arrays.asList("change"));
-	static final Collection<String> AVAIABLE_TYPES = Collections
-			.unmodifiableCollection(Arrays.asList("rocker", "arc", "side",
-					"circle", "rect", "toggle"));
+	private static final Collection<String> EVENT_NAMES = Collections.unmodifiableCollection(Arrays.asList("change"));
+	static final Collection<String> AVAIABLE_TYPES = Collections.unmodifiableCollection(Arrays.asList("rocker", "arc", "side", "circle", "rect", "toggle"));
 	static final String DEFAULT_TYPE = "toggle";
 
 	@Override
@@ -71,13 +63,11 @@ public class Switch extends UIInput implements Widget, ClientBehaviorHolder {
 		if (userWidgetVar != null)
 			return userWidgetVar;
 		else
-			return "widget_"
-					+ getClientId(context).replaceAll(
-							"-|" + UINamingContainer.getSeparatorChar(context),
-							"_");
+			return "widget_" + getClientId(context).replaceAll("-|" + UINamingContainer.getSeparatorChar(context), "_");
 	}
 
 	protected static enum PropertyKeys {
-		type, widgetVar;
+		type,
+		widgetVar;
 	}
 }

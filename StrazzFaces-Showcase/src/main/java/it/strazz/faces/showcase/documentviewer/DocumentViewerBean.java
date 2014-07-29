@@ -20,7 +20,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 public class DocumentViewerBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	private StreamedContent content;
 
 	public void onPrerender(ComponentSystemEvent event) {
