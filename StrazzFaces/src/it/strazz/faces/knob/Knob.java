@@ -1,23 +1,39 @@
 package it.strazz.faces.knob;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
 import javax.faces.component.FacesComponent;
 import javax.faces.component.UIInput;
 import javax.faces.component.UINamingContainer;
+import javax.faces.component.behavior.ClientBehaviorHolder;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.component.api.Widget;
 
 @FacesComponent(value = Knob.COMPONENT_TYPE)
 @ResourceDependencies({ @ResourceDependency(library = "primefaces", name = "jquery/jquery.js"), @ResourceDependency(library = "primefaces", name = "primefaces.js"), @ResourceDependency(library = "knob", name = "jquery.knob.js"), @ResourceDependency(library = "strazzfaces", name = "core.js"), @ResourceDependency(library = "strazzfaces", name = "knob.js") })
-public class Knob extends UIInput implements Widget {
+public class Knob extends UIInput implements Widget, ClientBehaviorHolder {
 	public static final String COMPONENT_TYPE = "it.strazz.faces.Knob";
 	public static final String COMPONENT_FAMILY = "it.strazz.faces.components";
+
+	private static final Collection<String> EVENT_NAMES = Collections.unmodifiableCollection(Arrays.asList("change"));
 
 	@Override
 	public String getFamily() {
 		return COMPONENT_FAMILY;
+	}
+
+	public Collection<String> getEventNames() {
+		return EVENT_NAMES;
+	}
+
+	@Override
+	public String getDefaultEventName() {
+		return "change";
 	}
 
 	public String getWidgetVar() {

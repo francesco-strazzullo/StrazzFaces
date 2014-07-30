@@ -17,6 +17,9 @@ public class KnobRenderer extends CoreRenderer {
 
 	@Override
 	public void decode(FacesContext context, UIComponent component) {
+
+		decodeBehaviors(context, component);
+
 		String submittedValue = (String) context.getExternalContext().getRequestParameterMap().get(component.getClientId(context));
 		((Knob) component).setSubmittedValue(submittedValue);
 	}
@@ -48,7 +51,7 @@ public class KnobRenderer extends CoreRenderer {
 
 		writer.writeAttribute("class", "knob", null);
 
-		writer.endElement("div");
+		writer.endElement("input");
 
 	}
 
@@ -58,9 +61,11 @@ public class KnobRenderer extends CoreRenderer {
 
 		WidgetBuilder wb = getWidgetBuilder(context);
 
-		wb.init("Knob", widgetVar, clientId);
+		wb.initWithDomReady("Knob", widgetVar, clientId);
 		wb.attr("labelTemplate", component.getLabelTemplate());
 		wb.callback("onchange", "function(value)", component.getOnchange());
+
+		encodeClientBehaviors(context, component);
 
 		wb.finish();
 	}
