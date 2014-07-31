@@ -6,9 +6,221 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui" xmlns:s="http://it.strazz.faces/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
 	template="/template.xhtml">
 	<ui:define name="content">
 		<h1 class="text-center title">Knob</h1>
-		<h:commandLink class="btn btn-default btn-lg btn-block" action="/pages/knob/basic.jsf?faces-redirect=true">Basic</h:commandLink>
+		<p>
+			<i>s:knob</i> it's a wrapper of <a href="http://anthonyterrien.com/knob/" target="_blank">this</a>
+			jQuery plugin by Anthony Terrien. It's useful to insert numeric
+			values in a range.
+		</p>
+		<p:growl autoUpdate="true"/>
+		<p:tabView>
+			<p:tab title="Result">
+				<pe:importConstants className="java.awt.Color" var="Color" />
+				<p:outputPanel layout="block" styleClass="container" id="container">
+					<div class="row">
+						<div class="col-md-6">
+							<h4>Ajax</h4>
+							<small>An ajax listener fired on the "change" event</small>
+						</div>
+						<div class="col-md-6">
+							<s:knob value="#{knobBasicBean.value}">
+								<p:ajax process="@this" listener="#{knobBasicBean.confirm}" />
+							</s:knob>
+						</div>
+						<div class="col-md-6">
+							<h4>Max,Min and Step</h4>
+							<small>You can set the max and min value (the default range is 0-100), it's also possible to set a custom increment/decrement step.</small>
+						</div>
+						<div class="col-md-6">
+							<s:knob max="1000" step="50" value="950"/>
+						</div>
+						<div class="col-md-12">
+							<hr/>
+						</div>
+						<div class="col-md-6">
+							<h4>Show/Hide label</h4>
+							<small>you can hide the value label</small>
+						</div>
+						<div class="col-md-6">
+							<s:knob showLabel="false" value="10"/>
+						</div>
+						<div class="col-md-12">
+							<hr/>
+						</div>
+						<div class="col-md-6">
+							<h4>Label template</h4>
+							<small>just like PrimeFaces's <a href="http://www.primefaces.org/showcase/ui/misc/progressBar.xhtml" target="_blank">ProgressBar</a>, you can set the output format of the label</small>
+						</div>
+						<div class="col-md-6">
+							<s:knob labelTemplate="{value}%" value="35"/>
+						</div>
+						<div class="col-md-12">
+							<hr/>
+						</div>
+						<div class="col-md-6">
+							<h4>Disabled</h4>
+							<small>like any other input component the knob can be disabled</small>
+						</div>
+						<div class="col-md-6">
+							<s:knob disabled="true" value="100"/>
+						</div>
+						<div class="col-md-12">
+							<hr/>
+						</div>
+						<div class="col-md-6">
+							<h4>Cursor</h4>
+							<small>setting this attribute to true the bar is not filled, leaving just a little cursor to show the value of the knob</small>
+						</div>
+						<div class="col-md-6">
+							<s:knob cursor="true"/>
+						</div>
+						<div class="col-md-12">
+							<hr/>
+						</div>
+						<div class="col-md-6">
+							<h4>Thickness</h4>
+							<small>you can change the thickness of the bar</small>
+						</div>
+						<div class="col-md-3">
+							<s:knob thickness=".2" value="50"/>
+						</div>
+						<div class="col-md-3">
+							<s:knob thickness=".5" value="50"/>
+						</div>
+						<div class="col-md-12">
+							<hr/>
+						</div>
+						<div class="col-md-6">
+							<h4>Colors</h4>
+							<small>you can change the color of your knob. You can use an hex value, a css constant or a java.awt.Color object</small>
+						</div>
+						<div class="col-md-3">
+							<s:knob foregroundColor="red" backgroundColor="#00000" value="25"/>
+						</div>
+						<div class="col-md-3">
+							<s:knob foregroundColor="#{Color.BLACK}" backgroundColor="#{Color.RED}" value="25"/>
+						</div>
+					</div>
+				</p:outputPanel>
+			</p:tab>
+			<p:tab title="XHTML Page">
+				<pre><code>
+&lt;pe:importConstants className=&quot;java.awt.Color&quot; var=&quot;Color&quot; /&gt;
+&lt;p:outputPanel layout=&quot;block&quot; styleClass=&quot;container&quot; id=&quot;container&quot;&gt;
+	&lt;div class=&quot;row&quot;&gt;
+		&lt;div class=&quot;col-md-6&quot;&gt;
+			&lt;h4&gt;Ajax&lt;/h4&gt;
+			&lt;small&gt;An ajax listener fired on the &quot;change&quot; event&lt;/small&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-6&quot;&gt;
+			&lt;s:knob value=&quot;#{'#{knobBasicBean.value}'}&quot;&gt;
+				&lt;p:ajax process=&quot;@this&quot; listener=&quot;#{'#{knobBasicBean.confirm}'}&quot; /&gt;
+			&lt;/s:knob&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-6&quot;&gt;
+			&lt;h4&gt;Max,Min and Step&lt;/h4&gt;
+			&lt;small&gt;You can set the max and min value (the default range is 0-100), it's also possible to set a custom increment/decrement step.&lt;/small&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-6&quot;&gt;
+			&lt;s:knob max=&quot;1000&quot; step=&quot;50&quot; value=&quot;950&quot;/&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-12&quot;&gt;
+			&lt;hr/&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-6&quot;&gt;
+			&lt;h4&gt;Show/Hide label&lt;/h4&gt;
+			&lt;small&gt;you can hide the value label&lt;/small&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-6&quot;&gt;
+			&lt;s:knob showLabel=&quot;false&quot; value=&quot;10&quot;/&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-12&quot;&gt;
+			&lt;hr/&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-6&quot;&gt;
+			&lt;h4&gt;Label template&lt;/h4&gt;
+			&lt;small&gt;just like PrimeFaces's &lt;a href=&quot;http://www.primefaces.org/showcase/ui/misc/progressBar.xhtml&quot; target=&quot;_blank&quot;&gt;ProgressBar&lt;/a&gt;, you can set the output format of the label&lt;/small&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-6&quot;&gt;
+			&lt;s:knob labelTemplate=&quot;{value}%&quot; value=&quot;35&quot;/&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-12&quot;&gt;
+			&lt;hr/&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-6&quot;&gt;
+			&lt;h4&gt;Disabled&lt;/h4&gt;
+			&lt;small&gt;like any other input component the knob can be disabled&lt;/small&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-6&quot;&gt;
+			&lt;s:knob disabled=&quot;true&quot; value=&quot;100&quot;/&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-12&quot;&gt;
+			&lt;hr/&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-6&quot;&gt;
+			&lt;h4&gt;Cursor&lt;/h4&gt;
+			&lt;small&gt;setting this attribute to true the bar is not filled, leaving just a little cursor to show the value of the knob&lt;/small&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-6&quot;&gt;
+			&lt;s:knob cursor=&quot;true&quot;/&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-12&quot;&gt;
+			&lt;hr/&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-6&quot;&gt;
+			&lt;h4&gt;Thickness&lt;/h4&gt;
+			&lt;small&gt;you can change the thickness of the bar&lt;/small&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-3&quot;&gt;
+			&lt;s:knob thickness=&quot;.2&quot; value=&quot;50&quot;/&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-3&quot;&gt;
+			&lt;s:knob thickness=&quot;.5&quot; value=&quot;50&quot;/&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-12&quot;&gt;
+			&lt;hr/&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-6&quot;&gt;
+			&lt;h4&gt;Colors&lt;/h4&gt;
+			&lt;small&gt;you can change the color of your knob. You can use an hex value, a css constant or a java.awt.Color object&lt;/small&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-3&quot;&gt;
+			&lt;s:knob foregroundColor=&quot;red&quot; backgroundColor=&quot;#00000&quot; value=&quot;25&quot;/&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-3&quot;&gt;
+			&lt;s:knob foregroundColor=&quot;#{'#{Color.BLACK}'}&quot; backgroundColor=&quot;#{'#{Color.RED}'}&quot; value=&quot;25&quot;/&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/p:outputPanel&gt;
+				</code></pre>
+			</p:tab>
+			<p:tab title="Bean">
+				<pre><code>
+@ManagedBean
+@RequestScoped
+public class KnobBasicBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	private int value = 25;
+
+	public void confirm() {
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(&quot;You chose &quot; + value));
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
+	}
+}
+				</code></pre>
+			</p:tab>
+		</p:tabView>
 	</ui:define>
 </ui:composition>
