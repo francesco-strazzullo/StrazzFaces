@@ -3,7 +3,7 @@ package it.strazz.faces.analogclock.model;
 import java.awt.Color;
 import java.io.Serializable;
 
-public interface ColorTheme extends Serializable{
+public interface ColorTheme extends Serializable {
 
 	public abstract void setPin(Color pin);
 

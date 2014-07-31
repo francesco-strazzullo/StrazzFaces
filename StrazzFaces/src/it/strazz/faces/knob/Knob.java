@@ -113,7 +113,51 @@ public class Knob extends UIInput implements Widget, ClientBehaviorHolder {
 		this.getStateHelper().put(PropertyKeys.labelTemplate, labelTemplate);
 	}
 
+	public boolean isDisabled() {
+		return (java.lang.Boolean) getStateHelper().eval(PropertyKeys.disabled, false);
+
+	}
+
+	public void setDisabled(boolean disabled) {
+		getStateHelper().put(PropertyKeys.disabled, disabled);
+	}
+
+	public boolean isCursor() {
+		return (java.lang.Boolean) getStateHelper().eval(PropertyKeys.cursor, false);
+
+	}
+
+	public void setCursor(boolean cursor) {
+		getStateHelper().put(PropertyKeys.cursor, cursor);
+	}
+
+	public Float getThickness() {
+		return (Float) getStateHelper().eval(PropertyKeys.thickness);
+	}
+
+	public void setThickness(Float thickness) {
+		this.getStateHelper().put(PropertyKeys.thickness, thickness);
+	}
+
+	public Object getForegroundColor() {
+		return getStateHelper().eval(PropertyKeys.foregroundColor);
+	}
+
+	public void setForegroundColor(Object foregroundColor) {
+		this.getStateHelper().put(PropertyKeys.foregroundColor, foregroundColor);
+	}
+
+	public Object getBackgroundColor() {
+		return getStateHelper().eval(PropertyKeys.backgroundColor);
+	}
+
+	public void setBackgroundColor(Object backgroundColor) {
+		this.getStateHelper().put(PropertyKeys.backgroundColor, backgroundColor);
+	}
+
 	protected static enum PropertyKeys {
+		foregroundColor,
+		backgroundColor,
 		showLabel,
 		labelTemplate,
 		onchange,
@@ -121,6 +165,9 @@ public class Knob extends UIInput implements Widget, ClientBehaviorHolder {
 		step,
 		min,
 		max,
-		widgetVar;
+		widgetVar,
+		disabled,
+		cursor,
+		thickness;
 	}
 }

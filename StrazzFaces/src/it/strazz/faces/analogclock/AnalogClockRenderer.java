@@ -1,8 +1,8 @@
 package it.strazz.faces.analogclock;
 
 import it.strazz.faces.analogclock.model.ColorTheme;
+import it.strazz.faces.util.Colors;
 
-import java.awt.Color;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,16 +22,14 @@ public class AnalogClockRenderer extends CoreRenderer {
 	public static final String RENDERER_TYPE = "it.strazz.faces.AnalogClockRenderer";
 
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component)
-			throws IOException {
+	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
 		AnalogClock analogClock = (AnalogClock) component;
 
 		encodeMarkup(context, analogClock);
 		encodeScript(context, analogClock);
 	}
 
-	protected void encodeMarkup(FacesContext context, AnalogClock clock)
-			throws IOException {
+	protected void encodeMarkup(FacesContext context, AnalogClock clock) throws IOException {
 		ResponseWriter writer = context.getResponseWriter();
 
 		writer.startElement("div", clock);
@@ -39,8 +37,7 @@ public class AnalogClockRenderer extends CoreRenderer {
 		writer.endElement("div");
 	}
 
-	protected void encodeScript(FacesContext context, AnalogClock analogClock)
-			throws IOException {
+	protected void encodeScript(FacesContext context, AnalogClock analogClock) throws IOException {
 
 		String clientId = analogClock.getClientId();
 		String widgetVar = analogClock.resolveWidgetVar();
@@ -50,10 +47,10 @@ public class AnalogClockRenderer extends CoreRenderer {
 		wb.init("AnalogClock", widgetVar, clientId);
 		wb.attr("mode", analogClock.getMode());
 		wb.attr("time", analogClock.getStartTime() != null ? analogClock.getStartTime().getTime() : null);
-		if(analogClock.getColorTheme() != null){
-			if(analogClock.getColorTheme() instanceof String){
+		if (analogClock.getColorTheme() != null) {
+			if (analogClock.getColorTheme() instanceof String) {
 				wb.attr("colorTheme", analogClock.getColorTheme().toString());
-			}else{
+			} else {
 				wb.attr("themeObject", this.escapeText(new JSONObject(colorThemeToMap((ColorTheme) analogClock.getColorTheme())).toString()));
 			}
 		}
@@ -64,39 +61,20 @@ public class AnalogClockRenderer extends CoreRenderer {
 
 		wb.finish();
 	}
-	
-	private Map colorThemeToMap(ColorTheme colorTheme){
-		
-		Map<String,String> map = new HashMap<String,String>(0);
-		
-		map.put("face", colorToHex(colorTheme.getFace()));
-		map.put("border", colorToHex(colorTheme.getBorder()));
-		map.put("hourHand", colorToHex(colorTheme.getHourHand()));
-		map.put("minuteHand", colorToHex(colorTheme.getMinuteHand()));
-		map.put("secondHand", colorToHex(colorTheme.getSecondHand()));
-		map.put("secondSigns", colorToHex(colorTheme.getHourSigns()));
-		map.put("pin", colorToHex(colorTheme.getPin()));
-		
+
+	private Map colorThemeToMap(ColorTheme colorTheme) {
+
+		Map<String, String> map = new HashMap<String, String>(0);
+
+		map.put("face", Colors.colorToHex(colorTheme.getFace()));
+		map.put("border", Colors.colorToHex(colorTheme.getBorder()));
+		map.put("hourHand", Colors.colorToHex(colorTheme.getHourHand()));
+		map.put("minuteHand", Colors.colorToHex(colorTheme.getMinuteHand()));
+		map.put("secondHand", Colors.colorToHex(colorTheme.getSecondHand()));
+		map.put("secondSigns", Colors.colorToHex(colorTheme.getHourSigns()));
+		map.put("pin", Colors.colorToHex(colorTheme.getPin()));
+
 		return map;
 	}
-	
-	private String colorToHex(Color color){
-		
-		String red = Integer.toHexString(color.getRed());
-		if(red.length() < 2){
-			red = "0" + red;
-		}
-		
-		String blue = Integer.toHexString(color.getBlue());
-		if(blue.length() < 2){
-			blue = "0" + blue;
-		}
-		
-		String green = Integer.toHexString(color.getGreen());
-		if(green.length() < 2){
-			green = "0" + green;
-		}
-		
-		return "#" + red + green + blue;
-	}
+
 }

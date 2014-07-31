@@ -1,5 +1,8 @@
 package it.strazz.faces.knob;
 
+import it.strazz.faces.util.Colors;
+
+import java.awt.Color;
 import java.io.IOException;
 
 import javax.faces.component.UIComponent;
@@ -39,11 +42,38 @@ public class KnobRenderer extends CoreRenderer {
 		writer.startElement("input", knob);
 		writer.writeAttribute("id", knob.getClientId(), null);
 		writer.writeAttribute("name", knob.getClientId(), null);
+		writer.writeAttribute("disabled", true, null);
 		writer.writeAttribute("value", value.toString(), null);
 		writer.writeAttribute("data-min", knob.getMin(), null);
 		writer.writeAttribute("data-step", knob.getStep(), null);
 		writer.writeAttribute("data-max", knob.getMax(), null);
 		writer.writeAttribute("data-displayInput", Boolean.toString(knob.isShowLabel()), null);
+		writer.writeAttribute("data-readOnly", Boolean.toString(knob.isDisabled()), null);
+		writer.writeAttribute("data-cursor", Boolean.toString(knob.isCursor()), null);
+
+		if (knob.getThickness() != null) {
+			writer.writeAttribute("data-thickness", knob.getThickness(), null);
+		}
+
+		if (knob.getForegroundColor() != null) {
+			String fg;
+			if (knob.getForegroundColor() instanceof Color) {
+				fg = Colors.colorToHex((Color) knob.getForegroundColor());
+			} else {
+				fg = knob.getForegroundColor().toString();
+			}
+			writer.writeAttribute("data-fgColor", fg, null);
+		}
+
+		if (knob.getBackgroundColor() != null) {
+			String bg;
+			if (knob.getBackgroundColor() instanceof Color) {
+				bg = Colors.colorToHex((Color) knob.getBackgroundColor());
+			} else {
+				bg = knob.getBackgroundColor().toString();
+			}
+			writer.writeAttribute("data-bgColor", bg, null);
+		}
 
 		if (knob.getWidth() != null) {
 			writer.writeAttribute("data-width", knob.getWidth().toString(), null);
