@@ -1,12 +1,15 @@
 PrimeFaces.widget.Knob = PrimeFaces.widget.BaseWidget.extend({
 	init : function(cfg) {
-
-		var that = this;
-
+		
 		this._super(cfg);
+		
+		this.input = jQuery(this.jqId+"_hidden");
+		var that = this;
 		
 		this.jq.knob({
 			release : function(value) {
+				that.input.val(value);
+				
 				if (cfg.onchange) {
 					cfg.onchange(value);
 				}

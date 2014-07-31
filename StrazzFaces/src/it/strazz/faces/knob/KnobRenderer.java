@@ -23,7 +23,7 @@ public class KnobRenderer extends CoreRenderer {
 
 		decodeBehaviors(context, component);
 
-		String submittedValue = (String) context.getExternalContext().getRequestParameterMap().get(component.getClientId(context));
+		String submittedValue = (String) context.getExternalContext().getRequestParameterMap().get(component.getClientId(context) + "_hidden");
 		((Knob) component).setSubmittedValue(submittedValue);
 	}
 
@@ -83,6 +83,12 @@ public class KnobRenderer extends CoreRenderer {
 
 		writer.endElement("input");
 
+		writer.startElement("input", null);
+		writer.writeAttribute("id", knob.getClientId() + "_hidden", null);
+		writer.writeAttribute("name", knob.getClientId() + "_hidden", null);
+		writer.writeAttribute("type", "hidden", null);
+		writer.writeAttribute("value", value.toString(), null);
+		writer.endElement("input");
 	}
 
 	private void encodeScript(FacesContext context, Knob component) throws IOException {
