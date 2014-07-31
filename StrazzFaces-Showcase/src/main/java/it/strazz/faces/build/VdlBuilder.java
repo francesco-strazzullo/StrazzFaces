@@ -9,14 +9,18 @@ import org.omnifaces.vdldoc.VdldocGenerator;
 public class VdlBuilder {
 	public static void main(String[] args) {
 		VdldocGenerator generator = new VdldocGenerator();
-		
-		generator.setWindowTitle("StrazzFacess v." + StrazzFaces.VERSION); // Else default will be used.
-		generator.setDocTitle("StrazzFaces VDL Documentation"); // Else default will be used.
+
+		generator.setWindowTitle("StrazzFacess v." + StrazzFaces.VERSION); // Else
+																			// default
+																			// will
+																			// be
+																			// used.
+		generator.setDocTitle("StrazzFaces VDL Documentation"); // Else default
+																// will be used.
 		generator.setOutputDirectory(new File("src\\main\\webapp\\vdldoc"));
-		generator.setFacesConfig(new File("..\\StrazzFaces\\src\\META-INF\\faces-config.xml")); // Optional.
-		generator.addTaglib(new File("..\\StrazzFaces\\src\\META-INF\\strazzfaces.taglib.xml"));
-		
+		generator.setFacesConfig(new File("..\\StrazzFaces\\resources\\META-INF\\faces-config.xml")); // Optional.
+		generator.addTaglib(new File("..\\StrazzFaces\\resources\\META-INF\\strazzfaces.taglib.xml"));
+
 		generator.generate();
 	}
 }
-
